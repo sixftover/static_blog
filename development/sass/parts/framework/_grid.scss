@@ -1,0 +1,105 @@
+@import "variables.scss";
+
+//Grid
+
+header,section,div,footer {
+	position: relative;
+	box-sizing: border-box;
+	max-width: 100%;
+}
+
+
+.row {
+	width: 100%;
+	max-width: $maxbody;
+	height: auto;
+	min-height: 1px;
+	margin: 0 auto;
+	display: block;
+	box-sizing: border-box;
+	z-index: 5;
+	padding: 0 .8rem;
+}
+
+.col {
+	min-height: 1px;
+	padding: 0 .8rem;
+	box-sizing: border-box;
+	display: inline-block;
+	float: left;
+	position: relative;
+}
+.col:first-of-type {
+	padding-right: .8rem;
+	padding-left: 0;
+}
+.col:last-of-type {
+	padding-left: .8rem;
+	padding-right: 0;
+}
+
+.demo-col{
+	background-color: $brand;
+	//margin: 8px 0;
+	border: solid 1px white;
+	display: block;
+	height: 20px;
+	width: 100%;
+	border-radius: 5px;
+}
+
+
+.c1 {width: $one;}
+.c2 {width: $two;}
+.c3 {width: $three;}
+.c4 {width: $four;}
+.c5 {width: $five;}
+.c6 {width: $six;}
+.c7 {width: $seven;}
+.c8 {width: $eight;}
+.c9 {width: $nine;}
+.c10 {width: $ten;}
+.c11 {width: $eleven;}
+.c12 {
+	width: $twelve;
+	padding: 0 !important;
+}
+
+@media only screen and (max-width: $tablet) {
+	.c1 {width: $twelve;}
+	.c2 {width: $twelve;}
+	.c3 {width: $twelve;}
+	.c4 {width: $twelve;}
+	.c5 {width: $twelve;}
+	.c6 {width: $twelve;}
+	.c7 {width: $twelve;}
+	.c8 {width: $twelve;}
+	.c9 {width: $twelve;}
+	.c10 {width: $twelve;}
+	.c11 {width: $twelve;}
+	.c12 {width: $twelve;}
+
+	.col {
+		padding-left: 0rem;
+		padding-right: 0rem;
+	}
+	.row {
+		box-sizing: border-box;
+		padding: 0 2rem;
+	}
+}
+
+@media only screen and (max-width: $mobile) {
+	.c1 {width: $twelve;}
+	.c2 {width: $twelve;}
+	.c3 {width: $twelve;}
+	.c4 {width: $twelve;}
+	.c5 {width: $twelve;}
+	.c6 {width: $twelve;}
+	.c7 {width: $twelve;}
+	.c8 {width: $twelve;}
+	.c9 {width: $twelve;}
+	.c10 {width: $twelve;}
+	.c11 {width: $twelve;}
+	.c12 {width: $twelve;}
+}

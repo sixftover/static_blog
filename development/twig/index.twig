@@ -1,0 +1,86 @@
+{# index.twig #}
+{% extends "layouts/deafult.twig" %}
+
+	{% set title = "Home Page" %}
+	{% set pageTitle = "A passionate <a>interface</a> designer with a focus on considerate <a>experiences</a>" %}
+	{% set aboutPage = "A passionate interface designer with a focus on considerate experiences" %}
+	{% set pageImage = "./img/slider/slider-1.jpg" %}
+	{% set tags = ["Fast!", "Easy!", "Efficient!"] %}
+
+	{% set subTitle = "Hello, I'm Ollie" %}
+
+{% block content %}
+{% include 'includes/page-header.twig' %}
+
+	{#<h3>{{ pageTitle }}</h3>#}
+
+	<!-- DELETE -->
+		<demo>
+			<!-- five -->
+			<section class="row">
+				<div class="col c12"><span class="demo-col"></span></div>
+			</section>
+
+			<!-- five -->
+			<section class="row">
+				<div class="col c11"><span class="demo-col"></span></div>
+				<div class="col c1"><span class="demo-col"></span></div>
+			</section>
+
+			<!-- five -->
+			<section class="row">
+				<div class="col c10"><span class="demo-col"></span></div>
+				<div class="col c2"><span class="demo-col"></span></div>
+			</section>
+
+			<!-- five -->
+			<section class="row">
+				<div class="col c9"><span class="demo-col"></span></div>
+				<div class="col c3"><span class="demo-col"></span></div>
+			</section>
+
+			<!-- five -->
+			<section class="row">
+				<div class="col c8"><span class="demo-col"></span></div>
+				<div class="col c4"><span class="demo-col"></span></div>
+			</section>
+
+			<!-- five -->
+			<section class="row">
+				<div class="col c7"><span class="demo-col"></span></div>
+				<div class="col c5"><span class="demo-col"></span></div>
+			</section>
+
+			<!-- five -->
+			<section class="row">
+				<div class="col c6"><span class="demo-col"></span></div>
+				<div class="col c6"><span class="demo-col"></span></div>
+			</section>
+
+			<section class="row">
+				<div class="col c4">
+					<h1>Heading 1</h1>
+					<h2>Heading 2</h2>
+					<h3>Heading 3</h3>
+					<h4>Heading 4</h4>
+					<h5>Heading 5</h5>
+					Parragraph
+					<ul>
+						<li>Hello World</li>
+						<li>Hello World</li>
+						<li>Hello World</li>
+					</ul>
+					<ol>
+						<li>Hello World</li>
+						<li>Hello World</li>
+						<li>Hello World</li>
+					</ol>
+
+				</div>
+			</section>
+		</demo>
+	<!-- DELETE -->
+
+
+{% include 'includes/page-footer.twig' %}
+{% endblock %}
