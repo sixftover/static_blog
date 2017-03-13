@@ -13,6 +13,7 @@ var 	gulp = require('gulp'),
 	twig = require('gulp-twig'),
 	rename = require('gulp-rename'),
 	path = require('path'),
+	htmlbeautify = require('gulp-html-beautify'),
 	PrettyError = require('pretty-error').start();
 
 
@@ -22,7 +23,7 @@ var paths = {
 
 	// Exporting
 	css: '../*.css',				// CSS files
-	html: '../*.html',				// HTML Files
+	html: '../*/*.html',				// HTML Files
 	image: '../img/**/*',			// Image Files
 	imagedir: '../img/',			// Image Directory
 
@@ -32,7 +33,6 @@ var paths = {
 	twig: './twig/**/*.twig',	 	// Twig Files
 	twigdir: './twig'				// Twig Directory
 };
-
 
 // Styles
 gulp.task('sass', function () {
@@ -51,6 +51,7 @@ gulp.task('sass', function () {
 		console.log('Reloaded CSS!')
 	)) // Reload Browser
 });
+
 gulp.task('prefix', () =>
 	gulp.src(paths.css)
 	.pipe(autoprefixer({
@@ -65,6 +66,15 @@ gulp.task('prefix', () =>
 		console.log('Reloaded CSS!')
 	)) // Reload Browser
 );
+
+// Minify CSS
+gulp.task('minify-css', function() {
+	return gulp.src(paths.css) // Selecting files
+	.pipe(plumber())
+	.pipe(cleanCSS({compatibility: 'ie8'})) // Running the plugin
+	.pipe(gulp.dest(paths.root)) // Exporting it to a folder
+});
+
 // Dev Mode: Update and Watch
 gulp.task('styles', ['sass', 'prefix'], function() {
 	console.log('Styles up to date!')
@@ -100,6 +110,33 @@ gulp.task('twig', function(){
 		console.log('Reloaded HTML!'))
 	)
 });
+gulp.task('htmlbeautify', function() {
+  var options = {
+	  "indent_size": 4,
+	  "indent_char": " ",
+	  "eol": "\n",
+	  "indent_level": 0,
+	  "indent_with_tabs": false,
+	  "preserve_newlines": true,
+	  "max_preserve_newlines": 10,
+	  "jslint_happy": false,
+	  "space_after_anon_function": false,
+	  "brace_style": "collapse",
+	  "keep_array_indentation": false,
+	  "keep_function_indentation": false,
+	  "space_before_conditional": true,
+	  "break_chained_methods": false,
+	  "eval_code": false,
+	  "unescape_strings": false,
+	  "wrap_line_length": 0,
+	  "wrap_attributes": "auto",
+	  "wrap_attributes_indent_size": 4,
+	  "end_with_newline": false
+  };
+  gulp.src('./src/*.html')
+    .pipe(htmlbeautify(options))
+    .pipe(gulp.dest('./public/'))
+});
 
 
 // Images
@@ -122,42 +159,22 @@ gulp.task('connect', function() {
 gulp.task('watch', ['connect'], function () {
 	gulp.watch(paths.sass, ['sass']) // on change run these command
 	gulp.watch(paths.twig, ['twig'])
+	gulp.watch(paths.html, ['htmlbeautify'])
 });
+
 
 
 // Update Everything
-gulp.task('compile', ['twig', 'styles', 'image'], function() {
-	console.log('DONE: Twig Compiled, Sass Compiled + Images Compressed');
+gulp.task('compile', ['twig', 'sass', 'htmlbeautify'], function() {
+	console.log('DONE: Twig Compiled, Sass Compiled');
+});
+gulp.task('optimize', ['prefix', 'image', 'minify-css'], function() {
+	console.log('DONE: Compiled, Prefixed & Compressed');
+});
+gulp.task('build', ['compile', 'optimize'], function() {
+	console.log('DONE: Build complete');
 });
 // Dev Mode: Update and Watch
-gulp.task('default', ['compile', 'watch', 'connect'], function() {
+gulp.task('default', ['compile', 'connect', 'watch'], function() {
 	console.log('DEV MODE ENABLED: Compiled, Connected and Watching...');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Minify CSS
-/*
-gulp.task('minify-css', function() {
-	return gulp.src(paths.css) // Selecting files
-	.pipe(plumber())
-	.pipe(cleanCSS({compatibility: 'ie8'})) // Running the plugin
-	.pipe(gulp.dest(paths.root)) // Exporting it to a folder
-});
-*/
