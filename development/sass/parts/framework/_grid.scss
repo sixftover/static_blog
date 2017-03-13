@@ -1,105 +1,79 @@
 @import "variables.scss";
+header,section,footer,div,span{position: relative;}
 
 //Grid
-
-header,section,div,footer {
-	position: relative;
-	box-sizing: border-box;
-	max-width: 100%;
-}
-
-
 .row {
-	width: 100%;
-	max-width: $maxbody;
-	height: auto;
-	min-height: 1px;
-	margin: 0 auto;
-	display: block;
-	box-sizing: border-box;
-	z-index: 5;
-	padding: 0 .8rem;
-}
-
-.col {
-	min-height: 1px;
-	padding: 0 .8rem;
-	box-sizing: border-box;
-	display: inline-block;
-	float: left;
 	position: relative;
-}
-.col:first-of-type {
-	padding-right: .8rem;
-	padding-left: 0;
-}
-.col:last-of-type {
-	padding-left: .8rem;
-	padding-right: 0;
-}
-
-.demo-col{
-	background-color: $brand;
-	//margin: 8px 0;
-	border: solid 1px white;
-	display: block;
-	height: 20px;
+	display: flex;
+	flex-wrap: wrap;
 	width: 100%;
-	border-radius: 5px;
+	max-width: calc( 1152px + 4.8rem );
+	padding: 0 2.4rem;
+	box-sizing: border-box;
+	margin: 0 auto;
 }
+.col {
+	padding: 0 .8rem;
+	box-sizing: border-box;
+	header,section,footer,div,span{display: block;}
+}
+//.col:first-of-type {padding-left: 0;}
+//.col:last-of-type {padding-right: 0;}
 
 
-.c1 {width: $one;}
-.c2 {width: $two;}
-.c3 {width: $three;}
-.c4 {width: $four;}
-.c5 {width: $five;}
-.c6 {width: $six;}
-.c7 {width: $seven;}
-.c8 {width: $eight;}
-.c9 {width: $nine;}
-.c10 {width: $ten;}
-.c11 {width: $eleven;}
+.c1 {
+	flex-grow: 1;
+	flex-basis: 96px;
+}
+.c2 {
+	flex-grow: 2;
+	flex-basis: 192px;
+}
+.c3 {
+	flex-grow: 3;
+	flex-basis: 288px;
+}
+.c4 {
+	flex-grow: 4;
+	flex-basis: 384px;
+}
+.c5 {
+	flex-grow: 5;
+	flex-basis: 480px;
+}
+.c6 {
+	flex-grow: 6;
+	flex-basis: 573px;
+}
+.c7 {
+	flex-grow: 7;
+	flex-basis: 672px;
+}
+.c8 {
+	flex-grow: 8;
+	flex-basis: 768px;
+}
+.c9 {
+	flex-grow: 9;
+	flex-basis: 864px;
+}
+.c10 {
+	flex-grow: 10;
+	flex-basis: 960px;
+}
+.c11 {
+	flex-grow: 11;
+	flex-basis: 1056px;
+}
 .c12 {
-	width: $twelve;
-	padding: 0 !important;
+	flex-grow: 12;
+	flex-basis: 1152px;
 }
 
 @media only screen and (max-width: $tablet) {
-	.c1 {width: $twelve;}
-	.c2 {width: $twelve;}
-	.c3 {width: $twelve;}
-	.c4 {width: $twelve;}
-	.c5 {width: $twelve;}
-	.c6 {width: $twelve;}
-	.c7 {width: $twelve;}
-	.c8 {width: $twelve;}
-	.c9 {width: $twelve;}
-	.c10 {width: $twelve;}
-	.c11 {width: $twelve;}
-	.c12 {width: $twelve;}
-
-	.col {
-		padding-left: 0rem;
-		padding-right: 0rem;
-	}
-	.row {
-		box-sizing: border-box;
-		padding: 0 2rem;
-	}
 }
 
 @media only screen and (max-width: $mobile) {
-	.c1 {width: $twelve;}
-	.c2 {width: $twelve;}
-	.c3 {width: $twelve;}
-	.c4 {width: $twelve;}
-	.c5 {width: $twelve;}
-	.c6 {width: $twelve;}
-	.c7 {width: $twelve;}
-	.c8 {width: $twelve;}
-	.c9 {width: $twelve;}
-	.c10 {width: $twelve;}
-	.c11 {width: $twelve;}
-	.c12 {width: $twelve;}
+	.row {flex-wrap: wrap;}
+	.col{padding: 0;}
 }
