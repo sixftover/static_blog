@@ -1,10 +1,5 @@
 @import "variables.scss";
 
-* {
-	background-position: 50%;
-	background-size: cover;
-}
-
 html{
 	width: 100%;
 	overflow-x: hidden;
@@ -23,11 +18,9 @@ body{
 	position: relative;
 	overflow: hidden;
 	*{
-		-webkit-transition: all .3s ease-in-out;
-		-moz-transition: all .3s ease-in-out;
-		-ms-transition: all .3s ease-in-out;
-		-o-transition: all .3s ease-in-out;
-		transition: all .3s ease-in-out;
+		transition: .4s all cubic-bezier(0.25,-0.05, 0, 1.05);
+		background-position: 50%;
+		background-size: cover;
 	}
 }
 

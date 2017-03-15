@@ -20,6 +20,29 @@
 
 // Demo
 
+.animate{
+	width: 100%;
+	height: auto;
+	background-color: #60D394;
+	border-radius: .4rem;
+	padding: 0 .8rem;
+	box-sizing: border-box;
+	span{
+		width: 100px !important;
+		height: 100px !important;
+		background-color: #AAF683 !important;
+		left:0;
+		right:100%;
+		position: relative;
+	}
+}
+.animate:hover{
+	span{
+		//transform: translatex(100%);
+		left: calc(100% - 100px);
+		right:0;
+	}
+}
 
 section,header,footer{
 	margin-bottom: 8rem;
