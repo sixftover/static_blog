@@ -1,5 +1,6 @@
 //Colours
-$brand: #dc554e;
+$brand: #60D394;
+$text-dark: rgba(0,0,0,1);
 
 
 // Column Width Values
@@ -16,6 +17,6 @@ $ten:       83.33%;
 $eleven:    91.66%;
 $twelve:    100%;
 
-$tablet:	810px;
-$mobile:	510px;
-$maxbody:	1152px;
+$tablet:	860px;
+$mobile:	560px;
+$maxbody:	calc( 1136px + 3.2rem );

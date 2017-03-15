@@ -17,13 +17,20 @@ body {
 
 
 // Typography
-h1, h2, h3, h4, h5,p {
+h1, h2, h3, h4, h5, h6, p {
 	-webkit-margin-before: 0rem;
-	-webkit-margin-after: 1rem;
+	-webkit-margin-after: 0rem;
 }
-h1, h2, h3, h4, h5 {
-	text-transform: uppercase;
-     color: #9012fe;
+article,section{
+	h1, h2, h3, h4, h5, h6, p {
+		-webkit-margin-before: .8rem;
+		-webkit-margin-after: .8rem;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	//text-transform: uppercase;
+	color: $text-dark;
 }
 h1 {
 	font-size: 		4.8rem;
@@ -31,14 +38,14 @@ h1 {
 	font-weight: 		800;
 }
 h2 {
-	font-size: 		2.4rem;
-	line-height: 		3.2rem;
+	font-size: 		3.2rem;
+	line-height: 		4rem;
 	font-weight: 		800;
 }
 h3 {
 	font-size: 		2.4rem;
 	line-height: 		3.2rem;
-	font-weight: 		400;
+	font-weight: 		700;
 }
 
 h4 {
@@ -47,6 +54,11 @@ h4 {
 	font-weight: 		700;
 }
 h5 {
+	font-size: 		1.6rem;
+	line-height: 		2.4rem;
+	font-weight: 		400;
+}
+h6 {
 	font-size: 		1.2rem;
 	line-height: 		1.6rem;
 	font-weight: 		400;
@@ -54,22 +66,26 @@ h5 {
 
 p, ul, ol {
 	font-size: 			1.6rem;
-     line-height: 			2rem;
-     font-weight: 			400;
+	line-height: 			2.8rem;
+	font-weight: 			400;
 	margin-bottom: 		2rem;
-     color: 				#9012fe;
+	color: 				transparentize($text-dark, .25);
+	a:hover {color: darken($brand, 25)}
 }
 a {
 	text-decoration: none;
 	display: inline-block;
-	color: #9012fe;
+	color: inherit;
+}
+article, section, p{
+	a{color: $brand}
 }
 
-a {color: #9012fe;}
-a:hover {color: darken(#9012fe, 15);}
+.highlight{color: $brand !important}
 
 
 // Lists
+/*
 ol,ul{
 	li{padding: 1rem;}
 	li:nth-child(odd){opacity: 0.75;}
@@ -94,3 +110,4 @@ ol{
 		margin-right: 1rem;
 	}
 }
+*/

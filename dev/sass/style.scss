@@ -16,3 +16,72 @@
 
 /* Sections */
 @import "parts/sections.scss";
+
+
+// Demo
+
+
+section,header,footer{
+	margin-bottom: 8rem;
+	.col{
+		span{
+			background-color: black;
+			margin: .8rem 0;
+			width: 100%;
+			//height: 2rem;
+			border-radius: .5rem;
+
+			font-size: 1.6rem;
+			line-height: 2.4rem;
+			padding: 1rem;
+			text-align: center;
+			box-sizing: border-box;
+		}
+	}
+	.c1,.c7{
+		span{
+			background-color: #EE6055;
+			color: darken(#EE6055 ,50)
+		}
+	}
+	.c2,.c8{
+		span{
+			background-color: #60D394;
+			color: darken(#60D394 ,50)
+		}
+	}
+	.c3,.c9{
+		span{
+			background-color: #AAF683;
+			color: darken(#AAF683 ,50)
+		}
+	}
+	.c4,.c10{
+		span{
+			background-color: #FFD97D;
+			color: darken(#FFD97D ,50)
+		}
+	}
+	.c5,.c11{
+		span{
+			background-color: #FF9B85;
+			color: darken(#FF9B85 ,50)
+		}
+	}
+	.c6,.c12{
+		span{
+			background-color: #79ADDC;
+			color: darken(#79ADDC ,50)
+		}
+	}
+}
+header,footer{
+	.col{
+		span{
+			background-color: rgba(0,0,0,0.08);
+			margin: .5rem 0;
+			padding: 4rem;
+		}
+	}
+}
+footer{margin-bottom: 0;}
