@@ -1,35 +1,5 @@
 @import "framework/variables.scss";
 
-#demo{
-	.col{
-		span{
-			background-color: #EE6055;
-			margin: .5rem 0;
-			width: 100%;
-			height: 2rem;
-			border-radius: .5rem;
-		}
-	}
-
-	.c1,.c7{
-		span{background-color: #EE6055;}
-	}
-	.c2,.c8{
-		span{background-color: #60D394;}
-	}
-	.c3,.c9{
-		span{background-color: #AAF683;}
-	}
-	.c4,.c10{
-		span{background-color: #FFD97D;}
-	}
-	.c5,.c11{
-		span{background-color: #FF9B85;}
-	}
-	.c6,.c12{
-		span{background-color: #79ADDC;}
-	}
-}
 
 // Embeded Content
 img {

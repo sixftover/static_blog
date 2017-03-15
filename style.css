@@ -295,10 +295,15 @@ header, section, footer, div, span {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
-  max-width: calc( 1152px + 4.8rem);
-  padding: 0 2.4rem;
+  max-width: calc( 1136px + 3.2rem);
+  padding: 0 1.6rem;
   box-sizing: border-box;
   margin: 0 auto;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  flex-wrap: wrap;
+  -ms-flex-align: stretch;
+      align-items: stretch;
 }
 
 .col {
@@ -310,96 +315,102 @@ header, section, footer, div, span {
   display: block;
 }
 
+.col:first-of-type {
+  padding-left: 0;
+}
+
+.col:last-of-type {
+  padding-right: 0;
+}
+
 .c1 {
   -ms-flex-positive: 1;
       flex-grow: 1;
-  -ms-flex-preferred-size: 96px;
-      flex-basis: 96px;
+  -ms-flex-preferred-size: 8.33%;
+      flex-basis: 8.33%;
 }
 
 .c2 {
   -ms-flex-positive: 2;
       flex-grow: 2;
-  -ms-flex-preferred-size: 192px;
-      flex-basis: 192px;
+  -ms-flex-preferred-size: 16.66%;
+      flex-basis: 16.66%;
 }
 
 .c3 {
   -ms-flex-positive: 3;
       flex-grow: 3;
-  -ms-flex-preferred-size: 288px;
-      flex-basis: 288px;
+  -ms-flex-preferred-size: 25%;
+      flex-basis: 25%;
 }
 
 .c4 {
   -ms-flex-positive: 4;
       flex-grow: 4;
-  -ms-flex-preferred-size: 384px;
-      flex-basis: 384px;
+  -ms-flex-preferred-size: 33.33%;
+      flex-basis: 33.33%;
 }
 
 .c5 {
   -ms-flex-positive: 5;
       flex-grow: 5;
-  -ms-flex-preferred-size: 480px;
-      flex-basis: 480px;
+  -ms-flex-preferred-size: 41.66%;
+      flex-basis: 41.66%;
 }
 
 .c6 {
   -ms-flex-positive: 6;
       flex-grow: 6;
-  -ms-flex-preferred-size: 573px;
-      flex-basis: 573px;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
 }
 
 .c7 {
   -ms-flex-positive: 7;
       flex-grow: 7;
-  -ms-flex-preferred-size: 672px;
-      flex-basis: 672px;
+  -ms-flex-preferred-size: 58.33%;
+      flex-basis: 58.33%;
 }
 
 .c8 {
   -ms-flex-positive: 8;
       flex-grow: 8;
-  -ms-flex-preferred-size: 768px;
-      flex-basis: 768px;
+  -ms-flex-preferred-size: 66.66%;
+      flex-basis: 66.66%;
 }
 
 .c9 {
   -ms-flex-positive: 9;
       flex-grow: 9;
-  -ms-flex-preferred-size: 864px;
-      flex-basis: 864px;
+  -ms-flex-preferred-size: 75%;
+      flex-basis: 75%;
 }
 
 .c10 {
   -ms-flex-positive: 10;
       flex-grow: 10;
-  -ms-flex-preferred-size: 960px;
-      flex-basis: 960px;
+  -ms-flex-preferred-size: 83.33%;
+      flex-basis: 83.33%;
 }
 
 .c11 {
   -ms-flex-positive: 11;
       flex-grow: 11;
-  -ms-flex-preferred-size: 1056px;
-      flex-basis: 1056px;
+  -ms-flex-preferred-size: 91.66%;
+      flex-basis: 91.66%;
 }
 
 .c12 {
   -ms-flex-positive: 12;
       flex-grow: 12;
-  -ms-flex-preferred-size: 1152px;
-      flex-basis: 1152px;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
 }
 
-@media only screen and (max-width: 510px) {
-  .row {
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
+@media only screen and (max-width: 560px) {
   .col {
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
     padding: 0;
   }
 }
@@ -414,14 +425,18 @@ body {
   font-size: 0;
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, h6, p {
   -webkit-margin-before: 0rem;
-  -webkit-margin-after: 1rem;
+  -webkit-margin-after: 0rem;
 }
 
-h1, h2, h3, h4, h5 {
-  text-transform: uppercase;
-  color: #9012fe;
+article h1, article h2, article h3, article h4, article h5, article h6, article p, section h1, section h2, section h3, section h4, section h5, section h6, section p {
+  -webkit-margin-before: .8rem;
+  -webkit-margin-after: .8rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: black;
 }
 
 h1 {
@@ -431,15 +446,15 @@ h1 {
 }
 
 h2 {
-  font-size: 2.4rem;
-  line-height: 3.2rem;
+  font-size: 3.2rem;
+  line-height: 4rem;
   font-weight: 800;
 }
 
 h3 {
   font-size: 2.4rem;
   line-height: 3.2rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 h4 {
@@ -449,6 +464,12 @@ h4 {
 }
 
 h5 {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 400;
+}
+
+h6 {
   font-size: 1.2rem;
   line-height: 1.6rem;
   font-weight: 400;
@@ -456,10 +477,14 @@ h5 {
 
 p, ul, ol {
   font-size: 1.6rem;
-  line-height: 2rem;
+  line-height: 2.8rem;
   font-weight: 400;
   margin-bottom: 2rem;
-  color: #9012fe;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+p a:hover, ul a:hover, ol a:hover {
+  color: #278d55;
 }
 
 a {
@@ -469,11 +494,11 @@ a {
 }
 
 article a, section a, p a {
-  color: #dc554e;
+  color: #60D394;
 }
 
-article a:hover, section a:hover, p a:hover {
-  color: #b92c25;
+.highlight {
+  color: #60D394 !important;
 }
 
 /*
@@ -503,38 +528,6 @@ ol{
 }
 */
 /* Elements */
-#demo .col span {
-  background-color: #EE6055;
-  margin: .5rem 0;
-  width: 100%;
-  height: 2rem;
-  border-radius: .5rem;
-}
-
-#demo .c1 span, #demo .c7 span {
-  background-color: #EE6055;
-}
-
-#demo .c2 span, #demo .c8 span {
-  background-color: #60D394;
-}
-
-#demo .c3 span, #demo .c9 span {
-  background-color: #AAF683;
-}
-
-#demo .c4 span, #demo .c10 span {
-  background-color: #FFD97D;
-}
-
-#demo .c5 span, #demo .c11 span {
-  background-color: #FF9B85;
-}
-
-#demo .c6 span, #demo .c12 span {
-  background-color: #79ADDC;
-}
-
 img {
   padding: 0;
   display: block;
@@ -578,3 +571,58 @@ img {
 }
 
 /* Sections */
+section, header, footer {
+  margin-bottom: 8rem;
+}
+
+section .col span, header .col span, footer .col span {
+  background-color: black;
+  margin: .8rem 0;
+  width: 100%;
+  border-radius: .5rem;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  padding: 1rem;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+section .c1 span, section .c7 span, header .c1 span, header .c7 span, footer .c1 span, footer .c7 span {
+  background-color: #EE6055;
+  color: #3e0a06;
+}
+
+section .c2 span, section .c8 span, header .c2 span, header .c8 span, footer .c2 span, footer .c8 span {
+  background-color: #60D394;
+  color: #0b2919;
+}
+
+section .c3 span, section .c9 span, header .c3 span, header .c9 span, footer .c3 span, footer .c9 span {
+  background-color: #AAF683;
+  color: #2c7208;
+}
+
+section .c4 span, section .c10 span, header .c4 span, header .c10 span, footer .c4 span, footer .c10 span {
+  background-color: #FFD97D;
+  color: #7d5800;
+}
+
+section .c5 span, section .c11 span, header .c5 span, header .c11 span, footer .c5 span, footer .c11 span {
+  background-color: #FF9B85;
+  color: #851800;
+}
+
+section .c6 span, section .c12 span, header .c6 span, header .c12 span, footer .c6 span, footer .c12 span {
+  background-color: #79ADDC;
+  color: #122c44;
+}
+
+header .col span, footer .col span {
+  background-color: rgba(0, 0, 0, 0.08);
+  margin: .5rem 0;
+  padding: 4rem;
+}
+
+footer {
+  margin-bottom: 0;
+}
