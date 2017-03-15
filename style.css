@@ -619,33 +619,63 @@ section .col span, header .col span, footer .col span {
   box-sizing: border-box;
 }
 
-section .c1 span, section .c7 span, header .c1 span, header .c7 span, footer .c1 span, footer .c7 span {
+section .c1 span, header .c1 span, footer .c1 span {
   background-color: #EE6055;
   color: #3e0a06;
 }
 
-section .c2 span, section .c8 span, header .c2 span, header .c8 span, footer .c2 span, footer .c8 span {
+section .c2 span, header .c2 span, footer .c2 span {
   background-color: #60D394;
   color: #0b2919;
 }
 
-section .c3 span, section .c9 span, header .c3 span, header .c9 span, footer .c3 span, footer .c9 span {
+section .c3 span, header .c3 span, footer .c3 span {
   background-color: #AAF683;
   color: #2c7208;
 }
 
-section .c4 span, section .c10 span, header .c4 span, header .c10 span, footer .c4 span, footer .c10 span {
+section .c4 span, header .c4 span, footer .c4 span {
   background-color: #FFD97D;
   color: #7d5800;
 }
 
-section .c5 span, section .c11 span, header .c5 span, header .c11 span, footer .c5 span, footer .c11 span {
+section .c5 span, header .c5 span, footer .c5 span {
   background-color: #FF9B85;
   color: #851800;
 }
 
-section .c6 span, section .c12 span, header .c6 span, header .c12 span, footer .c6 span, footer .c12 span {
+section .c6 span, header .c6 span, footer .c6 span {
   background-color: #79ADDC;
+  color: #122c44;
+}
+
+section .c7 span, header .c7 span, footer .c7 span {
+  background-color: #f0766c;
+  color: #3e0a06;
+}
+
+section .c8 span, header .c8 span, footer .c8 span {
+  background-color: #74d9a1;
+  color: #0b2919;
+}
+
+section .c11 span, header .c11 span, footer .c11 span {
+  background-color: #baf89b;
+  color: #2c7208;
+}
+
+section .c10 span, header .c10 span, footer .c10 span {
+  background-color: #ffe097;
+  color: #7d5800;
+}
+
+section .c9 span, header .c9 span, footer .c9 span {
+  background-color: #ffb09f;
+  color: #851800;
+}
+
+section .c12 span, header .c12 span, footer .c12 span {
+  background-color: #8db9e1;
   color: #122c44;
 }
 

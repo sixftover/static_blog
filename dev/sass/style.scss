@@ -64,39 +64,75 @@ section,header,footer{
 			box-sizing: border-box;
 		}
 	}
-	.c1,.c7{
+	.c1{
 		span{
 			background-color: #EE6055;
 			color: darken(#EE6055 ,50)
 		}
 	}
-	.c2,.c8{
+	.c2{
 		span{
 			background-color: #60D394;
 			color: darken(#60D394 ,50)
 		}
 	}
-	.c3,.c9{
+	.c3{
 		span{
 			background-color: #AAF683;
 			color: darken(#AAF683 ,50)
 		}
 	}
-	.c4,.c10{
+	.c4{
 		span{
 			background-color: #FFD97D;
 			color: darken(#FFD97D ,50)
 		}
 	}
-	.c5,.c11{
+	.c5{
 		span{
 			background-color: #FF9B85;
 			color: darken(#FF9B85 ,50)
 		}
 	}
-	.c6,.c12{
+	.c6{
 		span{
 			background-color: #79ADDC;
+			color: darken(#79ADDC ,50)
+		}
+	}
+	.c7{
+		span{
+			background-color: lighten(#EE6055 ,5);
+			color: darken(#EE6055 ,50)
+		}
+	}
+	.c8{
+		span{
+			background-color: lighten(#60D394 ,5);
+			color: darken(#60D394 ,50)
+		}
+	}
+	.c11{
+		span{
+			background-color: lighten(#AAF683 ,5);
+			color: darken(#AAF683 ,50)
+		}
+	}
+	.c10{
+		span{
+			background-color: lighten(#FFD97D ,5);
+			color: darken(#FFD97D ,50)
+		}
+	}
+	.c9{
+		span{
+			background-color: lighten(#FF9B85 ,5);
+			color: darken(#FF9B85 ,50)
+		}
+	}
+	.c12{
+		span{
+			background-color: lighten(#79ADDC ,5);
 			color: darken(#79ADDC ,50)
 		}
 	}
