@@ -4,7 +4,7 @@
   "description": "The starting point for all my projects",
   "main": "./dev/gulpfile.js",
   "dependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^3.9.1"
   },
   "devDependencies": {
     "gulp-autoprefixer": "^3.1.1",
