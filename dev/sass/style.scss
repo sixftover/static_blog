@@ -43,7 +43,10 @@
 		right:0;
 	}
 }
-
+.dark{
+	background-color: black;
+	border-radius: .4rem;
+}
 section,header,footer{
 	margin-bottom: 8rem;
 	.col{

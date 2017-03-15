@@ -47,7 +47,6 @@ h3 {
 	line-height: 		3.2rem;
 	font-weight: 		700;
 }
-
 h4 {
 	font-size: 		1.6rem;
 	line-height: 		2.4rem;
@@ -63,12 +62,11 @@ h6 {
 	line-height: 		1.6rem;
 	font-weight: 		400;
 }
-
 p, ul, ol {
 	font-size: 			1.6rem;
 	line-height: 			2.8rem;
 	font-weight: 			400;
-	margin-bottom: 		2rem;
+
 	color: 				transparentize($text-dark, .25);
 	a:hover {color: darken($brand, 25)}
 }
@@ -81,6 +79,11 @@ article, section, p{
 	a{color: $brand}
 }
 
+// Colour Variations
+.dark{
+	h1, h2, h3, h4, h5, h6, p {color: white;}
+	p, ul, ol {color: transparentize(white, .25);}
+}
 .highlight{color: $brand !important}
 
 
