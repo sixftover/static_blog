@@ -16,7 +16,6 @@ var 	gulp = require('gulp'),
 	htmlbeautify = require('gulp-html-beautify'),
 	PrettyError = require('pretty-error').start();
 
-
 // Paths
 var paths = {
 	root: '../', 					// Root Directory (Export Folder)
@@ -165,15 +164,19 @@ gulp.task('watch', ['connect'], function () {
 
 
 // Update Everything
-gulp.task('compile', ['twig', 'sass', 'htmlbeautify'], function() {
+gulp.task('compile', ['twig', 'sass', 'htmlbeautify', 'prefix'], function() {
 	console.log('DONE: Twig Compiled, Sass Compiled');
 });
-gulp.task('optimize', ['prefix', 'image', 'minify-css'], function() {
-	console.log('DONE: Compiled, Prefixed & Compressed');
+gulp.task('optimize', ['image', 'minify-css'], function() {
+	console.log('DONE: Compressed');
 });
-gulp.task('build', ['compile', 'optimize'], function() {
+
+
+gulp.task('build', ['compile', 'optimize', 'minify-css'], function() {
 	console.log('DONE: Build complete');
 });
+
+
 // Dev Mode: Update and Watch
 gulp.task('default', ['compile', 'connect', 'watch'], function() {
 	console.log('DEV MODE ENABLED: Compiled, Connected and Watching...');
