@@ -1,9 +1,12 @@
 	{% set brand = "ff3817" %}
+	{% set url = "https://olliejt.com/" %}
+	{% set twitter = "TheOllieJT" %}
+	{% set company = "OllieJT" %}
 
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-	
+
 
 	<title>{{ title }} :: OllieJT 🇬🇧</title>
 
@@ -20,24 +23,24 @@
 	<meta name="theme-color" content="#{{ brand }}">
 
 	<!-- seo-meta-global -->
-	<meta name="author" content="Ollie JT">
-	<link rel='me' type='text/html' href='http://twitter.com/TheOllieJT'>
+	<meta name="author" content="{{ company }}">
+	<link rel='me' type='text/html' href='http://twitter.com/{{ title }}'>
 	<meta property="og:type" content="website">
 	<meta property="og:site_name" content="OllieJT 🇬🇧">
 	<meta property="og:locale" content="en_GB"> <!-- en_US -->
-	<meta property="article:author" content="Ollie Taylor">
-	<meta name="twitter:site" content="@TheOllieJT" />
+	<meta property="article:author" content="{{ company }}">
+	<meta name="twitter:site" content="@{{ title }}" />
 	<meta name="twitter:card" content="summary" />
 
 	<!-- seo-meta-this-page -->
-	<meta property="og:title" content="{{ pageTitle }}">
-	<meta name="twitter:title" content="{{ pageTitle }}" />
+	<meta property="og:title" content="{{ metaTitle }}">
+	<meta name="twitter:title" content="{{ metaTitle }}" />
 	<!--<meta name='date' content='Mar. 03, 2017'>-->
-	<meta name="description" content="{{ aboutPage }}">
-	<meta property="og:description" content="{{ aboutPage }}">
-	<meta property="og:url" content="https://olliejt.com/">
-	<meta name="twitter:url" content="http://www.olliejt.com/"/>
-	<link rel="canonical" href="http://olliejt.com/">
-	<meta property="og:image" content="https://olliejt.com/img/promo.jpg">
-	<meta name="twitter:image" content="https://olliejt.com/img/promo.jpg" />
+	<meta name="description" content="{{ metaDescription }}">
+	<meta property="og:description" content="{{ metaDescription }}">
+	<meta property="og:url" content="{{ url }}">
+	<meta name="twitter:url" content="{{ url }}"/>
+	<link rel="canonical" href="{{ url }}">
+	<meta property="og:image" content="{{ url }}img/promo.jpg">
+	<meta name="twitter:image" content="{{ url }}img/promo.jpg" />
 	<meta name="keywords" content="{% for value in benefits %}{{ value }}, {% endfor %}">
