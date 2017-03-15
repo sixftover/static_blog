@@ -2,7 +2,7 @@
   "name": "Quickstart",
   "version": "0.1.0",
   "description": "The starting point for all my projects",
-  "main": "./development/gulpfile.js",
+  "main": "./dev/gulpfile.js",
   "dependencies": {
     "gulp": "^3.9.1",
   },
