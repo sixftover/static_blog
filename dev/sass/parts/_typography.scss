@@ -23,53 +23,55 @@ h1, h2, h3, h4, h5,p {
 }
 h1, h2, h3, h4, h5 {
 	text-transform: uppercase;
-     color: #9012fe;
+   color: #9012fe;
 }
 h1 {
-	font-size: 		4.8rem;
+	font-size: 			4.8rem;
 	line-height: 		5.6rem;
 	font-weight: 		800;
 }
 h2 {
-	font-size: 		2.4rem;
+	font-size: 			2.4rem;
 	line-height: 		3.2rem;
 	font-weight: 		800;
 }
 h3 {
-	font-size: 		2.4rem;
+	font-size: 			2.4rem;
 	line-height: 		3.2rem;
 	font-weight: 		400;
 }
 
 h4 {
-	font-size: 		1.6rem;
+	font-size: 			1.6rem;
 	line-height: 		2.4rem;
 	font-weight: 		700;
 }
 h5 {
-	font-size: 		1.2rem;
+	font-size: 			1.2rem;
 	line-height: 		1.6rem;
 	font-weight: 		400;
 }
 
 p, ul, ol {
-	font-size: 			1.6rem;
-     line-height: 			2rem;
-     font-weight: 			400;
+	font-size: 				1.6rem;
+	line-height: 			2rem;
+	font-weight: 			400;
 	margin-bottom: 		2rem;
-     color: 				#9012fe;
+	color: 				#9012fe;
 }
 a {
 	text-decoration: none;
 	display: inline-block;
-	color: #9012fe;
+	color: inherit;
 }
-
-a {color: #9012fe;}
-a:hover {color: darken(#9012fe, 15);}
+article, section, p{
+	a{color: $brand}
+	a:hover {color: $brand_dark}
+}
 
 
 // Lists
+/*
 ol,ul{
 	li{padding: 1rem;}
 	li:nth-child(odd){opacity: 0.75;}
@@ -94,3 +96,4 @@ ol{
 		margin-right: 1rem;
 	}
 }
+*/
