@@ -164,18 +164,14 @@ gulp.task('watch', ['connect'], function () {
 
 
 // Update Everything
-gulp.task('compile', ['twig', 'sass', 'htmlbeautify', 'prefix'], function() {
+gulp.task('compile', ['twig', 'sass', 'prefix'], function() {
 	console.log('DONE: Twig Compiled, Sass Compiled');
 });
-gulp.task('optimize', ['image', 'minify-css'], function() {
+
+// Package before export
+gulp.task('build', ['image', 'htmlbeautify', 'minify-css'], function() {
 	console.log('DONE: Compressed');
 });
-
-
-gulp.task('build', ['compile', 'optimize', 'minify-css'], function() {
-	console.log('DONE: Build complete');
-});
-
 
 // Dev Mode: Update and Watch
 gulp.task('default', ['compile', 'connect', 'watch'], function() {
