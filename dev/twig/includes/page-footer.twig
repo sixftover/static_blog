@@ -6,3 +6,26 @@
 		</div>
 	</div>
 </footer>
+
+
+{# Include JS - use async #}
+<script src="./js/flickity.pkgd.min.js"></script>
+<script>
+	var elem = document.querySelector('.carousel');
+	var flkty = new Flickity( elem, {
+	  // options
+	  cellAlign: 'center',
+	  autoPlay: 1500,
+	  initialIndex: 2,
+	  prevNextButtons: false,
+	  wrapAround: true,
+	  pageDots: false,
+	  contain: false
+	});
+
+	// element argument can be a selector string
+	//   for an individual element
+	var flkty = new Flickity( '.carousel', {
+	  // options
+	});
+</script>

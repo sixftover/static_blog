@@ -17,10 +17,11 @@ body{
 	background-color: white;
 	position: relative;
 	overflow: hidden;
+	box-sizing: border-box;
 	*{
-		transition: .4s all cubic-bezier(0.25,-0.05, 0, 1.05);
 		background-position: 50%;
 		background-size: cover;
+		box-sizing: border-box;
 	}
 }
 

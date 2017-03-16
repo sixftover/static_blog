@@ -9,7 +9,7 @@
 	<title>Home Page :: OllieJT 🇬🇧</title>
 
 
-	<link href="style.css" rel="stylesheet" type="text/css">
+	<link href="./style.css" rel="stylesheet" type="text/css">
 	<meta name="robots" content="robots.txt">
 	<link href="humans.txt" rel="author">
 
@@ -33,7 +33,7 @@
 	<!-- seo-meta-this-page -->
 	<meta property="og:title" content="Home Page">
 	<meta name="twitter:title" content="Home Page" />
-	<!--<meta name='date' content='Mar. 03, 2017'>-->
+	
 	<meta name="description" content="Home Page">
 	<meta property="og:description" content="Home Page">
 	<meta property="og:url" content="https://olliejt.com/">
@@ -45,15 +45,17 @@
 </head>
 <body>
 
-	
 <header>
-	<div class="row">
-		<div class="col c12">
-			<span>Header</span>
-		</div>
+	<div class="carousel">
+		<div class="carousel-cell"></div>
+		<div class="carousel-cell"></div>
+		<div class="carousel-cell"></div>
+		<div class="carousel-cell"></div>
+		<div class="carousel-cell"></div>
 	</div>
 </header>
 
+	
 
 
 <section>
@@ -140,42 +142,10 @@
 	<div class="row">
 		<div class="col c12"><span>12</span></div>
 	</div>
-	<div class="row">
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-		<div class="col c1"><span>1</span></div>
-	</div>
 </section>
-<section>
-	<div class="row">
-		<div class="col c3"><span>3</span></div>
-		<div class="col c3"><span>3</span></div>
-		<div class="col c3"><span>3</span></div>
-		<div class="col c3"><span>3</span></div>
-	</div>
-	<div class="row">
-		<div class="col c4"><span>4</span></div>
-		<div class="col c4"><span>4</span></div>
-		<div class="col c4"><span>4</span></div>
-	</div>
-	<div class="row">
-		<div class="col c9"><span>9</span></div>
-		<div class="col c3"><span>3</span></div>
-	</div>
-	<div class="row">
-		<div class="col c8"><span>8</span></div>
-		<div class="col c4"><span>4</span></div>
-	</div>
-</section>
+
+
+
 
 
 
@@ -187,5 +157,27 @@
 	</div>
 </footer>
 
+
+
+<script src="./js/flickity.pkgd.min.js"></script>
+<script>
+	var elem = document.querySelector('.carousel');
+	var flkty = new Flickity( elem, {
+	  // options
+	  cellAlign: 'center',
+	  autoPlay: 1500,
+	  initialIndex: 2,
+	  prevNextButtons: false,
+	  wrapAround: true,
+	  pageDots: false,
+	  contain: false
+	});
+
+	// element argument can be a selector string
+	//   for an individual element
+	var flkty = new Flickity( '.carousel', {
+	  // options
+	});
+</script>
 </body>
 </html>

@@ -2,24 +2,28 @@
 @import "parts/framework/variables.scss";
 @import "parts/framework/normalize.scss";
 
-/* Globals */
+// Globals
 @import "parts/framework/globals.scss";
 
-/* Grid System */
+// Slider
+@import "parts/framework/flickity.scss";
+
+// Grid System
 @import "parts/framework/grid.scss";
 
-/* Typography */
+// Typography
 @import "parts/typography.scss";
 
-/* Elements */
+// Elements
 @import "parts/elements.scss";
 
-/* Sections */
+// Sections
 @import "parts/sections.scss";
 
 
-// Demo
 
+
+// Demo
 .animate{
 	width: 100%;
 	height: auto;
@@ -34,6 +38,7 @@
 		left:0;
 		right:100%;
 		position: relative;
+		transition: $transition;
 	}
 }
 .animate:hover{
