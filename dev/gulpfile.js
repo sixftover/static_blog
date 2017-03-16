@@ -111,6 +111,9 @@ gulp.task('console', function(){
 	console.log(util.colors.blue('This') + ' is ' + util.colors.red('now') + util.colors.green(' working'))
 });
 
+////// RELOAD
+// prefix
+// Updated
 
 var gulps = require("gulp-series");
 gulps.registerTasks({
@@ -125,12 +128,10 @@ gulps.registerTasks({
 				// Export
 				.pipe(autoprefixer('last 2 versions'))
 
-				.pipe(connect.reload(
-					console.log(util.colors.red.bold('SASS ') + util.colors.red.bold('...'))
-				)) // Reload Browser
-
 				// Export
 				.pipe(gulp.dest(paths.root))
+
+				console.log(util.colors.red.bold('SASS ') + util.colors.red.bold('...'))
 
 				done();
 			}, 1000);
@@ -144,12 +145,10 @@ gulps.registerTasks({
 					cascade: true
 				}))
 
-				.pipe(connect.reload(
-					console.log(util.colors.red.bold('PREFIX ') + util.colors.red.bold('...'))
-				)) // Reload Browser
-
 				// Export
 				.pipe(gulp.dest(paths.root))
+
+				console.log(util.colors.red.bold('PREFIX ') + util.colors.red.bold('...'))
 
 				done();
 			}, 1000);
@@ -166,11 +165,9 @@ gulps.registerTasks({
 			 	    console.log(util.colors.white(details.name) + util.colors.white(' - Efficiency = ') + util.colors.yellow(details.stats.efficiency));
 			     }))
 
-				.pipe(connect.reload(
-					console.log(util.colors.red.bold('Minified ') + util.colors.red.bold('...'))
-				)) // Reload Browser
-
 				.pipe(gulp.dest(paths.root)) // Exporting it to a folder
+
+				console.log(util.colors.red.bold('Minified ') + util.colors.red.bold('...'))
 
 				done();
 			}, 1000);
@@ -196,12 +193,10 @@ gulps.registerTasks({
 				// Extension
 				.pipe(rename({extname: '.html'}))
 
-				.pipe(connect.reload(
-					console.log(util.colors.red.bold('TWIG ') + util.colors.red.bold('...'))
-				)) // Reload Browser
-
 				// Export
 				.pipe(gulp.dest(paths.root))
+
+				console.log(util.colors.red.bold('TWIG ') + util.colors.red.bold('...'))
 
 				done();
 			}, 1000);
@@ -234,11 +229,9 @@ gulps.registerTasks({
 				gulp.src(paths.html)
 				.pipe(htmlbeautify(options))
 
-				.pipe(connect.reload(
-					console.log(util.colors.red.bold('HTML Beautify ') + util.colors.red.bold('...'))
-				)) // Reload Browser
-
 				.pipe(gulp.dest(paths.root))
+
+				console.log(util.colors.red.bold('HTML Beautify ') + util.colors.red.bold('...'))
 
 				done();
 			}, 1000);
@@ -259,9 +252,15 @@ gulps.registerTasks({
 		}),
 		"updated" : (function() {
 			setTimeout(function() {
-				console.log(util.colors.green.bold('UPDATED!'))
+
+				gulp.src(paths.root)
+				.pipe(connect.reload(
+					console.log(util.colors.green.bold('UPDATED!'))
+				)) // Reload Browser
+
 			}, 1500);
 		}),
+
 		"image" : (function(done) {
 			setTimeout(function() {
 				gulp.src(paths.image)
