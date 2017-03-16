@@ -1,6 +1,10 @@
 @import "framework/variables.scss";
 
-
+nav{
+	li{
+		display: inline-block;
+	}
+}
 
 @media only screen and (min-width: $maxbody) {}
 @media only screen and (max-width: $tablet) {}

@@ -733,6 +733,10 @@ img {
   color: white;
 }
 
+nav li {
+  display: inline-block;
+}
+
 .animate {
   width: 100%;
   height: auto;
