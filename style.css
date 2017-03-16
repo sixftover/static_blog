@@ -712,15 +712,15 @@ img {
 }
 
 .carousel {
-  background: #EEE;
+  background: transparent;
 }
 
 .carousel-cell {
   width: 66%;
-  height: 200px;
+  height: 220px;
   margin-right: 10px;
   background: #8C8;
-  border-radius: 5px;
+  border-radius: 15px;
   counter-increment: gallery-cell;
 }
 
@@ -735,6 +735,30 @@ img {
 
 nav li {
   display: inline-block;
+}
+
+.flickity-slider .carousel-cell:nth-child(1) {
+  background-color: #EE6055;
+}
+
+.flickity-slider .carousel-cell:nth-child(2) {
+  background-color: #60D394;
+}
+
+.flickity-slider .carousel-cell:nth-child(3) {
+  background-color: #AAF683;
+}
+
+.flickity-slider .carousel-cell:nth-child(4) {
+  background-color: #FFD97D;
+}
+
+.flickity-slider .carousel-cell:nth-child(5) {
+  background-color: #FF9B85;
+}
+
+.flickity-slider .carousel-cell:nth-child(6) {
+  background-color: #79ADDC;
 }
 
 .animate {

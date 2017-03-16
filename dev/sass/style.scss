@@ -21,6 +21,28 @@
 @import "parts/sections.scss";
 
 
+// Slider
+.flickity-slider{
+	.carousel-cell:nth-child(1){
+		background-color: #EE6055;
+	}
+	.carousel-cell:nth-child(2){
+		background-color: #60D394;
+	}
+	.carousel-cell:nth-child(3){
+		background-color: #AAF683;
+	}
+	.carousel-cell:nth-child(4){
+		background-color: #FFD97D;
+	}
+	.carousel-cell:nth-child(5){
+		background-color: #FF9B85;
+	}
+	.carousel-cell:nth-child(6){
+		background-color: #79ADDC;
+	}
+}
+
 
 // Animation
 .animate{
@@ -56,8 +78,6 @@
 .animate-whip{
 	span{transition: .3s all $transition-whip;}
 }
-
-
 
 // Typography
 .dark{

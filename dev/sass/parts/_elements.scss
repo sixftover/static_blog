@@ -48,13 +48,13 @@ img {
 }
 
 // Slider
-.carousel {background: #EEE;}
+.carousel {background: transparent;}
 .carousel-cell {
   width: 66%;
-  height: 200px;
+  height: 220px;
   margin-right: 10px;
   background: #8C8;
-  border-radius: 5px;
+  border-radius: 15px;
   counter-increment: gallery-cell;
 }
 // cell number
