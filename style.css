@@ -744,6 +744,7 @@ nav li {
   border-radius: .4rem;
   padding: 0 .8rem;
   box-sizing: border-box;
+  margin-bottom: 1rem;
 }
 
 .animate span {
@@ -753,12 +754,23 @@ nav li {
   left: 0;
   right: 100%;
   position: relative;
-  transition: 0.4s all cubic-bezier(0.25, -0.05, 0, 1.05);
 }
 
 .animate:hover span {
   left: calc(100% - 100px);
   right: 0;
+}
+
+.animate-deafult span {
+  transition: 0.4s all cubic-bezier(0.25, -0.05, 0, 1.05);
+}
+
+.animate-bounce span {
+  transition: 0.4s all cubic-bezier(0.75, -0.05, 0, 1.15);
+}
+
+.animate-whip span {
+  transition: 0.4s all cubic-bezier(1, 0.25, 0, 0.75);
 }
 
 .dark {

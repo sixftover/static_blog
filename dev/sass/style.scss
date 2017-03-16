@@ -23,7 +23,7 @@
 
 
 
-// Demo
+// Animation
 .animate{
 	width: 100%;
 	height: auto;
@@ -31,6 +31,7 @@
 	border-radius: .4rem;
 	padding: 0 .8rem;
 	box-sizing: border-box;
+	margin-bottom: 1rem;
 	span{
 		width: 100px !important;
 		height: 100px !important;
@@ -38,20 +39,34 @@
 		left:0;
 		right:100%;
 		position: relative;
-		transition: $transition;
 	}
 }
 .animate:hover{
 	span{
-		//transform: translatex(100%);
 		left: calc(100% - 100px);
 		right:0;
 	}
 }
+
+.animate-deafult{
+	span{transition: .4s all $transition-smooth;}
+}
+.animate-bounce{
+	span{transition: .4s all $transition-bounce;}
+}
+.animate-whip{
+	span{transition: .4s all $transition-whip;}
+}
+
+
+
+// Typography
 .dark{
 	background-color: black;
 	border-radius: .4rem;
 }
+
+// Grid
 section,header,footer{
 	margin-bottom: 8rem;
 	.col{
