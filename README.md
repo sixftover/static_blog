@@ -79,7 +79,7 @@ gulp compile
 ```javascript
 gulp build
 
-1. Runs *gulp compile*
+1. Runs 'gulp compile'
 2. Minifies CSS
 3. Compresses Images
 ```
