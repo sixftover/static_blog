@@ -27,6 +27,7 @@ var 	gulp = require('gulp'),
 	PrettyError = require('pretty-error').start(),
 	del = require('del');
 
+
 // Paths
 var paths = {
 	root: '../', 					// Root Directory (Export Folder)
@@ -109,13 +110,6 @@ require('pretty-error').start().appendStyle({
 gulp.task('console', function(){
 	console.log(util.colors.blue('This') + ' is ' + util.colors.red('now') + util.colors.green(' working'))
 });
-
-
-
-
-
-
-
 
 
 var gulps = require("gulp-series");
@@ -290,8 +284,6 @@ gulps.registerTasks({
 			}, 1000);
 		}),
 
-
-
 }),
 
 
@@ -309,11 +301,11 @@ gulps.registerSeries("compile", ["sass", "prefix", "twig", "htmlbeautify"], func
 });
 
 
-
 // Build
 gulps.registerSeries("build", ["sass", "prefix", "twig", "htmlbeautify", "minify-css", "image"], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
 });
+
 
 // Dev Mode: Update and Watch
 gulps.registerSeries('default', ["sass", "prefix", "twig", "htmlbeautify", "connect", "watch"], function() {
