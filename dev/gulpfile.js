@@ -111,143 +111,6 @@ gulp.task('console', function(){
 });
 
 
-// Styles
-gulp.task('sass', function () {
-	gulp.src(paths.sass)
-	.pipe(plumber())
-	.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError)) //compressed
-
-	// Export
-	.pipe(autoprefixer('last 2 versions'))
-
-	.pipe(connect.reload(
-		console.log(util.colors.red.bold('SASS ') + util.colors.red.bold('...'))
-	)) // Reload Browser
-
-	// Export
-	.pipe(gulp.dest(paths.root))
-});
-gulp.task('prefix', () =>
-	gulp.src(paths.css)
-	.pipe(autoprefixer({
-		browsers: ['last 2 versions'],
-		cascade: true
-	}))
-
-	.pipe(connect.reload(
-		console.log(util.colors.red.bold('Prefix ') + util.colors.red.bold('...'))
-	)) // Reload Browser
-
-	// Export
-	.pipe(gulp.dest(paths.root))
-);
-gulp.task('styles', ['sass', 'prefix'], function() {
-	gulp.src(paths.root)
-	.pipe(connect.reload(
-		console.log(
-			util.colors.green('Prefixed ') + util.colors.green.bold('SASS') + util.colors.green(' + ') + util.colors.green('reloaded ') + util.colors.green.bold('CSS') + util.colors.green('!')
-		)
-	)) // Reload Browser
-});
-
-// Minify CSS
-gulp.task('minify-css', function() {
-	return gulp.src(paths.css) // Selecting files
-	.pipe(plumber())
-	.pipe(cleanCSS({compatibility: 'ie8'})) // Running the plugin
-
-     .pipe(cleanCSS({debug: true}, function(details) {
- 	    console.log(util.colors.white(details.name) + util.colors.white(' - Original Size = ') + util.colors.red(details.stats.originalSize));
- 	    console.log(util.colors.white(details.name) + util.colors.white(' - Minified Size = ') + util.colors.green.bold(details.stats.minifiedSize));
- 	    console.log(util.colors.white(details.name) + util.colors.white(' - Efficiency = ') + util.colors.yellow(details.stats.efficiency));
-     }))
-
-	.pipe(gulp.dest(paths.root)) // Exporting it to a folder
-
-});
-
-// Markup
-gulp.task('twig', function(){
-	gulp.src(['./twig/*.twig'])
-
-	// Globals
-	.pipe(twig({
-		data: {
-			title: 'hello'
-		},
-		includes: [
-			'./twig/layouts/*.twig',
-			'./twig/includes/*.twig'
-		],
-		getIncludeId: function(filePath) {
-			return path.relative(paths.twigdir, filePath);
-		}
-	}))
-
-	// Extension
-	.pipe(rename({extname: '.html'}))
-
-	// Export
-	.pipe(gulp.dest(paths.root))
-
-	// Reload
-	.pipe(connect.reload(
-		console.log(util.colors.green('Compiled ') + util.colors.green.bold('TWIG') + util.colors.green('!'))
-	))
-});
-gulp.task('htmlbeautify', function() {
-  var options = {
-	  "indent_size": 4,
-	  "indent_char": " ",
-	  "eol": "\n",
-	  "indent_level": 0,
-	  "indent_with_tabs": false,
-	  "preserve_newlines": true,
-	  "max_preserve_newlines": 10,
-	  "jslint_happy": false,
-	  "space_after_anon_function": false,
-	  "brace_style": "collapse",
-	  "keep_array_indentation": false,
-	  "keep_function_indentation": false,
-	  "space_before_conditional": true,
-	  "break_chained_methods": false,
-	  "eval_code": false,
-	  "unescape_strings": false,
-	  "wrap_line_length": 0,
-	  "wrap_attributes": "auto",
-	  "wrap_attributes_indent_size": 4,
-	  "end_with_newline": false
-  };
-  gulp.src('./src/*.html')
-    .pipe(htmlbeautify(options))
-    .pipe(gulp.dest('./public/'))
-});
-
-// Images
-gulp.task('image', function () {
-	gulp.src(paths.image)
-	.pipe(imagemin())
-
-	// Export
-	.pipe(gulp.dest(paths.imagedir));
-});
-
-// Live Reload
-gulp.task('connect', function() {
-	connect.server({
-		root: paths.root,
-		livereload: 'true'
-	});
-});
-gulp.task('watch', ['connect'], function () {
-	gulp.watch(paths.sass, ['sass']) // on change run these command
-	gulp.watch(paths.twig, ['twig'])
-	gulp.watch(paths.html, ['htmlbeautify'])
-});
-
-
-
-
 
 
 
@@ -256,41 +119,203 @@ gulp.task('watch', ['connect'], function () {
 
 
 var gulps = require("gulp-series");
-	gulps.registerTasks({
-		"test1" : (function(done) {
+gulps.registerTasks({
+
+	// Styles
+		"sass" : (function(done) {
 			setTimeout(function() {
-				console.log("test1 is done");
+				gulp.src(paths.sass)
+				.pipe(plumber())
+				.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError)) //compressed
+
+				// Export
+				.pipe(autoprefixer('last 2 versions'))
+
+				.pipe(connect.reload(
+					console.log(util.colors.red.bold('SASS ') + util.colors.red.bold('...'))
+				)) // Reload Browser
+
+				// Export
+				.pipe(gulp.dest(paths.root))
+
+				done();
+			}, 1000);
+
+		}),
+		"prefix" : (function(done) {
+			setTimeout(function() {
+				gulp.src(paths.css)
+				.pipe(autoprefixer({
+					browsers: ['last 2 versions'],
+					cascade: true
+				}))
+
+				.pipe(connect.reload(
+					console.log(util.colors.red.bold('PREFIX ') + util.colors.red.bold('...'))
+				)) // Reload Browser
+
+				// Export
+				.pipe(gulp.dest(paths.root))
+
 				done();
 			}, 1000);
 		}),
-		"test2" : (function() {
-			console.log("test2 is done");
-		})
-	});
+		"minify-css" : (function(done) {
+			setTimeout(function() {
+				return gulp.src(paths.css) // Selecting files
+				.pipe(plumber())
+				.pipe(cleanCSS({compatibility: 'ie8'})) // Running the plugin
 
-gulps.registerSeries("default2", ["test1", "test2"]);
+			     .pipe(cleanCSS({debug: true}, function(details) {
+			 	    console.log(util.colors.white(details.name) + util.colors.white(' - Original Size = ') + util.colors.red(details.stats.originalSize));
+			 	    console.log(util.colors.white(details.name) + util.colors.white(' - Minified Size = ') + util.colors.green.bold(details.stats.minifiedSize));
+			 	    console.log(util.colors.white(details.name) + util.colors.white(' - Efficiency = ') + util.colors.yellow(details.stats.efficiency));
+			     }))
+
+				.pipe(connect.reload(
+					console.log(util.colors.red.bold('Minified ') + util.colors.red.bold('...'))
+				)) // Reload Browser
+
+				.pipe(gulp.dest(paths.root)) // Exporting it to a folder
+
+				done();
+			}, 1000);
+		}),
+
+	// Markup
+		"twig" : (function(done) {
+			setTimeout(function() {
+				gulp.src(['./twig/*.twig'])
+				.pipe(twig({
+					data: {
+						title: 'hello'
+					},
+					includes: [
+						'./twig/layouts/*.twig',
+						'./twig/includes/*.twig'
+					],
+					getIncludeId: function(filePath) {
+						return path.relative(paths.twigdir, filePath);
+					}
+				}))
+
+				// Extension
+				.pipe(rename({extname: '.html'}))
+
+				.pipe(connect.reload(
+					console.log(util.colors.red.bold('TWIG ') + util.colors.red.bold('...'))
+				)) // Reload Browser
+
+				// Export
+				.pipe(gulp.dest(paths.root))
+
+				done();
+			}, 1000);
+
+		}),
+		"htmlbeautify" : (function(done) {
+			setTimeout(function() {
+				var options = {
+					"indent_size": 4,
+					"indent_char": " ",
+					"eol": "\n",
+					"indent_level": 0,
+					"indent_with_tabs": false,
+					"preserve_newlines": true,
+					"max_preserve_newlines": 10,
+					"jslint_happy": false,
+					"space_after_anon_function": false,
+					"brace_style": "collapse",
+					"keep_array_indentation": false,
+					"keep_function_indentation": false,
+					"space_before_conditional": true,
+					"break_chained_methods": false,
+					"eval_code": false,
+					"unescape_strings": false,
+					"wrap_line_length": 0,
+					"wrap_attributes": "auto",
+					"wrap_attributes_indent_size": 4,
+					"end_with_newline": false
+				};
+				gulp.src(paths.html)
+				.pipe(htmlbeautify(options))
+
+				.pipe(connect.reload(
+					console.log(util.colors.red.bold('HTML Beautify ') + util.colors.red.bold('...'))
+				)) // Reload Browser
+
+				.pipe(gulp.dest(paths.root))
+
+				done();
+			}, 1000);
+		}),
+
+	// Server
+		"watch" : (function(done) {
+			setTimeout(function() {
+				gulp.watch(paths.sass, ["sass", "prefix", "updated"]) // on change run these command
+				gulp.watch(paths.twig, ["twig", "htmlbeautify", "updated"])
+				gulp.watch(paths.html, ["twig", "htmlbeautify", "updated"])
+
+
+				done(
+					console.log(util.colors.green.bold('CONNECTED...') + util.colors.green('...'))
+				);
+			}, 1000);
+		}),
+		"updated" : (function() {
+			setTimeout(function() {
+				console.log(util.colors.green.bold('UPDATED!'))
+			}, 1500);
+		}),
+		"image" : (function(done) {
+			setTimeout(function() {
+				gulp.src(paths.image)
+				.pipe(imagemin())
+
+				// Export
+				.pipe(gulp.dest(paths.imagedir));
+				done();
+			}, 1000);
+		}),
+		"connect" : (function(done) {
+			setTimeout(function() {
+
+				connect.server({
+					root: paths.root,
+					livereload: 'true'
+				});
+
+				done();
+			}, 1000);
+		}),
 
 
 
+}),
 
 
-
-
-
-
-
-
-// Update Everything
-gulp.task('compile', ['twig', 'styles'], function() {
-	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED'))
+// CSS
+gulps.registerSeries("styles", ["sass", "prefix"], function() {
+	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED SASS'))
+});
+// HTML
+gulps.registerSeries("markup", ["twig", "htmlbeautify"], function() {
+	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED TWIG'))
+});
+// HTML & CSS
+gulps.registerSeries("compile", ["sass", "prefix", "twig", "htmlbeautify"], function() {
+	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED TWIG & SASS'))
 });
 
-// Package before export
-gulp.task('build', ['image', 'htmlbeautify', 'minify-css'], function() {
-	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPRESSED'))
+
+
+// Build
+gulps.registerSeries("build", ["sass", "prefix", "twig", "htmlbeautify", "minify-css", "image"], function() {
+	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
 });
 
 // Dev Mode: Update and Watch
-gulp.task('default', ['compile', 'connect', 'watch'], function() {
+gulps.registerSeries('default', ["sass", "prefix", "twig", "htmlbeautify", "connect", "watch"], function() {
 	console.log(util.colors.green.bold('DEV MODE ENABLED: ') + util.colors.white.bold('Compiled, Connected & ') + util.colors.red.bold('Watching...'))
 });
