@@ -72,7 +72,7 @@ gulp markup
 ```javascript
 gulp compile
 
-1. Runs *gulp styles* and *gulp markup*
+1. Runs 'gulp styles' and 'gulp markup'
 ```
 
 ###### Package Website
