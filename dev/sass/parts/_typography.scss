@@ -7,8 +7,7 @@
 // html is set to 62.5% so that all the REM measurements throughout Skeleton
 // are based on 10px sizing. So basically 1.5rem = 15px :)
 
-
-[class*="entypo-"]:before {font-family: 'entypo', sans-serif;}
+//[class*="entypo-"]:before {font-family: 'entypo', sans-serif;}
 
 body {
 	font-family: 'Assistant', sans-serif;
@@ -16,22 +15,30 @@ body {
 }
 
 
-// Typography
+// Spacing
 h1, h2, h3, h4, h5, h6, p {
 	-webkit-margin-before: 0rem;
 	-webkit-margin-after: 0rem;
 }
 article,section{
-	h1, h2, h3, h4, h5, h6, p {
-		-webkit-margin-before: .8rem;
-		-webkit-margin-after: .8rem;
-	}
+h1, h2, h3, h4, h5, h6, p {
+	-webkit-margin-before: .8rem;
+	-webkit-margin-after: .8rem;
+}
 }
 
-h1, h2, h3, h4, h5, h6 {
-	//text-transform: uppercase;
-	color: $text-dark;
+
+// Colour - Light
+h1, h2, h3, h4, h5, h6 {color: $text-dark;}
+p, ul, ol {color: transparentize($text-dark, .25);}
+.dark{
+h1, h2, h3, h4, h5, h6 {color: white;}
+p, ul, ol {color: transparentize(white, .25);}
 }
+.highlight{color: $brand !important}
+
+
+// Size
 h1 {
 	font-size: 		4.8rem;
 	line-height: 		5.6rem;
@@ -66,38 +73,34 @@ p, ul, ol {
 	font-size: 			1.6rem;
 	line-height: 			2.8rem;
 	font-weight: 			400;
-
-	color: 				transparentize($text-dark, .25);
-	a:hover {color: darken($brand, 25)}
 }
+
+
+// Link
 a {
 	text-decoration: none;
 	display: inline-block;
-	color: inherit;
+	//color: inherit;
+	color: $brand;
 }
-article, section, p{
-	a{color: $brand}
-}
-
-// Colour Variations
-.dark{
-	h1, h2, h3, h4, h5, h6, p {color: white;}
-	p, ul, ol {color: transparentize(white, .25);}
-}
-.highlight{color: $brand !important}
+a:hover {color: darken($brand, 25)}
+//article, section, p{a{color: $brand}}
 
 
 // Lists
-/*
-ol,ul{
+ul,ol{
 	li{padding: 1rem;}
-	li:nth-child(odd){opacity: 0.75;}
+	li:nth-child(odd)::before{
+		opacity: 0.5;
+	}
 }
 
 ul{
 	list-style-position: inside;
+
 	li{
-		list-style-type: circle;
+		list-style-type: disc;
+		list-style-position: inside;
 	}
 	li:before{
 		float: left;
@@ -113,4 +116,3 @@ ol{
 		margin-right: 1rem;
 	}
 }
-*/
