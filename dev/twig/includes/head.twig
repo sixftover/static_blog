@@ -1,19 +1,19 @@
-	{% set brand = "ff3817" %}
-	{% set url = "https://olliejt.com/" %}
-	{% set twitter = "TheOllieJT" %}
-	{% set company = "OllieJT" %}
+{#  HEX Code  #}				{% set brand = "ff3817" %}
+{#  URL  #}					{% set URL = "http://olliejt.com/" %} {#  Include final '/'  #}
+{#  URL  #}					{% set pageURL = "{{URL}}{{pageNav}}" %} {#  Include final '/'  #}
+{#  Twitter Username  #}			{% set twitter = "TheOllieJT" %}
+{#  Company Name  #}			{% set company = "OllieJT" %}
 
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
-
 	<title>{{ title }} :: OllieJT 🇬🇧</title>
-
 
 	<link href="./style.css" rel="stylesheet" type="text/css">
 	<meta name="robots" content="robots.txt">
 	<link href="humans.txt" rel="author">
+	<link rel="canonical" href="{{ URL }}">
 
 	<!-- favicon -->
 	<link rel="shortcut icon" href="favicon.ico">
@@ -24,23 +24,29 @@
 
 	<!-- seo-meta-global -->
 	<meta name="author" content="{{ company }}">
-	<link rel='me' type='text/html' href='http://twitter.com/{{ title }}'>
+	<link rel='me' type='text/html' href='http://twitter.com/{{ twitter }}'>
 	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="OllieJT 🇬🇧">
+	<meta property="og:site_name" content="{{ company }}">
 	<meta property="og:locale" content="en_GB"> <!-- en_US -->
 	<meta property="article:author" content="{{ company }}">
-	<meta name="twitter:site" content="@{{ title }}" />
+	<meta name="twitter:site" content="@{{ twitter }}" />
 	<meta name="twitter:card" content="summary" />
 
 	<!-- seo-meta-this-page -->
+	{# Title #}
 	<meta property="og:title" content="{{ metaTitle }}">
 	<meta name="twitter:title" content="{{ metaTitle }}" />
-	{# <meta name='date' content='Mar. 03, 2017'> #}
+	{# Date #}
+	<meta name='date' content='{{ date }}'>
+	{# Description #}
 	<meta name="description" content="{{ metaDescription }}">
 	<meta property="og:description" content="{{ metaDescription }}">
-	<meta property="og:url" content="{{ url }}">
-	<meta name="twitter:url" content="{{ url }}"/>
-	<link rel="canonical" href="{{ url }}">
-	<meta property="og:image" content="{{ url }}img/promo.jpg">
-	<meta name="twitter:image" content="{{ url }}img/promo.jpg" />
-	<meta name="keywords" content="{% for value in benefits %}{{ value }}, {% endfor %}">
+	{# Page URL #}
+	<meta property="og:url" content="{{ pageURL }}">
+	<meta name="twitter:url" content="{{ pageURL }}"/>
+	{# Image #}
+	<meta property="og:image" content="{{ URL }}{{ metaImage }}">
+	<meta name="twitter:image" content="{{ URL }}{{ metaImage }}" />
+	{# Tags #}
+	<meta name="keywords" content="{% for value in metaTags %}{{ value }}, {% endfor %}">
+	
