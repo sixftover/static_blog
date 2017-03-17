@@ -25,23 +25,40 @@
 .flickity-slider{
 	.carousel-cell:nth-child(1){
 		background-color: #EE6055;
+		width: 10%;
 	}
 	.carousel-cell:nth-child(2){
 		background-color: #60D394;
+		width: 70%;
 	}
 	.carousel-cell:nth-child(3){
 		background-color: #AAF683;
+		width: 30%;
 	}
 	.carousel-cell:nth-child(4){
 		background-color: #FFD97D;
+		width: 80%;
 	}
 	.carousel-cell:nth-child(5){
 		background-color: #FF9B85;
+		width: 100%;
 	}
 	.carousel-cell:nth-child(6){
 		background-color: #79ADDC;
+		width: 40%;
 	}
 }
+
+
+
+// Slider
+.carousel {background: transparent;}
+.carousel-cell {
+  //width: 66%;
+}
+
+
+
 
 
 // Animation
