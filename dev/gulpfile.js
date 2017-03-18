@@ -187,7 +187,7 @@ gulps.registerTasks({
 			setTimeout(function() {
 				gulp.watch(paths.sass, ["sass", "updated"]) // on change run these command
 				gulp.watch(paths.twig, ["twig", "htmlbeautify", "updated"])
-				gulp.watch(paths.html, ["twig", "htmlbeautify", "updated"])
+				//gulp.watch(paths.html, ["twig", "htmlbeautify", "updated"])
 
 
 				done(
