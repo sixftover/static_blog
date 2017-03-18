@@ -7,6 +7,7 @@
     "gulp": "^3.9.1"
   },
   "devDependencies": {
+    "del": "^2.2.2",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean-css": "^3.0.3",
     "gulp-connect": "^5.0.0",
@@ -16,12 +17,12 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
     "gulp-series": "^1.0.2",
+    "gulp-strip-comments": "^2.4.5",
     "gulp-twig": "git+https://git@github.com/backflip/gulp-twig.git",
     "gulp-util": "^3.0.8",
-    "pretty-error": "^2.0.2",
     "npm-gui": "^0.3.1",
     "path": "^0.12.7",
-    "del": "^2.2.2"
+    "pretty-error": "^2.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>{% include 'includes/head.twig' %}</head>
+<head>{% include 'includes/template/head.twig' %}</head>
 <body>
-{% include 'includes/navigation.twig' %}
+{% include 'includes/template/navigation.twig' %}
 
 	{% block content %}{% endblock %}
 
-{% include 'includes/page-footer.twig' %}
+{% include 'includes/template/footer.twig' %}
+{% include 'includes/template/footer-scripts.twig' %}
 </body>
 </html>

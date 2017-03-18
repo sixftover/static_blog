@@ -4,3 +4,4 @@ node_modules
 *.psb
 *.ai
 .DS_Store
+*.config

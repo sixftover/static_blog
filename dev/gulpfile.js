@@ -18,6 +18,7 @@ var 	gulp = require('gulp'),
 	//sourcemaps = require('gulp-sourcemaps'),
 	sass = require('gulp-sass'),
 	gulps = require("gulp-series"),
+	strip = require('gulp-strip-comments'),
 	// T
 	twig = require('gulp-twig'),
 	// U
@@ -28,13 +29,14 @@ var 	gulp = require('gulp'),
 	del = require('del');
 
 
+
 // Paths
 var paths = {
 	root: '../', 					// Root Directory (Export Folder)
 
 	// Exporting
 	css: '../*.css',				// CSS files
-	html: '../*/*.html',				// HTML Files
+	html: '../*.html',				// HTML Files
 	image: '../img/**/*',			// Image Files
 	imagedir: '../img/',			// Image Directory
 
@@ -46,70 +48,7 @@ var paths = {
 };
 
 
-// Pretty Errrs
-require('pretty-error').start().appendStyle({
-   // this is a simple selector to the element that says 'Error'
-   'pretty-error > header > title > kind': {
-      // which we can hide:
-      display: 'none'
-   },
 
-   // the 'colon' after 'Error':
-   'pretty-error > header > colon': {
-      // we hide that too:
-      display: 'none'
-   },
-
-   // our error message
-   'pretty-error > header > message': {
-      // let's change its color:
-      color: 'bright-white',
-
-      // we can use black, red, green, yellow, blue, magenta, cyan, white,
-      // grey, bright-red, bright-green, bright-yellow, bright-blue,
-      // bright-magenta, bright-cyan, and bright-white
-
-      // we can also change the background color:
-      background: 'cyan',
-
-      // it understands paddings too!
-      padding: '0 1' // top/bottom left/right
-   },
-
-   // each trace item ...
-   'pretty-error > trace > item': {
-      // ... can have a margin ...
-      marginLeft: 2,
-
-      // ... and a bullet character!
-      bullet: '"<grey>o</grey>"'
-
-      // Notes on bullets:
-      //
-      // The string inside the quotation mark gets used as the character
-      // to show for the bullet point.
-      //
-      // You can set its color/background color using tags.
-      //
-      // This example sets the background color to white, and the text color
-      // to cyan, the character will be a hyphen with a space character
-      // on each side:
-      // example: '"<bg-white><cyan> - </cyan></bg-white>"'
-      //
-      // Note that we should use a margin of 3, since the bullet will be
-      // 3 characters long.
-   },
-
-   'pretty-error > trace > item > header > pointer > file': {color: 'bright-cyan'},
-   'pretty-error > trace > item > header > pointer > colon': {color: 'cyan'},
-   'pretty-error > trace > item > header > pointer > line': {color: 'bright-cyan'},
-   'pretty-error > trace > item > header > what': {color: 'bright-white'},
-   'pretty-error > trace > item > footer > addr': {display: 'none'}
-});
-// Test Console Error
-gulp.task('console', function(){
-	console.log(util.colors.blue('This') + ' is ' + util.colors.red('now') + util.colors.green(' working'))
-});
 
 ////// RELOAD
 // prefix
@@ -183,7 +122,9 @@ gulps.registerTasks({
 					},
 					includes: [
 						'./twig/layouts/*.twig',
-						'./twig/includes/*.twig'
+						'./twig/includes/*.twig',
+						'./twig/includes/**/*.twig',
+						'./twig/includes/template/*.twig'
 					],
 					getIncludeId: function(filePath) {
 						return path.relative(paths.twigdir, filePath);
@@ -205,14 +146,16 @@ gulps.registerTasks({
 		"htmlbeautify" : (function(done) {
 			setTimeout(function() {
 				var options = {
-					"indent_size": 4,
-					"indent_char": " ",
+					"indent_size": 1,
+					"indent_char": "	",
 					"eol": "\n",
 					"indent_level": 0,
-					"indent_with_tabs": false,
-					"preserve_newlines": true,
+					"indent_with_tabs": true,
+					"preserve_newlines": false,
 					"max_preserve_newlines": 10,
-					"jslint_happy": false,
+
+					"jslint_happy": true,
+
 					"space_after_anon_function": false,
 					"brace_style": "collapse",
 					"keep_array_indentation": false,
@@ -223,10 +166,12 @@ gulps.registerTasks({
 					"unescape_strings": false,
 					"wrap_line_length": 0,
 					"wrap_attributes": "auto",
-					"wrap_attributes_indent_size": 4,
+					"wrap_attributes_indent_size": 2,
 					"end_with_newline": false
 				};
 				gulp.src(paths.html)
+				.pipe(strip())
+
 				.pipe(htmlbeautify(options))
 
 				.pipe(gulp.dest(paths.root))
@@ -240,7 +185,7 @@ gulps.registerTasks({
 	// Server
 		"watch" : (function(done) {
 			setTimeout(function() {
-				gulp.watch(paths.sass, ["sass", "prefix", "updated"]) // on change run these command
+				gulp.watch(paths.sass, ["sass", "updated"]) // on change run these command
 				gulp.watch(paths.twig, ["twig", "htmlbeautify", "updated"])
 				gulp.watch(paths.html, ["twig", "htmlbeautify", "updated"])
 
@@ -248,6 +193,17 @@ gulps.registerTasks({
 				done(
 					console.log(util.colors.green.bold('CONNECTED...') + util.colors.green('...'))
 				);
+			}, 1000);
+		}),
+		"connect" : (function(done) {
+			setTimeout(function() {
+
+				connect.server({
+					root: paths.root,
+					livereload: 'true'
+				});
+
+				done();
 			}, 1000);
 		}),
 		"updated" : (function() {
@@ -261,6 +217,7 @@ gulps.registerTasks({
 			}, 1500);
 		}),
 
+		// Build
 		"image" : (function(done) {
 			setTimeout(function() {
 				gulp.src(paths.image)
@@ -271,13 +228,12 @@ gulps.registerTasks({
 				done();
 			}, 1000);
 		}),
-		"connect" : (function(done) {
+		"stripcomments" : (function(done) {
 			setTimeout(function() {
 
-				connect.server({
-					root: paths.root,
-					livereload: 'true'
-				});
+				return gulp.src('../*.html')
+					.pipe(strip())
+					.pipe(gulp.dest(paths.root));
 
 				done();
 			}, 1000);
@@ -309,4 +265,70 @@ gulps.registerSeries("build", ["sass", "prefix", "twig", "htmlbeautify", "minify
 // Dev Mode: Update and Watch
 gulps.registerSeries('default', ["sass", "prefix", "twig", "htmlbeautify", "connect", "watch"], function() {
 	console.log(util.colors.green.bold('DEV MODE ENABLED: ') + util.colors.white.bold('Compiled, Connected & ') + util.colors.red.bold('Watching...'))
+});
+
+
+// Pretty Errrs
+require('pretty-error').start().appendStyle({
+   // this is a simple selector to the element that says 'Error'
+   'pretty-error > header > title > kind': {
+      // which we can hide:
+      display: 'none'
+   },
+
+   // the 'colon' after 'Error':
+   'pretty-error > header > colon': {
+      // we hide that too:
+      display: 'none'
+   },
+
+   // our error message
+   'pretty-error > header > message': {
+      // let's change its color:
+      color: 'bright-white',
+
+      // we can use black, red, green, yellow, blue, magenta, cyan, white,
+      // grey, bright-red, bright-green, bright-yellow, bright-blue,
+      // bright-magenta, bright-cyan, and bright-white
+
+      // we can also change the background color:
+      background: 'cyan',
+
+      // it understands paddings too!
+      padding: '0 1' // top/bottom left/right
+   },
+
+   // each trace item ...
+   'pretty-error > trace > item': {
+      // ... can have a margin ...
+      marginLeft: 2,
+
+      // ... and a bullet character!
+      bullet: '"<grey>o</grey>"'
+
+      // Notes on bullets:
+      //
+      // The string inside the quotation mark gets used as the character
+      // to show for the bullet point.
+      //
+      // You can set its color/background color using tags.
+      //
+      // This example sets the background color to white, and the text color
+      // to cyan, the character will be a hyphen with a space character
+      // on each side:
+      // example: '"<bg-white><cyan> - </cyan></bg-white>"'
+      //
+      // Note that we should use a margin of 3, since the bullet will be
+      // 3 characters long.
+   },
+
+   'pretty-error > trace > item > header > pointer > file': {color: 'bright-cyan'},
+   'pretty-error > trace > item > header > pointer > colon': {color: 'cyan'},
+   'pretty-error > trace > item > header > pointer > line': {color: 'bright-cyan'},
+   'pretty-error > trace > item > header > what': {color: 'bright-white'},
+   'pretty-error > trace > item > footer > addr': {display: 'none'}
+});
+// Test Console Error
+gulp.task('console', function(){
+	console.log(util.colors.blue('This') + ' is ' + util.colors.red('now') + util.colors.green(' working'))
 });

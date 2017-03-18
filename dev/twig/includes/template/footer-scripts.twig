@@ -1,0 +1,60 @@
+{# Include JS - use async #}
+<script src="./js/flickity.pkgd.min.js"></script>
+<script>
+	var elem = document.querySelector('.carousel');
+
+	var flkty = new Flickity( elem, {
+		// Global Options
+		accessibility: true,
+		adaptiveHeight: false,
+		autoPlay: 1500,
+		cellAlign: 'center',
+		cellSelector: undefined,
+		contain: true,
+		draggable: true,
+		dragThreshold: 3,
+		freeScroll: false,
+		friction: 0.2,
+		groupCells: false,
+		initialIndex: 2,
+		lazyLoad: true,
+		percentPosition: true,
+		prevNextButtons: false,
+		pageDots: false,
+		resize: true,
+		rightToLeft: false,
+		watchCSS: false,
+		wrapAround: true
+	});
+
+	// Each slider
+	var flkty = new Flickity( '.carousel', {
+		// options
+	})
+</script>
+
+{#
+
+	// Global Options
+	accessibility: true, // keyboard navigation
+	adaptiveHeight: false, // set carousel height to the selected slide
+	autoPlay: 1500, // autoPlay: 1000 will advance every 1 second
+	cellAlign: 'center',// alignment of cells, 'center', 'left', or 'right' or a decimal 0-1
+	cellSelector: undefined, // specify selector for cell elements
+	contain: true, // will contain cells to container - has no effect if wrapAround is enabled
+	draggable: true, // enables dragging & flicking
+	dragThreshold: 3, // number of pixels a user must scroll horizontally to start dragging
+	freeScroll: false, // enables content to be freely scrolled and flicked
+	friction: 0.2, // smaller number = easier to flick farther
+	groupCells: false, // group cells together in slides
+	initialIndex: 2, // zero-based index of the initial selected cell
+	lazyLoad: true, // enable lazy-loading images // set img data-flickity-lazyload="src.jpg" // set to number to load images adjacent cells
+	percentPosition: true, // Enable if items have percent widths // Disable if items have pixel widths, like images
+	prevNextButtons: false, // creates and enables buttons to click to previous & next cells
+	pageDots: false, // create and enable page dots
+	resize: true, // listens to window resize events to adjust size & positions
+	rightToLeft: false, // enables right-to-left layout
+	watchCSS: false, // activates if #element:after { content: 'flickity' }
+	wrapAround: true // wraps-around to first for infinite scrolling
+
+#}
