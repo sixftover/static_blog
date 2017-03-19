@@ -6,6 +6,7 @@ var 	gulp = require('gulp'),
 	// C
 	cleanCSS = require('gulp-clean-css'),
 	connect = require('gulp-connect'),
+	//cache = require('gulp-cache'),
 	// H
 	htmlbeautify = require('gulp-html-beautify'),
 	// I
@@ -32,28 +33,27 @@ var 	gulp = require('gulp'),
 
 // Paths
 var paths = {
-	root: '../', 					// Root Directory (Export Folder)
+	root: '../', 							// Root Directory (Export Folder)
 
-	// Exporting
-	css: '../*.css',				// CSS files
-	html: '../*.html',				// HTML Files
-	image: '../img/**/*',			// Image Files
-	imagedir: '../img/',			// Image Directory
+	// ROOT FILES
+	css: '../*.css',						// CSS files
+	html: '../*.html',						// HTML Files
+	image: '../img/**/*.+(png|jpg|gif|svg)',	// Image Files
+	imagedir: '../img/',					// Image Directory
 
-	//Compiling
-	sass: './sass/**/*.scss',		// SASS files
-	sassdir: './sass/',				// SASS Directory
-	twig: './twig/**/*.twig',	 	// Twig Files
-	twigdir: './twig'				// Twig Directory
+	// FILES TO CLEAN
+	clean: '../*.+(html|css)',
+
+	// COMPILE FILES
+	sass: './sass/**/*.scss',				// SASS files
+	sassdir: './sass/',						// SASS Directory
+	twig: './twig/**/*.twig',	 			// Twig Files
+	twigdir: './twig'						// Twig Directory
 };
 
 
 
-
-////// RELOAD
-// prefix
-// Updated
-
+// Tasks
 var gulps = require("gulp-series");
 gulps.registerTasks({
 
@@ -228,12 +228,15 @@ gulps.registerTasks({
 				done();
 			}, 1000);
 		}),
-		"stripcomments" : (function(done) {
+		"clean" : (function(done) {
 			setTimeout(function() {
 
-				return gulp.src('../*.html')
-					.pipe(strip())
-					.pipe(gulp.dest(paths.root));
+				const del = require('del');
+				del(['../*.+(html|css)'], {force: true}).then(paths => {
+					console.log(
+						util.colors.bold.red('Files and folders deleted:\n'), util.colors.red( paths.join('\n'))
+					);
+				});
 
 				done();
 			}, 1000);
@@ -243,27 +246,27 @@ gulps.registerTasks({
 
 
 // CSS
-gulps.registerSeries("styles", ["sass", "prefix"], function() {
+gulps.registerSeries("styles", ["clean", "sass", "prefix"], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED SASS'))
 });
 // HTML
-gulps.registerSeries("markup", ["twig", "htmlbeautify"], function() {
+gulps.registerSeries("markup", ["clean", "twig", "htmlbeautify"], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED TWIG'))
 });
 // HTML & CSS
-gulps.registerSeries("compile", ["sass", "prefix", "twig", "htmlbeautify"], function() {
+gulps.registerSeries("compile", ["clean", "sass", "prefix", "twig", "htmlbeautify"], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED TWIG & SASS'))
 });
 
 
 // Build
-gulps.registerSeries("build", ["sass", "prefix", "twig", "htmlbeautify", "minify-css", "image"], function() {
+gulps.registerSeries("build", ["clean", "sass", "prefix", "twig", "htmlbeautify", "minify-css", "image"], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
 });
 
 
 // Dev Mode: Update and Watch
-gulps.registerSeries('default', ["sass", "prefix", "twig", "htmlbeautify", "connect", "watch"], function() {
+gulps.registerSeries('default', ["clean", "sass", "prefix", "twig", "htmlbeautify", "connect", "watch"], function() {
 	console.log(util.colors.green.bold('DEV MODE ENABLED: ') + util.colors.white.bold('Compiled, Connected & ') + util.colors.red.bold('Watching...'))
 });
 
