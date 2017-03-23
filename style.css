@@ -201,15 +201,6 @@ body * {
   box-sizing: border-box;
 }
 
-.cover-link {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 200;
-}
-
 .cf:before, .cf:after, .row:before, .row:after, div:before, div:after, ol:before, ol:after, ul:before, ul:after, li:before, li:after, section:before, section:after {
   content: " ";
   display: table;
@@ -556,11 +547,6 @@ h1, h2, h3, h4, h5, h6, p {
   -webkit-margin-after: 0rem;
 }
 
-article h1, article h2, article h3, article h4, article h5, article h6, article p, section h1, section h2, section h3, section h4, section h5, section h6, section p {
-  -webkit-margin-before: .8rem;
-  -webkit-margin-after: .8rem;
-}
-
 h1, h2, h3, h4, h5, h6 {
   color: black;
 }
@@ -715,6 +701,41 @@ nav li {
   display: inline-block;
 }
 
+#article {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+#article article {
+  min-height: 500px;
+  -ms-flex-preferred-size: 800px;
+      flex-basis: 800px;
+  -ms-flex-positive: 0;
+      flex-grow: 0;
+  margin: 8rem 0;
+  background-color: white;
+}
+
+#article article .content {
+  padding: 4rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#article article .content h1, #article article .content h2, #article article .content h3, #article article .content h4, #article article .content h5, #article article .content h6, #article article .content p {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  -webkit-margin-before: .8rem;
+  -webkit-margin-after: .8rem;
+}
+
+#article article .content .img {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  margin: 2rem 0;
+}
+
 .flickity-slider .carousel-cell:nth-child(1) {
   background-color: #EE6055;
   width: 10%;
@@ -758,7 +779,7 @@ nav li {
   color: white;
 }
 
-.animate {
+#demo .animate {
   width: 100%;
   height: auto;
   border-radius: .4rem;
@@ -767,7 +788,7 @@ nav li {
   margin-bottom: 1rem;
 }
 
-.animate span {
+#demo .animate span {
   width: 100px !important;
   height: 100px !important;
   left: 0;
@@ -775,48 +796,48 @@ nav li {
   position: relative;
 }
 
-.animate:hover span {
+#demo .animate:hover span {
   left: calc(100% - 100px);
   right: 0;
 }
 
-.animate-smooth {
+#demo .animate-smooth {
   background-color: #60D394;
 }
 
-.animate-smooth span {
+#demo .animate-smooth span {
   transition: 0.3s all cubic-bezier(0.25, -0.05, 0, 1.05);
   background-color: #AAF683 !important;
 }
 
-.animate-bounce {
+#demo .animate-bounce {
   background-color: #EE6055;
 }
 
-.animate-bounce span {
+#demo .animate-bounce span {
   transition: 0.3s all cubic-bezier(0.5, 0, 0, 1.25);
   background-color: #FF9B85 !important;
 }
 
-.animate-whip {
+#demo .animate-whip {
   background-color: #8db9e1;
 }
 
-.animate-whip span {
+#demo .animate-whip span {
   transition: 0.3s all cubic-bezier(1, 0.25, 0, 1.05);
   background-color: #5194d1 !important;
 }
 
-.dark {
+#demo .dark {
   background-color: black;
   border-radius: .4rem;
 }
 
-section, header, footer {
+#demo section, #demo header, #demo footer {
   margin-bottom: 8rem;
 }
 
-section .col span, header .col span, footer .col span {
+#demo section .col span, #demo header .col span, #demo footer .col span {
   background-color: black;
   margin: .8rem 0;
   width: 100%;
@@ -828,72 +849,72 @@ section .col span, header .col span, footer .col span {
   box-sizing: border-box;
 }
 
-section .c1 span, header .c1 span, footer .c1 span {
+#demo section .c1 span, #demo header .c1 span, #demo footer .c1 span {
   background-color: #EE6055;
   color: #3e0a06;
 }
 
-section .c2 span, header .c2 span, footer .c2 span {
+#demo section .c2 span, #demo header .c2 span, #demo footer .c2 span {
   background-color: #60D394;
   color: #0b2919;
 }
 
-section .c3 span, header .c3 span, footer .c3 span {
+#demo section .c3 span, #demo header .c3 span, #demo footer .c3 span {
   background-color: #AAF683;
   color: #2c7208;
 }
 
-section .c4 span, header .c4 span, footer .c4 span {
+#demo section .c4 span, #demo header .c4 span, #demo footer .c4 span {
   background-color: #FFD97D;
   color: #7d5800;
 }
 
-section .c5 span, header .c5 span, footer .c5 span {
+#demo section .c5 span, #demo header .c5 span, #demo footer .c5 span {
   background-color: #FF9B85;
   color: #851800;
 }
 
-section .c6 span, header .c6 span, footer .c6 span {
+#demo section .c6 span, #demo header .c6 span, #demo footer .c6 span {
   background-color: #79ADDC;
   color: #122c44;
 }
 
-section .c7 span, header .c7 span, footer .c7 span {
+#demo section .c7 span, #demo header .c7 span, #demo footer .c7 span {
   background-color: #f0766c;
   color: #3e0a06;
 }
 
-section .c8 span, header .c8 span, footer .c8 span {
+#demo section .c8 span, #demo header .c8 span, #demo footer .c8 span {
   background-color: #74d9a1;
   color: #0b2919;
 }
 
-section .c11 span, header .c11 span, footer .c11 span {
+#demo section .c11 span, #demo header .c11 span, #demo footer .c11 span {
   background-color: #baf89b;
   color: #2c7208;
 }
 
-section .c10 span, header .c10 span, footer .c10 span {
+#demo section .c10 span, #demo header .c10 span, #demo footer .c10 span {
   background-color: #ffe097;
   color: #7d5800;
 }
 
-section .c9 span, header .c9 span, footer .c9 span {
+#demo section .c9 span, #demo header .c9 span, #demo footer .c9 span {
   background-color: #ffb09f;
   color: #851800;
 }
 
-section .c12 span, header .c12 span, footer .c12 span {
+#demo section .c12 span, #demo header .c12 span, #demo footer .c12 span {
   background-color: #8db9e1;
   color: #122c44;
 }
 
-header .col span, footer .col span {
+#demo header .col span, #demo footer .col span {
   background-color: rgba(0, 0, 0, 0.08);
   margin: .5rem 0;
   padding: 4rem;
 }
 
-footer {
+#demo footer {
   margin-bottom: 0;
 }

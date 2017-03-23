@@ -1,6 +1,6 @@
 {#  HEX Code  #}				{% set brand = "ff3817" %}
 {#  URL  #}					{% set URL = "http://olliejt.com/" %} {#  Include final '/'  #}
-{#  URL  #}					{% set pageURL = "{{URL}}{{pageNav}}" %} {#  Include final '/'  #}
+{#  URL  #}					{% set pageURL = "{{URL}}" %} {#  Include final '/'  #}
 {#  Twitter Username  #}			{% set twitter = "TheOllieJT" %}
 {#  Company Name  #}			{% set company = "OllieJT" %}
 
@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 
-	<title>{{ title }} :: OllieJT 🇬🇧</title>
+	<title>{{ pageName }} :: OllieJT 🇬🇧</title>
 
 	<link href="./style.css" rel="stylesheet" type="text/css">
 	<meta name="robots" content="robots.txt">
@@ -49,4 +49,3 @@
 	<meta name="twitter:image" content="{{ URL }}{{ metaImage }}" />
 	{# Tags #}
 	<meta name="keywords" content="{% for value in metaTags %}{{ value }}, {% endfor %}">
-	

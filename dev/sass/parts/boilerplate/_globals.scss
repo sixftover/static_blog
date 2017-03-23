@@ -1,4 +1,4 @@
-@import "variables.scss";
+@import "../framework/variables.scss";
 
 html{
 	width: 100%;
@@ -23,15 +23,6 @@ body{
 		background-size: cover;
 		box-sizing: border-box;
 	}
-}
-
-.cover-link{
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	z-index: 200;
 }
 
 // Clearfix

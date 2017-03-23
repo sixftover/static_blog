@@ -1,4 +1,4 @@
-@import "framework/variables.scss";
+@import "variables.scss";
 @import url('https://fonts.googleapis.com/css?family=Assistant:400,700,800');
 // @import url("http://weloveiconfonts.com/api/?family=entypo");
 // @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,700");
@@ -20,13 +20,6 @@ h1, h2, h3, h4, h5, h6, p {
 	-webkit-margin-before: 0rem;
 	-webkit-margin-after: 0rem;
 }
-article,section{
-h1, h2, h3, h4, h5, h6, p {
-	-webkit-margin-before: .8rem;
-	-webkit-margin-after: .8rem;
-}
-}
-
 
 // Colour - Light
 h1, h2, h3, h4, h5, h6 {color: $text-dark;}

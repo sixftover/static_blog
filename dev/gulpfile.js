@@ -73,7 +73,8 @@ gulps.registerTasks({
 				console.log(util.colors.red.bold('SASS ') + util.colors.red.bold('...'))
 
 				done();
-			}, 1000);
+			},
+			2000);
 
 		}),
 		"prefix" : (function(done) {
@@ -140,7 +141,7 @@ gulps.registerTasks({
 				console.log(util.colors.red.bold('TWIG ') + util.colors.red.bold('...'))
 
 				done();
-			}, 1000);
+			}, 2000);
 
 		}),
 		"htmlbeautify" : (function(done) {
@@ -193,7 +194,7 @@ gulps.registerTasks({
 				done(
 					console.log(util.colors.green.bold('CONNECTED...') + util.colors.green('...'))
 				);
-			}, 1000);
+			}, 2000);
 		}),
 		"connect" : (function(done) {
 			setTimeout(function() {
@@ -204,7 +205,7 @@ gulps.registerTasks({
 				});
 
 				done();
-			}, 1000);
+			}, 500);
 		}),
 		"updated" : (function() {
 			setTimeout(function() {
@@ -214,7 +215,7 @@ gulps.registerTasks({
 					console.log(util.colors.green.bold('UPDATED!'))
 				)) // Reload Browser
 
-			}, 1500);
+			}, 2200);
 		}),
 
 		// Build
@@ -239,7 +240,7 @@ gulps.registerTasks({
 				});
 
 				done();
-			}, 1000);
+			}, 1500);
 		}),
 
 }),

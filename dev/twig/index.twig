@@ -1,17 +1,12 @@
 {% extends "layouts/deafult.twig" %}
 
-	{# A short title for this page #}
-	{% set title = "Home Page" %}
+	{% set pageName = "Homepage" %}
+	{% set pageType = "demo" %} {# Used to style body #}
+
 	{% set metaTitle = "Welcome to Home Page" %}
-	{# A short descriptive sentence about this page #}
 	{% set metaDescription = "A short descriptive sentence about this page" %}
-	{# Date of publication - Mar. 03, 2017 #}
-	{% set metaImage = "Mar. 03, 2017" %}
-	{# Build the link to this page after the root URL #}
-	{% set pageNav = "A short descriptive sentence about this page" %}
-	{# Location of featured image after domain.com/... #}
-	{% set metaImage = "img/image.jpg" %}
-	{# Meta tags, these are getting old... #}
+	{% set metaDate = "Mar. 03, 2017" %}
+	{% set metaImage = "img/image.jpg" %} {# Featured image after domain.com/... #}
 	{% set metaTags = ["Welcome", "Homepage", "Quickstart"] %}
 
 {% block content %}

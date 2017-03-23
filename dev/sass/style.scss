@@ -1,18 +1,18 @@
 @charset "utf-8";
 @import "parts/framework/variables.scss";
-@import "parts/framework/normalize.scss";
+@import "parts/boilerplate/normalize.scss";
 
 // Globals
-@import "parts/framework/globals.scss";
+@import "parts/boilerplate/globals.scss";
 
 // Slider
-@import "parts/framework/flickity.scss";
+@import "parts/boilerplate/flickity.scss";
 
 // Grid System
 @import "parts/framework/grid.scss";
 
 // Typography
-@import "parts/typography.scss";
+@import "parts/framework/typography.scss";
 
 // Elements
 @import "parts/elements.scss";
@@ -68,156 +68,157 @@
 
 
 
+#demo{
+	// Animation
+	.animate{
+		width: 100%;
+		height: auto;
+		border-radius: .4rem;
+		padding: 0 .8rem;
+		box-sizing: border-box;
+		margin-bottom: 1rem;
+		span{
+			width: 100px !important;
+			height: 100px !important;
+			left:0;
+			right:100%;
+			position: relative;
+		}
+	}
+	.animate:hover{
+		span{
+			left: calc(100% - 100px);
+			right:0;
+		}
+	}
 
-// Animation
-.animate{
-	width: 100%;
-	height: auto;
-	border-radius: .4rem;
-	padding: 0 .8rem;
-	box-sizing: border-box;
-	margin-bottom: 1rem;
-	span{
-		width: 100px !important;
-		height: 100px !important;
-		left:0;
-		right:100%;
-		position: relative;
+	.animate-smooth{
+		background-color: #60D394;
+		span{
+			transition: .3s all $transition-smooth;
+			background-color: #AAF683 !important;
+		}
 	}
-}
-.animate:hover{
-	span{
-		left: calc(100% - 100px);
-		right:0;
+	.animate-bounce{
+		background-color: #EE6055;
+		span{
+			transition: .3s all $transition-bounce;
+			background-color: #FF9B85 !important;
+		}
 	}
-}
+	.animate-whip{
+		background-color: lighten(#79ADDC ,5);
+		span{
+			transition: .3s all $transition-whip;
+			background-color: darken(#79ADDC ,10) !important;
+		}
+	}
 
-.animate-smooth{
-	background-color: #60D394;
-	span{
-		transition: .3s all $transition-smooth;
-		background-color: #AAF683 !important;
+	// Typography
+	.dark{
+		background-color: black;
+		border-radius: .4rem;
 	}
-}
-.animate-bounce{
-	background-color: #EE6055;
-	span{
-		transition: .3s all $transition-bounce;
-		background-color: #FF9B85 !important;
-	}
-}
-.animate-whip{
-	background-color: lighten(#79ADDC ,5);
-	span{
-		transition: .3s all $transition-whip;
-		background-color: darken(#79ADDC ,10) !important;
-	}
-}
 
-// Typography
-.dark{
-	background-color: black;
-	border-radius: .4rem;
-}
+	// Grid
+	section,header,footer{
+		margin-bottom: 8rem;
+		.col{
+			span{
+				background-color: black;
+				margin: .8rem 0;
+				width: 100%;
+				//height: 2rem;
+				border-radius: .5rem;
 
-// Grid
-section,header,footer{
-	margin-bottom: 8rem;
-	.col{
-		span{
-			background-color: black;
-			margin: .8rem 0;
-			width: 100%;
-			//height: 2rem;
-			border-radius: .5rem;
-
-			font-size: 1.6rem;
-			line-height: 2.4rem;
-			padding: 1rem;
-			text-align: center;
-			box-sizing: border-box;
+				font-size: 1.6rem;
+				line-height: 2.4rem;
+				padding: 1rem;
+				text-align: center;
+				box-sizing: border-box;
+			}
+		}
+		.c1{
+			span{
+				background-color: #EE6055;
+				color: darken(#EE6055 ,50)
+			}
+		}
+		.c2{
+			span{
+				background-color: #60D394;
+				color: darken(#60D394 ,50)
+			}
+		}
+		.c3{
+			span{
+				background-color: #AAF683;
+				color: darken(#AAF683 ,50)
+			}
+		}
+		.c4{
+			span{
+				background-color: #FFD97D;
+				color: darken(#FFD97D ,50)
+			}
+		}
+		.c5{
+			span{
+				background-color: #FF9B85;
+				color: darken(#FF9B85 ,50)
+			}
+		}
+		.c6{
+			span{
+				background-color: #79ADDC;
+				color: darken(#79ADDC ,50)
+			}
+		}
+		.c7{
+			span{
+				background-color: lighten(#EE6055 ,5);
+				color: darken(#EE6055 ,50)
+			}
+		}
+		.c8{
+			span{
+				background-color: lighten(#60D394 ,5);
+				color: darken(#60D394 ,50)
+			}
+		}
+		.c11{
+			span{
+				background-color: lighten(#AAF683 ,5);
+				color: darken(#AAF683 ,50)
+			}
+		}
+		.c10{
+			span{
+				background-color: lighten(#FFD97D ,5);
+				color: darken(#FFD97D ,50)
+			}
+		}
+		.c9{
+			span{
+				background-color: lighten(#FF9B85 ,5);
+				color: darken(#FF9B85 ,50)
+			}
+		}
+		.c12{
+			span{
+				background-color: lighten(#79ADDC ,5);
+				color: darken(#79ADDC ,50)
+			}
 		}
 	}
-	.c1{
-		span{
-			background-color: #EE6055;
-			color: darken(#EE6055 ,50)
+	header,footer{
+		.col{
+			span{
+				background-color: rgba(0,0,0,0.08);
+				margin: .5rem 0;
+				padding: 4rem;
+			}
 		}
 	}
-	.c2{
-		span{
-			background-color: #60D394;
-			color: darken(#60D394 ,50)
-		}
-	}
-	.c3{
-		span{
-			background-color: #AAF683;
-			color: darken(#AAF683 ,50)
-		}
-	}
-	.c4{
-		span{
-			background-color: #FFD97D;
-			color: darken(#FFD97D ,50)
-		}
-	}
-	.c5{
-		span{
-			background-color: #FF9B85;
-			color: darken(#FF9B85 ,50)
-		}
-	}
-	.c6{
-		span{
-			background-color: #79ADDC;
-			color: darken(#79ADDC ,50)
-		}
-	}
-	.c7{
-		span{
-			background-color: lighten(#EE6055 ,5);
-			color: darken(#EE6055 ,50)
-		}
-	}
-	.c8{
-		span{
-			background-color: lighten(#60D394 ,5);
-			color: darken(#60D394 ,50)
-		}
-	}
-	.c11{
-		span{
-			background-color: lighten(#AAF683 ,5);
-			color: darken(#AAF683 ,50)
-		}
-	}
-	.c10{
-		span{
-			background-color: lighten(#FFD97D ,5);
-			color: darken(#FFD97D ,50)
-		}
-	}
-	.c9{
-		span{
-			background-color: lighten(#FF9B85 ,5);
-			color: darken(#FF9B85 ,50)
-		}
-	}
-	.c12{
-		span{
-			background-color: lighten(#79ADDC ,5);
-			color: darken(#79ADDC ,50)
-		}
-	}
+	footer{margin-bottom: 0;}
 }
-header,footer{
-	.col{
-		span{
-			background-color: rgba(0,0,0,0.08);
-			margin: .5rem 0;
-			padding: 4rem;
-		}
-	}
-}
-footer{margin-bottom: 0;}
