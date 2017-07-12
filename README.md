@@ -33,6 +33,14 @@ gulp build
 4. Tidies up HTML
 ```
 
+###### Cleanup
+```javascript
+gulp clean
+
+1. Deletes HTML, CSS & JS Files in [./dev]
+2. Deletes everything in [./public]
+```
+
 ###### Publish
 ```javascript
 gulp publish
