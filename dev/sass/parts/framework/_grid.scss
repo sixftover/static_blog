@@ -1,33 +1,41 @@
 @import "variables.scss";
 header,section,footer,div,span{position: relative;}
 //Grid
+
+header, footer, section{text-align: center;}
 .row {
 	position: relative;
-	display: flex;
-	flex-wrap: wrap;
+	display: inline-block;
 	width: 100%;
 	max-width: $maxbody;
-	padding: 0 1.6rem;
+	padding: 0;
 	box-sizing: border-box;
-	margin: 0 auto;
-
-	justify-content: space-between;;
-	flex-wrap: wrap;
-	align-items: stretch;
+	margin: 0 -0.8rem;
+	text-align: left;
 }
 .col {
+	display: inline-block;
 	padding: 0 .8rem;
 	box-sizing: border-box;
 	header,section,footer,div,span{display: block;}
 }
-.col:first-of-type {
-	padding-left: 0;
-}
-.col:last-of-type {
-	padding-right: 0;
-}
 
 
+.c1 {width: $one}
+.c2 {width: $two}
+.c3 {width: $three}
+.c4 {width: $four}
+.c5 {width: $five}
+.c6 {width: $six}
+.c7 {width: $seven}
+.c8 {width: $eight}
+.c9 {width: $nine}
+.c10 {width: $ten}
+.c11 {width: $eleven}
+.c12 {width: $twelve}
+
+
+/*
 .c1 {
 	flex-grow: 1;
 	flex-basis: $one;
@@ -76,6 +84,7 @@ header,section,footer,div,span{position: relative;}
 	flex-grow: 12;
 	flex-basis: $twelve;
 }
+*/
 
 @media only screen and (max-width: $tablet) {}
 

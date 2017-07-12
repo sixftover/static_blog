@@ -1,93 +1,97 @@
 @import "variables.scss";
-@import url('https://fonts.googleapis.com/css?family=Assistant:400,700,800');
-// @import url("http://weloveiconfonts.com/api/?family=entypo");
-// @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,700");
+@import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,500');
 
 // Base Styles
 // html is set to 62.5% so that all the REM measurements throughout Skeleton
 // are based on 10px sizing. So basically 1.5rem = 15px :)
 
-//[class*="entypo-"]:before {font-family: 'entypo', sans-serif;}
+// Colour
+$link-colour-before: darken($link-colour, 8);
+$link-colour-after: lighten($link-colour, 8);
 
+$txt: $text-colour;
+$txt-light: lighten($text-colour, 30);
+$txt-dark: darken($text-colour, 30);
+$txt-20: transparentize($text-colour, .20);
+$txt-60: transparentize($text-colour, .60);
+$txt-40: transparentize($text-colour, .40);
+
+//Global
 body {
-	font-family: 'Assistant', sans-serif;
+	font-family: 'Rubik', sans-serif;
 	font-size: 0;
+	color: $txt;
 }
-
 
 // Spacing
 h1, h2, h3, h4, h5, h6, p {
 	-webkit-margin-before: 0rem;
 	-webkit-margin-after: 0rem;
 }
-
-// Colour - Light
-h1, h2, h3, h4, h5, h6 {color: $text-dark;}
-p, ul, ol {color: transparentize($text-dark, .25);}
-.dark{
-h1, h2, h3, h4, h5, h6 {color: white;}
-p, ul, ol {color: transparentize(white, .25);}
+h1, h2, h3, h4, h5, h6{
+	margin-top: 0.8rem;
+	margin-bottom: 0.4rem;
 }
-.highlight{color: $brand !important}
-
+p{
+	margin: 1.2rem 0;
+}
 
 // Size
 h1 {
 	font-size: 		4.8rem;
-	line-height: 		5.6rem;
-	font-weight: 		800;
+	line-height: 		6rem;
+	font-weight: 		500;
 }
 h2 {
 	font-size: 		3.2rem;
-	line-height: 		4rem;
-	font-weight: 		800;
+	line-height: 		4.4rem;
+	font-weight: 		500;
 }
 h3 {
 	font-size: 		2.4rem;
-	line-height: 		3.2rem;
-	font-weight: 		700;
+	line-height: 		3.6rem;
+	font-weight: 		500;
 }
 h4 {
-	font-size: 		1.6rem;
-	line-height: 		2.4rem;
-	font-weight: 		700;
+	font-size: 		2rem;
+	line-height: 		2.8rem;
+	font-weight: 		500;
 }
 h5 {
 	font-size: 		1.6rem;
-	line-height: 		2.4rem;
-	font-weight: 		400;
+	line-height: 		2.8rem;
+	font-weight: 		500;
 }
 h6 {
 	font-size: 		1.2rem;
-	line-height: 		1.6rem;
-	font-weight: 		400;
+	line-height: 		2.8rem;
+	font-weight: 		500;
 }
-p, ul, ol {
-	font-size: 			1.6rem;
+p, ul, ol, figcaption {
+	font-size: 				1.6rem;
 	line-height: 			2.8rem;
 	font-weight: 			400;
 }
 
 
-// Link
+// Sub Styles
 a {
 	text-decoration: none;
 	display: inline-block;
-	//color: inherit;
-	color: $brand;
+	color: $link-colour-before;
 }
-a:hover {color: darken($brand, 25)}
-//article, section, p{a{color: $brand}}
+a:hover {color: $link-colour-after}
 
+em{color: $txt-light}
 
 // Lists
 ul,ol{
-	li{padding: 1rem;}
-	li:nth-child(odd)::before{
-		opacity: 0.5;
+	line-height: 1em;
+	li{
+		margin: 1.2rem .8rem;
+		margin-right: -1.6rem;
 	}
 }
-
 ul{
 	list-style-position: inside;
 
@@ -99,7 +103,6 @@ ul{
 		float: left;
 	}
 }
-
 ol{
 	counter-reset: my-badass-counter;
 	li{counter-increment: my-badass-counter;}
@@ -108,4 +111,19 @@ ol{
 		float: left;
 		margin-right: 1rem;
 	}
+}
+
+figure{
+	display: inline-block;
+	width: 100%;
+	margin: 2.4rem auto;
+}
+figcaption{
+	display: block;
+	text-align: center;
+	padding: 1.6rem;
+	opacity: 0.4
+}
+figure:hover{
+	figcaption{opacity: 0.6;}
 }

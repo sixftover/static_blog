@@ -1,17 +1,18 @@
 //Colours
-$brand: #60D394;
-$text-dark: rgba(0,0,0,1);
-$background: white;
+$link-colour: #60D394;
+$text-colour: rgb(235,235,235);
+$background: rgb(35,35,35);
 
 // Misc
-$transition-smooth: cubic-bezier(0.25,-0.05, 0, 1.05);
-$transition-bounce: cubic-bezier(0.5, 0, 0, 1.25);
-$transition-whip: cubic-bezier(1, 0.25, 0, 1.05);
+$transition-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+$transition-easeInOutCirc: cubic-bezierr(0.785, 0.135, 0.15, 0.86);
+$transition-easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
 
 // Breakpoints
 $tablet:	860px;
 $mobile:	560px;
-$maxbody:	calc( 1136px + 3.2rem );
+$maxbody:	1136px;
 
 // Column Width Values
 $one:       8.33%;
