@@ -51,7 +51,8 @@ var paths = {
 	// PUBLISH
 	root: 							'../',
 	setup: 							'../public_setup/**/*',
-	public: 						'../public',
+	public: 						'../public/**/*',
+	public_dir: 				'../public',
 	public_css: 				'../public/*.css',
 	public_html: 				'../public/*.html',
 	public_src: 				'../public/src/',
@@ -276,9 +277,9 @@ gulps.registerTasks({
 			setTimeout(function() {
 
 				const del = require('del');
-				del(paths.build !paths.image_dir, {force: true}).then(paths => {
+				del(['../build/**/*', '!../build', '!../build/src', '!../build/src/**/*'], {force: true}).then(paths => {
 					console.log(
-						util.colors.bold.red('All [/public] Files Deleted:\n'), util.colors.red( paths.join('\n'))
+						util.colors.bold.red('All development files in [/dev] Deleted:\n'), util.colors.red( paths.join('\n'))
 					);
 				});
 
@@ -309,7 +310,7 @@ gulps.registerTasks({
 
 				gulp.src(paths.build)
 					// Perform minification tasks, etc here
-				.pipe(gulp.dest(paths.public));
+				.pipe(gulp.dest(paths.public_dir));
 
 				done(
 					console.log(util.colors.green.bold('[/build] copied to [/public]') + util.colors.green('...'))
@@ -322,7 +323,7 @@ gulps.registerTasks({
 
 				gulp.src(paths.setup)
 					// Perform minification tasks, etc here
-				.pipe(gulp.dest(paths.public));
+				.pipe(gulp.dest(paths.public_dir));
 
 				done(
 					console.log(util.colors.green.bold('[/public_setup] copied to [/public]') + util.colors.green('...'))
@@ -330,14 +331,6 @@ gulps.registerTasks({
 			}, 1500);
 		}),
 
-		"help" : (function(done) {
-			setTimeout(function() {
-
-				done(
-					console.log(util.colors.green.bold('123') + util.colors.green('...'))
-				);
-			}, 500);
-		}),
 
 }),
 
@@ -347,9 +340,7 @@ gulps.registerTasks({
 // ----------------------------------------------------------------------------
 // Execute Tasks
 // ----------------------------------------------------------------------------
-gulps.registerSeries("clean", ["clean_dev", "clean_public"], function() {
-	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('Test Complete!'))
-});
+
 
 
 gulps.registerSeries("styles", ["clean_styles", "sass", "prefix"], function() {
@@ -397,21 +388,21 @@ gulps.registerSeries("build",
 		"sass",							// Compile SASS
 		"prefix",						// Prefix CSS
 		"htmlbeautify",			// Tidy HTML
+		"minify-css",				// Minify CSS
 	], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
+});
+
+gulps.registerSeries("clean",
+	[
+		"clean_dev",
+		"clean_public"
+	], function() {
 });
 
 gulps.registerSeries('publish',
 	[
 		"clean_public",			// Delete everything in /public
-		"clean_styles",			// Delete CSS in [/build]
-		"clean_markup",			// Delete HTML in [/build]
-
-		"sass",							// Compile SASS
-		"prefix",						// Prefix CSS
-		"htmlbeautify",			// Tidy HTML
-		"minify-css",				// Minify CSS
-
 		"publish_build",				// Copies [/dev] to [/public]
 		"publish_setup",				// Copies [/public_setup] to [/public]
 
