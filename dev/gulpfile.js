@@ -1,63 +1,74 @@
 'use strict';
-// Variables
-var 	gulp = require('gulp'),
-	// A
-	autoprefixer = require('gulp-autoprefixer'),
-	// C
-	cleanCSS = require('gulp-clean-css'),
-	connect = require('gulp-connect'),
-	//cache = require('gulp-cache'),
-	// H
-	htmlbeautify = require('gulp-html-beautify'),
-	// I
-	imagemin = require('gulp-imagemin'),
-	// P
-	plumber = require('gulp-plumber'),
-	// R
-	rename = require('gulp-rename'),
-	//S
-	//sourcemaps = require('gulp-sourcemaps'),
-	sass = require('gulp-sass'),
-	gulps = require("gulp-series"),
-	strip = require('gulp-strip-comments'),
-	// T
-	twig = require('gulp-twig'),
-	// U
-	util = require('gulp-util'),
-	// Other
-	path = require('path'),
-	PrettyError = require('pretty-error').start(),
-	del = require('del');
+
+// ----------------------------------------------------------------------------
+// Dependencies
+// ----------------------------------------------------------------------------
+var
+	//cache = require('gulp-cache'),										//
+	//sourcemaps = require('gulp-sourcemaps'),					// Shows true error locations in pre-compiled file formats
+	autoprefixer = require('gulp-autoprefixer'),				// HTML Vendor Prefixing
+	cleanCSS = require('gulp-clean-css'),								// Cleans up CSS
+	connect = require('gulp-connect'),									// Live Reload Server
+	del = require('del'),																// Deletes Files
+	gulp = require('gulp'),															// GULP
+	gulps = require("gulp-series"),											// Groups & Orders exicutible actions
+	htmlbeautify = require('gulp-html-beautify'),				// Cleans up HTML
+	path = require('path'),															// Directory variables
+	plumber = require('gulp-plumber'),									// Continues watching files after an error
+	PrettyError = require('pretty-error').start(),			// Tidies errors in the console
+	rename = require('gulp-rename'),										// Renames Files
+	sass = require('gulp-sass'),												// Compiles SASS to CSS
+	strip = require('gulp-strip-comments'),							// Removes comments from HTML
+	util = require('gulp-util')													// General tools, colours & error logging
+	;
 
 
 
-// Paths
+
+// ----------------------------------------------------------------------------
+// Path Directories
+// ----------------------------------------------------------------------------
 var paths = {
-	root: '../', 							// Root Directory (Export Folder)
 
-	// ROOT FILES
-	css: '../*.css',						// CSS files
-	html: '../*.html',						// HTML Files
-	image: '../img/**/*.+(png|jpg|gif|svg)',	// Image Files
-	imagedir: '../img/',					// Image Directory
 
-	// FILES TO CLEAN
-	clean: '../*.+(html|css)',
+	// DEVELOP
+	sass: 			'./sass/**/*.scss',				// SASS files
+	sassdir:		'./sass/',						// SASS Directory
+	//twig: './twig/**/*.twig',	 			// Twig Files
+	//twigdir: './twig'						// Twig Directory
 
-	// COMPILE FILES
-	sass: './sass/**/*.scss',				// SASS files
-	sassdir: './sass/',						// SASS Directory
-	twig: './twig/**/*.twig',	 			// Twig Files
-	twigdir: './twig'						// Twig Directory
+	// BUILD
+	build:							'../build/**/*',
+	build_dir:					'../build',
+	build_css: 					'../build/*.css',
+	build_html: 				'../build/*.html',
+	build_image:				'../build/src/**/*.+(png|jpg|gif|svg)',
+	build_image_dir:		'../build/src',
+
+	// CLEAN
+	clean: 							'../build/*.+(html|css)',
+
+	// PUBLISH
+	root: 							'../',
+	setup: 							'../public_setup/**/*',
+	public: 						'../public',
+	public_css: 				'../public/*.css',
+	public_html: 				'../public/*.html',
+	public_src: 				'../public/src/',
+
 };
 
 
 
-// Tasks
-var gulps = require("gulp-series");
+
+// ----------------------------------------------------------------------------
+// Tasks (Gulp Series)
+// ----------------------------------------------------------------------------
 gulps.registerTasks({
 
+	// ---------------------------------------------------------------------------
 	// Styles
+	// ---------------------------------------------------------------------------
 		"sass" : (function(done) {
 			setTimeout(function() {
 				gulp.src(paths.sass)
@@ -68,7 +79,7 @@ gulps.registerTasks({
 				.pipe(autoprefixer('last 2 versions'))
 
 				// Export
-				.pipe(gulp.dest(paths.root))
+				.pipe(gulp.dest(paths.build_dir))
 
 				console.log(util.colors.red.bold('SASS ') + util.colors.red.bold('...'))
 
@@ -77,25 +88,27 @@ gulps.registerTasks({
 			2000);
 
 		}),
+
 		"prefix" : (function(done) {
 			setTimeout(function() {
-				gulp.src(paths.css)
+				gulp.src(paths.build_css)
 				.pipe(autoprefixer({
 					browsers: ['last 2 versions'],
 					cascade: true
 				}))
 
 				// Export
-				.pipe(gulp.dest(paths.root))
+				.pipe(gulp.dest(paths.build_dir))
 
 				console.log(util.colors.red.bold('PREFIX ') + util.colors.red.bold('...'))
 
 				done();
 			}, 1000);
 		}),
+
 		"minify-css" : (function(done) {
 			setTimeout(function() {
-				return gulp.src(paths.css) // Selecting files
+				return gulp.src(paths.build_css) // Selecting files
 				.pipe(plumber())
 				.pipe(cleanCSS({compatibility: 'ie8'})) // Running the plugin
 
@@ -105,7 +118,7 @@ gulps.registerTasks({
 			 	    console.log(util.colors.white(details.name) + util.colors.white(' - Efficiency = ') + util.colors.yellow(details.stats.efficiency));
 			     }))
 
-				.pipe(gulp.dest(paths.root)) // Exporting it to a folder
+				.pipe(gulp.dest(paths.build_dir)) // Exporting it to a folder
 
 				console.log(util.colors.red.bold('Minified ') + util.colors.red.bold('...'))
 
@@ -113,7 +126,10 @@ gulps.registerTasks({
 			}, 1000);
 		}),
 
+
+	// ---------------------------------------------------------------------------
 	// Markup
+	// ---------------------------------------------------------------------------
 		"twig" : (function(done) {
 			setTimeout(function() {
 				gulp.src(['./twig/*.twig'])
@@ -136,7 +152,7 @@ gulps.registerTasks({
 				.pipe(rename({extname: '.html'}))
 
 				// Export
-				.pipe(gulp.dest(paths.root))
+				.pipe(gulp.dest(paths.build_dir))
 
 				console.log(util.colors.red.bold('TWIG ') + util.colors.red.bold('...'))
 
@@ -144,6 +160,7 @@ gulps.registerTasks({
 			}, 2000);
 
 		}),
+
 		"htmlbeautify" : (function(done) {
 			setTimeout(function() {
 				var options = {
@@ -170,12 +187,12 @@ gulps.registerTasks({
 					"wrap_attributes_indent_size": 2,
 					"end_with_newline": false
 				};
-				gulp.src(paths.html)
+				gulp.src(paths.build_html)
 				.pipe(strip())
 
 				.pipe(htmlbeautify(options))
 
-				.pipe(gulp.dest(paths.root))
+				.pipe(gulp.dest(paths.build_dir))
 
 				console.log(util.colors.red.bold('HTML Beautify ') + util.colors.red.bold('...'))
 
@@ -183,12 +200,15 @@ gulps.registerTasks({
 			}, 1000);
 		}),
 
+
+	// ---------------------------------------------------------------------------
 	// Server
+	// ---------------------------------------------------------------------------
 		"watch" : (function(done) {
 			setTimeout(function() {
 				gulp.watch(paths.sass, ["sass", "updated"]) // on change run these command
-				gulp.watch(paths.twig, ["twig", "htmlbeautify", "updated"])
-				//gulp.watch(paths.html, ["twig", "htmlbeautify", "updated"])
+				//gulp.watch(paths.twig, ["twig", "htmlbeautify", "updated"])
+				//gulp.watch(paths.build_html, ["twig", "htmlbeautify", "updated"])
 
 
 				done(
@@ -196,21 +216,23 @@ gulps.registerTasks({
 				);
 			}, 2000);
 		}),
+
 		"connect" : (function(done) {
 			setTimeout(function() {
 
 				connect.server({
-					root: paths.root,
+					root: paths.build_dir,
 					livereload: 'true'
 				});
 
 				done();
 			}, 500);
 		}),
+
 		"updated" : (function() {
 			setTimeout(function() {
 
-				gulp.src(paths.root)
+				gulp.src(paths.build_dir)
 				.pipe(connect.reload(
 					console.log(util.colors.green.bold('UPDATED!'))
 				)) // Reload Browser
@@ -218,24 +240,17 @@ gulps.registerTasks({
 			}, 2200);
 		}),
 
-		// Build
-		"image" : (function(done) {
-			setTimeout(function() {
-				gulp.src(paths.image)
-				.pipe(imagemin())
 
-				// Export
-				.pipe(gulp.dest(paths.imagedir));
-				done();
-			}, 1000);
-		}),
-		"clean" : (function(done) {
+		// --------------------------------------------------------------------------
+		// Build
+		// --------------------------------------------------------------------------
+		"clean_styles" : (function(done) {
 			setTimeout(function() {
 
 				const del = require('del');
-				del(['../*.+(html|css)'], {force: true}).then(paths => {
+				del(paths.build_css, {force: true}).then(paths => {
 					console.log(
-						util.colors.bold.red('Files and folders deleted:\n'), util.colors.red( paths.join('\n'))
+						util.colors.bold.red('[/dev] CSS Files Deleted:\n'), util.colors.red( paths.join('\n'))
 					);
 				});
 
@@ -243,36 +258,177 @@ gulps.registerTasks({
 			}, 1500);
 		}),
 
+		"clean_markup" : (function(done) {
+			setTimeout(function() {
+
+				const del = require('del');
+				del(paths.build_html, {force: true}).then(paths => {
+					console.log(
+						util.colors.bold.red('[/dev] HTML Files Deleted:\n'), util.colors.red( paths.join('\n'))
+					);
+				});
+
+				done();
+			}, 1500);
+		}),
+
+		"clean_dev" : (function(done) {
+			setTimeout(function() {
+
+				const del = require('del');
+				del(paths.build !paths.image_dir, {force: true}).then(paths => {
+					console.log(
+						util.colors.bold.red('All [/public] Files Deleted:\n'), util.colors.red( paths.join('\n'))
+					);
+				});
+
+				done();
+			}, 1500);
+		}),
+
+		"clean_public" : (function(done) {
+			setTimeout(function() {
+
+				const del = require('del');
+				del(paths.public, {force: true}).then(paths => {
+					console.log(
+						util.colors.bold.red('All [/public] Files Deleted:\n'), util.colors.red( paths.join('\n'))
+					);
+				});
+
+				done();
+			}, 1500);
+		}),
+
+
+		// --------------------------------------------------------------------------
+		// Publish
+		// --------------------------------------------------------------------------
+		"publish_build" : (function(done) {
+			setTimeout(function() {
+
+				gulp.src(paths.build)
+					// Perform minification tasks, etc here
+				.pipe(gulp.dest(paths.public));
+
+				done(
+					console.log(util.colors.green.bold('[/build] copied to [/public]') + util.colors.green('...'))
+				);
+			}, 1500);
+		}),
+
+		"publish_setup" : (function(done) {
+			setTimeout(function() {
+
+				gulp.src(paths.setup)
+					// Perform minification tasks, etc here
+				.pipe(gulp.dest(paths.public));
+
+				done(
+					console.log(util.colors.green.bold('[/public_setup] copied to [/public]') + util.colors.green('...'))
+				);
+			}, 1500);
+		}),
+
+		"help" : (function(done) {
+			setTimeout(function() {
+
+				done(
+					console.log(util.colors.green.bold('123') + util.colors.green('...'))
+				);
+			}, 500);
+		}),
+
 }),
 
 
-// CSS
-gulps.registerSeries("styles", ["clean", "sass", "prefix"], function() {
+
+
+// ----------------------------------------------------------------------------
+// Execute Tasks
+// ----------------------------------------------------------------------------
+gulps.registerSeries("clean", ["clean_dev", "clean_public"], function() {
+	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('Test Complete!'))
+});
+
+
+gulps.registerSeries("styles", ["clean_styles", "sass", "prefix"], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED SASS'))
 });
-// HTML
-gulps.registerSeries("markup", ["clean", "twig", "htmlbeautify"], function() {
-	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED TWIG'))
+
+gulps.registerSeries("markup", ["clean_markup", "htmlbeautify"], function() {
+	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED Markup'))
 });
-// HTML & CSS
-gulps.registerSeries("compile", ["clean", "sass", "prefix", "twig", "htmlbeautify"], function() {
+
+gulps.registerSeries("compile", ["clean_styles", "clean_markup", "sass", "prefix", "htmlbeautify"], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED TWIG & SASS'))
 });
 
 
-// Build
-gulps.registerSeries("build", ["clean", "sass", "prefix", "twig", "htmlbeautify", "minify-css", "image"], function() {
+
+
+// ----------------------------------------------------------------------------
+// Execute Tasks
+// ----------------------------------------------------------------------------
+
+
+gulp.task('default', function() {
+	console.log(util.colors.green.bold('OllieJT Quickstart: ') + util.colors.red.bold('Learn more here ') + util.colors.blue('https://github.com/OllieJT/quickstart'))
+});
+
+gulps.registerSeries('dev',
+	[
+		"clean_styles",			// Delete CSS in /build
+		"clean_markup",			// Delete HTML in /build
+		"sass",							// Compile SASS
+		"prefix",						// Prefix CSS
+		"htmlbeautify",			// Tidy HTML
+
+		"connect",					// Connect to Localhost
+		"watch"							// Watch Files
+	], function() {
+	console.log(util.colors.green.bold('DEV MODE ENABLED: ') + util.colors.white.bold('Compiled, Connected & ') + util.colors.red.bold('Watching...'))
+});
+
+gulps.registerSeries("build",
+	[
+		"clean_styles",			// Delete CSS in /build
+		"clean_markup",			// Delete HTML in /build
+		"sass",							// Compile SASS
+		"prefix",						// Prefix CSS
+		"htmlbeautify",			// Tidy HTML
+	], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
 });
 
+gulps.registerSeries('publish',
+	[
+		"clean_public",			// Delete everything in /public
+		"clean_styles",			// Delete CSS in [/build]
+		"clean_markup",			// Delete HTML in [/build]
 
-// Dev Mode: Update and Watch
-gulps.registerSeries('default', ["clean", "sass", "prefix", "twig", "htmlbeautify", "connect", "watch"], function() {
+		"sass",							// Compile SASS
+		"prefix",						// Prefix CSS
+		"htmlbeautify",			// Tidy HTML
+		"minify-css",				// Minify CSS
+
+		"publish_build",				// Copies [/dev] to [/public]
+		"publish_setup",				// Copies [/public_setup] to [/public]
+
+	], function() {
 	console.log(util.colors.green.bold('DEV MODE ENABLED: ') + util.colors.white.bold('Compiled, Connected & ') + util.colors.red.bold('Watching...'))
 });
 
 
+
+
+
+
+
+
+// ----------------------------------------------------------------------------
 // Pretty Errrs
+// ----------------------------------------------------------------------------
 require('pretty-error').start().appendStyle({
    // this is a simple selector to the element that says 'Error'
    'pretty-error > header > title > kind': {
@@ -332,7 +488,9 @@ require('pretty-error').start().appendStyle({
    'pretty-error > trace > item > header > what': {color: 'bright-white'},
    'pretty-error > trace > item > footer > addr': {display: 'none'}
 });
+// ----------------------------------------------------------------------------
 // Test Console Error
+// ----------------------------------------------------------------------------
 gulp.task('console', function(){
 	console.log(util.colors.blue('This') + ' is ' + util.colors.red('now') + util.colors.green(' working'))
 });

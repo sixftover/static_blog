@@ -1,40 +1,7 @@
 # Ollie's Quickstart file
 
-All rights reserved.
-
+Work in progress
 ---
-
-## NPM Requires
-+ [gulp-autoprefixer](https://www.npmjs.com/package/gulp-autoprefixer)
-	// Adds browser vendor prefixes for CSS
-+ [gulp-clean-css](https://www.npmjs.com/package/gulp-clean-css)
-	// Minifies CSS
-+ [gulp-connect](https://www.npmjs.com/package/gulp-connect)
-	// Live preview of code in browser
-+ [gulp-html-beautify](https://www.npmjs.com/package/gulp-html-beautify)
-	// Tidies up HTML markup
-+ [gulp-imagemin](https://www.npmjs.com/package/gulp-imagemin)
-	// Compresses images
-+ [gulp-plumber](https://www.npmjs.com/package/gulp-plumber)
-	// Prevents gulp tasks from crashing when there are errors
-+ [gulp-rename](https://www.npmjs.com/package/gulp-rename)
-	// Rename files and extensions
-+ [gulp-sass](https://www.npmjs.com/package/gulp-sass)
-	// Compiles SASS to CSS
-+ [gulp-series](https://www.npmjs.com/package/gulp-series)
-	// Ensures Gulp executes tasks in order
-+ [gulp-twig](https://www.npmjs.com/package/gulp-twig)
-	// Compiles TWIG to HTML
-+ [gulp-util](https://www.npmjs.com/package/gulp-util)
-	// ?
-+ [pretty-error](https://www.npmjs.com/package/pretty-error)
-	// Makes console errors easier to read
-+ [npm-gui](https://www.npmjs.com/package/npm-gui)
-	// Might remove this - an easier way to update/manage dependencies
-+ [path](https://www.npmjs.com/package/path)
-	// ?
-+ [del](https://www.npmjs.com/package/del)
-	// ?
 
 ###### Install all packages
 ```
@@ -46,43 +13,40 @@ sudo npm install
 
 ###### Development Mode
 ```javascript
-gulp
+gulp dev
 
-1. Compiles TWIG & SASS
-2. Adds vendor prefixes
-3. Connects to localhost (URL shown in console)
-4. Watches files for updates - reloads on save
+1. Deletes HTML, CSS & JS Files in [./dev]
+2. Compiles SASS
+3. Adds vendor prefixes
+4. Tidies up HTML
+3. Connects to localhost (URL in console)
+4. Watches HTML & CSS for updates (reloads on save)
 ```
 
-###### Compile Code
-```javascript
-gulp styles
-
-1. Compiles SASS to CSS
-2. Adds vendor prefixes
-```
-
-```javascript
-gulp markup
-
-1. Compiles TWIG to HTML
-2. Tidies up HTML markup
-```
-
-```javascript
-gulp compile
-
-1. Runs 'gulp styles' and 'gulp markup'
-```
-
-###### Package Website
+###### Build
 ```javascript
 gulp build
 
-1. Runs 'gulp compile'
-2. Minifies CSS
-3. Compresses Images
+1. Deletes HTML, CSS & JS Files in [./dev]
+2. Compiles SASS
+3. Adds vendor prefixes
+4. Tidies up HTML
 ```
+
+###### Publish
+```javascript
+gulp publish
+
+1. Deletes all files in [./public]
+2. Deletes HTML, CSS & JS Files in [./dev]
+3. Compiles SASS
+4. Adds vendor prefixes
+5. Tidies up HTML
+6. minifies CSS
+7. Copies [/dev] to [/public]
+8. Copies [/public_setup] to [/public]
+```
+
 ---
 
 ## Grid System
