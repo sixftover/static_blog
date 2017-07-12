@@ -1,6 +1,5 @@
 'use strict';
 
-// ----------------------------------------------------------------------------
 // Dependencies
 // ----------------------------------------------------------------------------
 var
@@ -25,7 +24,6 @@ var
 
 
 
-// ----------------------------------------------------------------------------
 // Path Directories
 // ----------------------------------------------------------------------------
 var paths = {
@@ -33,7 +31,9 @@ var paths = {
 
 	// DEVELOP
 	sass: 			'./sass/**/*.scss',				// SASS files
-	sassdir:		'./sass/',						// SASS Directory
+	sass_dir:		'./sass/',						// SASS Directory
+	html: 			'./html/**/*.html',				// SASS files
+	html_dir:		'./html/',						// SASS Directory
 	//twig: './twig/**/*.twig',	 			// Twig Files
 	//twigdir: './twig'						// Twig Directory
 
@@ -62,12 +62,10 @@ var paths = {
 
 
 
-// ----------------------------------------------------------------------------
 // Tasks (Gulp Series)
 // ----------------------------------------------------------------------------
 gulps.registerTasks({
 
-	// ---------------------------------------------------------------------------
 	// Styles
 	// ---------------------------------------------------------------------------
 		"sass" : (function(done) {
@@ -82,7 +80,8 @@ gulps.registerTasks({
 				// Export
 				.pipe(gulp.dest(paths.build_dir))
 
-				console.log(util.colors.red.bold('SASS ') + util.colors.red.bold('...'))
+				console.log(util.colors.yellow.bold('\nCompiling SASS...\n')
+			)
 
 				done();
 			},
@@ -101,7 +100,7 @@ gulps.registerTasks({
 				// Export
 				.pipe(gulp.dest(paths.build_dir))
 
-				console.log(util.colors.red.bold('PREFIX ') + util.colors.red.bold('...'))
+				console.log(util.colors.yellow.bold('\nAdding vendor prefixes...\n'))
 
 				done();
 			}, 1000);
@@ -114,55 +113,22 @@ gulps.registerTasks({
 				.pipe(cleanCSS({compatibility: 'ie8'})) // Running the plugin
 
 			     .pipe(cleanCSS({debug: true}, function(details) {
-			 	    console.log(util.colors.white(details.name) + util.colors.white(' - Original Size = ') + util.colors.red(details.stats.originalSize));
-			 	    console.log(util.colors.white(details.name) + util.colors.white(' - Minified Size = ') + util.colors.green.bold(details.stats.minifiedSize));
-			 	    console.log(util.colors.white(details.name) + util.colors.white(' - Efficiency = ') + util.colors.yellow(details.stats.efficiency));
+						 console.log(util.colors.yellow.bold('\nMinifying CSS...\n'))
+						 console.log(util.colors.white(details.name) + util.colors.white.bold(' Original = ') + util.colors.yellow(details.stats.originalSize));
+						 console.log(util.colors.white(details.name) + util.colors.white.bold(' Minified = ') + util.colors.green.bold(details.stats.minifiedSize));
+							 console.log(util.colors.bold('\n'))
 			     }))
 
 				.pipe(gulp.dest(paths.build_dir)) // Exporting it to a folder
-
-				console.log(util.colors.red.bold('Minified ') + util.colors.red.bold('...'))
 
 				done();
 			}, 1000);
 		}),
 
 
-	// ---------------------------------------------------------------------------
 	// Markup
 	// ---------------------------------------------------------------------------
-		"twig" : (function(done) {
-			setTimeout(function() {
-				gulp.src(['./twig/*.twig'])
-				.pipe(twig({
-					data: {
-						title: 'hello'
-					},
-					includes: [
-						'./twig/layouts/*.twig',
-						'./twig/includes/*.twig',
-						'./twig/includes/**/*.twig',
-						'./twig/includes/template/*.twig'
-					],
-					getIncludeId: function(filePath) {
-						return path.relative(paths.twigdir, filePath);
-					}
-				}))
-
-				// Extension
-				.pipe(rename({extname: '.html'}))
-
-				// Export
-				.pipe(gulp.dest(paths.build_dir))
-
-				console.log(util.colors.red.bold('TWIG ') + util.colors.red.bold('...'))
-
-				done();
-			}, 2000);
-
-		}),
-
-		"htmlbeautify" : (function(done) {
+		"html" : (function(done) {
 			setTimeout(function() {
 				var options = {
 					"indent_size": 1,
@@ -188,21 +154,21 @@ gulps.registerTasks({
 					"wrap_attributes_indent_size": 2,
 					"end_with_newline": false
 				};
-				gulp.src(paths.build_html)
+
+				gulp.src(paths.html)
 				.pipe(strip())
 
 				.pipe(htmlbeautify(options))
 
 				.pipe(gulp.dest(paths.build_dir))
 
-				console.log(util.colors.red.bold('HTML Beautify ') + util.colors.red.bold('...'))
+				console.log(util.colors.yellow.bold('\nCompiling HTML...\n'))
 
 				done();
 			}, 1000);
 		}),
 
 
-	// ---------------------------------------------------------------------------
 	// Server
 	// ---------------------------------------------------------------------------
 		"watch" : (function(done) {
@@ -213,7 +179,7 @@ gulps.registerTasks({
 
 
 				done(
-					console.log(util.colors.green.bold('CONNECTED...') + util.colors.green('...'))
+					console.log(util.colors.yellow.bold('Watching...'))
 				);
 			}, 2000);
 		}),
@@ -226,7 +192,9 @@ gulps.registerTasks({
 					livereload: 'true'
 				});
 
-				done();
+				done(
+					console.log(util.colors.yellow.bold('Connected...'))
+				);
 			}, 500);
 		}),
 
@@ -242,7 +210,6 @@ gulps.registerTasks({
 		}),
 
 
-		// --------------------------------------------------------------------------
 		// Build
 		// --------------------------------------------------------------------------
 		"clean_styles" : (function(done) {
@@ -251,7 +218,7 @@ gulps.registerTasks({
 				const del = require('del');
 				del(paths.build_css, {force: true}).then(paths => {
 					console.log(
-						util.colors.bold.red('[/dev] CSS Files Deleted:\n'), util.colors.red( paths.join('\n'))
+						util.colors.red('\n[/dev]'), util.colors.bold.red('CSS'), util.colors.red('files deleted!\n'), util.colors.magenta( paths.join('\n'))
 					);
 				});
 
@@ -265,7 +232,7 @@ gulps.registerTasks({
 				const del = require('del');
 				del(paths.build_html, {force: true}).then(paths => {
 					console.log(
-						util.colors.bold.red('[/dev] HTML Files Deleted:\n'), util.colors.red( paths.join('\n'))
+						util.colors.red('\n[/dev]'), util.colors.bold.red('HTML'), util.colors.red('files deleted!\n'), util.colors.magenta( paths.join('\n'))
 					);
 				});
 
@@ -279,7 +246,7 @@ gulps.registerTasks({
 				const del = require('del');
 				del(['../build/**/*', '!../build', '!../build/src', '!../build/src/**/*'], {force: true}).then(paths => {
 					console.log(
-						util.colors.bold.red('All development files in [/dev] Deleted:\n'), util.colors.red( paths.join('\n'))
+						util.colors.red('\nAll development files in '), util.colors.bold.red('[/dev]'), util.colors.red('deleted!\n'), util.colors.magenta( paths.join('\n'))
 					);
 				});
 
@@ -293,7 +260,7 @@ gulps.registerTasks({
 				const del = require('del');
 				del(paths.public, {force: true}).then(paths => {
 					console.log(
-						util.colors.bold.red('All [/public] Files Deleted:\n'), util.colors.red( paths.join('\n'))
+						util.colors.red('\nAll development files in '), util.colors.bold.red('[/public]'), util.colors.red('deleted!\n'), util.colors.magenta( paths.join('\n'))
 					);
 				});
 
@@ -302,7 +269,6 @@ gulps.registerTasks({
 		}),
 
 
-		// --------------------------------------------------------------------------
 		// Publish
 		// --------------------------------------------------------------------------
 		"publish_build" : (function(done) {
@@ -336,61 +302,60 @@ gulps.registerTasks({
 
 
 
-
-// ----------------------------------------------------------------------------
 // Execute Tasks
 // ----------------------------------------------------------------------------
-
-
-
 gulps.registerSeries("styles", ["clean_styles", "sass", "prefix"], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED SASS'))
 });
 
-gulps.registerSeries("markup", ["clean_markup", "htmlbeautify"], function() {
+gulps.registerSeries("markup", ["clean_markup", "html"], function() {
 	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED Markup'))
 });
 
-gulps.registerSeries("compile", ["clean_styles", "clean_markup", "sass", "prefix", "htmlbeautify"], function() {
-	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED TWIG & SASS'))
-});
 
 
 
-
-// ----------------------------------------------------------------------------
 // Execute Tasks
 // ----------------------------------------------------------------------------
-
-
 gulp.task('default', function() {
 	console.log(util.colors.green.bold('OllieJT Quickstart: ') + util.colors.red.bold('Learn more here ') + util.colors.blue('https://github.com/OllieJT/quickstart'))
 });
 
 gulps.registerSeries('dev',
 	[
-		"clean_styles",			// Delete CSS in /build
+		// HTML
 		"clean_markup",			// Delete HTML in /build
-		"sass",							// Compile SASS
-		"prefix",						// Prefix CSS
-		"htmlbeautify",			// Tidy HTML
+		"html",
 
+		//CSS
+		"clean_styles",			// Delete CSS in /build
+		"sass",							// Compile SASS
+		"prefix",						// Prefix CSS					// Tidy HTML
+
+		// Localhost
 		"connect",					// Connect to Localhost
 		"watch"							// Watch Files
 	], function() {
-	console.log(util.colors.green.bold('DEV MODE ENABLED: ') + util.colors.white.bold('Compiled, Connected & ') + util.colors.red.bold('Watching...'))
+	console.log(util.colors.green.bold('DEV MODE: ') + util.colors.white.bold('ENABLED') + util.colors.red.bold(' Watching...'))
 });
 
 gulps.registerSeries("build",
 	[
-		"clean_styles",			// Delete CSS in /build
+		// HTML
 		"clean_markup",			// Delete HTML in /build
+		"html",							// Tidy HTML
+
+		//CSS
+		"clean_styles",			// Delete CSS in /build
 		"sass",							// Compile SASS
 		"prefix",						// Prefix CSS
-		"htmlbeautify",			// Tidy HTML
 		"minify-css",				// Minify CSS
+
+		// HTML
+		"clean_markup",			// Delete HTML in /build
+		"html",							// Tidy HTML
 	], function() {
-	console.log(util.colors.green.bold('DONE: ') + util.colors.white.bold('COMPILED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
+	console.log(util.colors.green.bold('BUILD: ') + util.colors.white.bold('COMPLETED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
 });
 
 gulps.registerSeries("clean",
@@ -407,7 +372,7 @@ gulps.registerSeries('publish',
 		"publish_setup",				// Copies [/public_setup] to [/public]
 
 	], function() {
-	console.log(util.colors.green.bold('DEV MODE ENABLED: ') + util.colors.white.bold('Compiled, Connected & ') + util.colors.red.bold('Watching...'))
+	console.log(util.colors.green.bold('PUBLISH: ') + util.colors.white.bold('COMPLETED') + util.colors.red.bold('Watching...'))
 });
 
 
@@ -417,7 +382,6 @@ gulps.registerSeries('publish',
 
 
 
-// ----------------------------------------------------------------------------
 // Pretty Errrs
 // ----------------------------------------------------------------------------
 require('pretty-error').start().appendStyle({
@@ -479,7 +443,7 @@ require('pretty-error').start().appendStyle({
    'pretty-error > trace > item > header > what': {color: 'bright-white'},
    'pretty-error > trace > item > footer > addr': {display: 'none'}
 });
-// ----------------------------------------------------------------------------
+
 // Test Console Error
 // ----------------------------------------------------------------------------
 gulp.task('console', function(){
