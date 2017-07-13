@@ -25,6 +25,13 @@ body{
 	}
 }
 
+// Typograpghy
+h1, h2, h3, h4, h5, h6, p {
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+}
+
+
 // Clearfix
 .cf:before, .cf:after, .row:before, .row:after, div:before, div:after, ol:before, ol:after, ul:before, ul:after, li:before, li:after, section:before, section:after {
     content: " ";

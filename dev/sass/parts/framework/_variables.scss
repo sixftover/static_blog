@@ -1,7 +1,13 @@
 //Colours
-$link-colour: #60D394;
+$brand: #60D394;
+$link-colour: $brand;
 $text-colour: rgb(235,235,235);
 $background: rgb(35,35,35);
+
+// Unit of MEasurement
+// html is set to 62.5% so that all the REM measurements throughout Skeleton
+// are based on 10px sizing. So basically 0.8rem = 8px :)
+$unit: 0.8rem;
 
 // Misc
 $transition-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);

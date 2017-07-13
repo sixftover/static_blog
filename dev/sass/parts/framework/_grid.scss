@@ -1,89 +1,42 @@
 @import "variables.scss";
-header,section,footer,div,span{position: relative;}
+header,section,footer,div,span{
+	position: relative;
+	box-sizing: border-box;
+}
 //Grid
-
-header, footer, section{text-align: center;}
 .row {
 	position: relative;
-	display: inline-block;
 	width: 100%;
 	max-width: $maxbody;
-	padding: 0;
-	box-sizing: border-box;
-	margin: 0 -0.8rem;
-	text-align: left;
-}
-.col {
-	display: inline-block;
-	padding: 0 .8rem;
-	box-sizing: border-box;
-	header,section,footer,div,span{display: block;}
+	margin: 0 auto;
+	// Grid
+	display: grid;
+	place-items: stretch;
+  grid-column-gap: $unit *2;
+  grid-row-gap: $unit * 2;
 }
 
+.row12{
+	@extend .row;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
 
-.c1 {width: $one}
-.c2 {width: $two}
-.c3 {width: $three}
-.c4 {width: $four}
-.c5 {width: $five}
-.c6 {width: $six}
-.c7 {width: $seven}
-.c8 {width: $eight}
-.c9 {width: $nine}
-.c10 {width: $ten}
-.c11 {width: $eleven}
-.c12 {width: $twelve}
-
+.col{box-sizing: border-box;}
 
 /*
-.c1 {
-	flex-grow: 1;
-	flex-basis: $one;
-}
-.c2 {
-	flex-grow: 2;
-	flex-basis: $two;
-}
-.c3 {
-	flex-grow: 3;
-	flex-basis: $three;
-}
-.c4 {
-	flex-grow: 4;
-	flex-basis: $four;
-}
-.c5 {
-	flex-grow: 5;
-	flex-basis: $five;
-}
-.c6 {
-	flex-grow: 6;
-	flex-basis: $six;
-}
-.c7 {
-	flex-grow: 7;
-	flex-basis: $seven;
-}
-.c8 {
-	flex-grow: 8;
-	flex-basis: $eight;
-}
-.c9 {
-	flex-grow: 9;
-	flex-basis: $nine;
-}
-.c10 {
-	flex-grow: 10;
-	flex-basis: $ten;
-}
-.c11 {
-	flex-grow: 11;
-	flex-basis: $eleven;
-}
-.c12 {
-	flex-grow: 12;
-	flex-basis: $twelve;
-}
+.c1 {grid-column-end: span 1}
+.c2 {grid-column-end: span 2}
+.c3 {grid-column-end: span 3}
+.c4 {grid-column-end: span 4}
+.c5 {grid-column-end: span 5}
+.c6 {grid-column-end: span 6}
+.c7 {grid-column-end: span 7}
+.c8 {grid-column-end: span 8}
+.c9 {grid-column-end: span 9}
+.c10 {grid-column-end: span 10}
+.c11 {grid-column-end: span 11}
+.c12 {grid-column-end: span 12}
 */
 
 @media only screen and (max-width: $tablet) {}

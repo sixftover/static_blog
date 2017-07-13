@@ -1,127 +1,156 @@
 @import "variables.scss";
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,400i,500');
 
-// Base Styles
-// html is set to 62.5% so that all the REM measurements throughout Skeleton
-// are based on 10px sizing. So basically 1.5rem = 15px :)
+
+
+// Variables
+$font-size: $unit * 2;
+$font-weight-regular: 400;
+$font-weight-bold: 500;
+
+
+
 
 // Colour
 $link-colour-before: darken($link-colour, 8);
 $link-colour-after: lighten($link-colour, 8);
 
-$txt: $text-colour;
-$txt-light: lighten($text-colour, 30);
-$txt-dark: darken($text-colour, 30);
-$txt-20: transparentize($text-colour, .20);
-$txt-60: transparentize($text-colour, .60);
-$txt-40: transparentize($text-colour, .40);
+$txt: 							$text-colour;
+$txt-light: 				lighten($text-colour, 30);
+$txt-dark: 					darken($text-colour, 30);
+$txt-20:						transparentize($text-colour, .20);
+$txt-60: 						transparentize($text-colour, .60);
+$txt-40: 						transparentize($text-colour, .40);
+
+.txt-highlight{color: darken($brand, 20)}
+
+
+
 
 //Global
 body {
-	font-family: 'Rubik', sans-serif;
-	font-size: 0;
-	color: $txt;
+	font-family: 			'Rubik', sans-serif;
+	font-size: 				0;
+	line-height: 			$font-size * 1.75;
+	font-weight: 			$font-weight-regular;
+	color: 						$txt;
+	header,footer,section,div{
+		font-size: 			$font-size
+	}
 }
 
+
+
 // Spacing
-h1, h2, h3, h4, h5, h6, p {
-	-webkit-margin-before: 0rem;
-	-webkit-margin-after: 0rem;
+h1, h2, h3, h4, h5, h6, p{
+	margin:						0;
+	margin-top: 			$unit;
+	margin-bottom: 		$unit;
 }
-h1, h2, h3, h4, h5, h6{
-	margin-top: 0.8rem;
-	margin-bottom: 0.4rem;
+h1, h2, h3, h4, h5, h6, p{
+	margin-top: 			$unit * 1.25;
+
 }
-p{
-	margin: 1.2rem 0;
-}
+
+
+
 
 // Size
 h1 {
-	font-size: 		4.8rem;
-	line-height: 		6rem;
-	font-weight: 		500;
+	font-size: 				$font-size * 2.5;					// 250%
+	line-height: 			$font-size * 3.25;				// 325%
+	font-weight: 			$font-weight-bold;
 }
 h2 {
-	font-size: 		3.2rem;
-	line-height: 		4.4rem;
-	font-weight: 		500;
+	font-size: 				$font-size * 1.75;				// 175%
+	line-height: 			$font-size * 2.5;					// 250%
+	font-weight: 			$font-weight-regular;
 }
 h3 {
-	font-size: 		2.4rem;
-	line-height: 		3.6rem;
-	font-weight: 		500;
+	font-size: 				$font-size * 1.5;				// 150%
+	line-height: 			$font-size * 2.25;			// 225%
+	font-weight: 			$font-weight-bold;
 }
 h4 {
-	font-size: 		2rem;
-	line-height: 		2.8rem;
-	font-weight: 		500;
+	font-size: 				$font-size * 1.25;			// 125%
+	line-height: 			$font-size * 2;					// 200%
+	font-weight: 			$font-weight-bold;
 }
 h5 {
-	font-size: 		1.6rem;
-	line-height: 		2.8rem;
-	font-weight: 		500;
+	font-size: 				$font-size * 1;					// 100%
+	line-height: 			$font-size * 1.75;			// 175%
+	font-weight: 			$font-weight-bold;
 }
 h6 {
-	font-size: 		1.2rem;
-	line-height: 		2.8rem;
-	font-weight: 		500;
+	font-size: 				$font-size * .75;				// 75%
+	line-height: 			$font-size * 1.5;				// 150%
+	font-weight: 			$font-weight-regular;
 }
 p, ul, ol, figcaption {
-	font-size: 				1.6rem;
-	line-height: 			2.8rem;
-	font-weight: 			400;
+	font-size: 				$font-size;
+	line-height: 			$font-size * 1.75;
+	font-weight: 			$font-weight-regular;
 }
+
+
 
 
 // Sub Styles
 a {
-	text-decoration: none;
-	display: inline-block;
-	color: $link-colour-before;
+	text-decoration: 	none;
+	display: 					inline-block;
+	color: 						$link-colour-before;
 }
-a:hover {color: $link-colour-after}
+a:hover {color: 		$link-colour-after}
 
-em{color: $txt-light}
+em{color: 					$txt-light}
+
+
+
 
 // Lists
 ul,ol{
-	line-height: 1em;
+	line-height: 			1em;
 	li{
-		margin: 1.2rem .8rem;
-		margin-right: -1.6rem;
+		padding: 				$unit 0;
+		margin: 				$unit;
+		margin-right: 	-$unit * 2;
+		max-width: 			100%;
 	}
 }
+
 ul{
 	list-style-position: inside;
-
 	li{
 		list-style-type: disc;
 		list-style-position: inside;
 	}
-	li:before{
-		float: left;
-	}
+	li:before{float: left;}
 }
+
 ol{
 	counter-reset: my-badass-counter;
 	li{counter-increment: my-badass-counter;}
 	li:before{
 		content: counter(my-badass-counter);
 		float: left;
-		margin-right: 1rem;
+		margin-right: $unit;
 	}
 }
 
+
+
+
+// Figures
 figure{
 	display: inline-block;
 	width: 100%;
-	margin: 2.4rem auto;
+	margin: $unit * 3 auto;
 }
 figcaption{
 	display: block;
 	text-align: center;
-	padding: 1.6rem;
+	padding: $unit * 2;
 	opacity: 0.4
 }
 figure:hover{
