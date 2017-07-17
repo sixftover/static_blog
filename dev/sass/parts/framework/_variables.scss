@@ -1,26 +1,70 @@
-//Colours
-$brand: #60D394;
-$link-colour: $brand;
-$text-colour: rgb(235,235,235);
-$background: rgb(35,35,35);
-
-// Unit of MEasurement
-// html is set to 62.5% so that all the REM measurements throughout Skeleton
-// are based on 10px sizing. So basically 0.8rem = 8px :)
+// Unit of Measurement
+// html is set to 62.5% so that all the REM measurements are based on 10px sizing. ( 0.8rem = 8px )
 $unit: 0.8rem;
 
-// Misc
-$transition-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
-$transition-easeInOutCirc: cubic-bezierr(0.785, 0.135, 0.15, 0.86);
-$transition-easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+
+// Variables
+//$font-size: $unit * 2;
+$font-size: 1.8rem;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
 
 
 // Breakpoints
-$tablet:	860px;
-$mobile:	560px;
 $maxbody:	1136px;
+$minbody:	960px;
+$tablet:	860px;
+$mobile:	540px;
 
-// Column Width Values
+
+
+// Colours
+$brand: #60D394;
+
+$link-colour-before: darken($brand, 8);
+$link-colour-after: lighten($brand, 8);
+
+$text-colour: rgb(235,235,235);
+$background: rgb(35,35,35);
+
+
+// Overlays
+@mixin gradient ($gradient-start, $gradient-end, $gradient-backup) {
+	background: $gradient-backup;
+	background: linear-gradient(to top, $gradient-start 0%, $gradient-end 100%);
+}
+.cover{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.overlay{
+	@extend .cover;
+	background-color: blue;
+	z-index: 0;
+}
+.overlay::after {
+	@extend .cover;
+	@include gradient(black, red, rgb(120,0,0));
+	z-index: 1;
+}
+
+
+// Animation
+$transition-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+$transition-easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+//$transition-easeInOutCirc: cubic-bezierr(0.785, 0.135, 0.15, 0.86);
+.animate{
+	transition: all .3s $transition-easeInOutQuad;
+}
+
+
+// Column Width Value [ MOVING TO CSS GRID ]
 $one:       8.33%;
 $two:       16.66%;
 $three:     25%;
