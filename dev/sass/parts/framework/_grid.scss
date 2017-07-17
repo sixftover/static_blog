@@ -3,54 +3,27 @@ header,section,footer,div,span{
 	position: relative;
 	box-sizing: border-box;
 }
-//Grid
-.row {
-	position: relative;
+.container{
+	display: block;
 	width: 100%;
 	max-width: $maxbody;
 	margin: 0 auto;
+}
+.grid{
+	position: relative;
+	width: 100%;
+	height: auto;
+
 	// Grid
 	display: grid;
 	place-items: stretch;
   grid-column-gap: $unit *2;
   grid-row-gap: $unit * 2;
+
+	// Reset
+	&::before,&::after{display: none}
 }
 
-.row12{
-	@extend .row;
-	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-}
-
-.col{box-sizing: border-box;}
-
-/*
-.c1 {grid-column-end: span 1}
-.c2 {grid-column-end: span 2}
-.c3 {grid-column-end: span 3}
-.c4 {grid-column-end: span 4}
-.c5 {grid-column-end: span 5}
-.c6 {grid-column-end: span 6}
-.c7 {grid-column-end: span 7}
-.c8 {grid-column-end: span 8}
-.c9 {grid-column-end: span 9}
-.c10 {grid-column-end: span 10}
-.c11 {grid-column-end: span 11}
-.c12 {grid-column-end: span 12}
-*/
-
+@media only screen and (max-width: $maxbody) {}
 @media only screen and (max-width: $tablet) {}
-
-@media only screen and (max-width: $mobile) {
-	.col {
-		flex-basis: $twelve;
-		padding: 0 1.6rem;
-	}
-	.col:first-of-type {padding-left: 1.6rem;}
-	.col:last-of-type {padding-right: 1.6rem;}
-	.row {padding: 0;}
-
-
-	//.row {flex-wrap: wrap;}
-	//.col{padding: 0;}
-}
+@media only screen and (max-width: $mobile) {}
