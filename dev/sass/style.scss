@@ -1,8 +1,7 @@
 @charset "utf-8";
+/* Hello there! Enjoying my code? Send me a tweet @TheOllieJT */
 @import "parts/framework/variables.scss";
 @import "parts/boilerplate/normalize.scss";
-
-// Globals
 @import "parts/boilerplate/globals.scss";
 
 // Grid System
@@ -11,9 +10,6 @@
 // Typography
 @import "parts/framework/typography.scss";
 
-// Elements
-@import "parts/elements.scss";
-
 // Sections
 @import "parts/sections.scss";
 
@@ -21,18 +17,28 @@
 // Grid
 section,header,footer{
 	margin: 8rem 0;
-	.row{
-		min-height: 3rem;
-		margin-bottom: 1rem;
-	}
 	.col{
-		text-align: center;
+		//text-align: center;
 		min-height: 2rem;
 		p{display: none}
 	}
 }
-
-
-
-.col:first-of-type{background-color: rgba(0,200,0,0.4)}
-.col{background-color: rgba(200,0,0,0.4)}
+.demo{.col{background-color: rgba(200,0,0,0.4)}}
+.example-grid{
+	@extend .grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+	margin: $unit * 2 0;
+}
+.c1 {grid-column-end: span 1}
+.c2 {grid-column-end: span 2}
+.c3 {grid-column-end: span 3}
+.c4 {grid-column-end: span 4}
+.c5 {grid-column-end: span 5}
+.c6 {grid-column-end: span 6}
+.c7 {grid-column-end: span 7}
+.c8 {grid-column-end: span 8}
+.c9 {grid-column-end: span 9}
+.c10 {grid-column-end: span 10}
+.c11 {grid-column-end: span 11}
+.c12 {grid-column-end: span 12}
