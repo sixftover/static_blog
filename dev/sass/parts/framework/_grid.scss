@@ -9,6 +9,11 @@ header,section,footer,div,span{
 	max-width: $maxbody;
 	margin: 0 auto;
 }
+.background-image{
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 .grid{
 	position: relative;
 	width: 100%;
