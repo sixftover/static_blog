@@ -1,36 +1,47 @@
 @import "framework/variables.scss";
-
-nav{
-	li{
-		display: inline-block;
-	}
+body{background-color: black}
+body.home{
+	height: 600vh;
+	@include gradient(rgb(30,30,30), black, rgb(120,0,0));
 }
-#article{
-	background-color: rgba(0,0,0,0.05);
-	article{
-		min-height: 500px;
-		flex-basis: 800px;
-		flex-grow: 0;
-		margin: 8rem 0;
-		background-color: white;
-		.content{
-			padding: 4rem;
-			display: flex;
-			flex-wrap: wrap;
-			//align-items: flex-start;
-			h1,h2,h3,h4,h5,h6,p{
-				flex-basis: 100%;
-				-webkit-margin-before: .8rem;
-				-webkit-margin-after: .8rem;
-			}
-			.img{
-				flex-grow: 1;
-				margin: 2rem 0;
-			}
-		}
+.thumb-tile{
+	@extend .grid;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+	margin: 0;
+	.thumb{
+		@extend .background-image;
+		grid-column-end: span 1;
+		grid-row-end: span 1;
+		opacity: .1;
+		transition: all .4s $transition-easeOutCirc;
+		&:hover{opacity: 1;}
 	}
 }
 
+header{
+	width: 100vw;
+	height: 100vh;
+	z-index: 5;
+
+	//flex
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	img{
+		margin: 0 auto;
+	}
+}
 @media only screen and (min-width: $maxbody) {}
 @media only screen and (max-width: $tablet) {}
 @media only screen and (max-width: $mobile) {}
