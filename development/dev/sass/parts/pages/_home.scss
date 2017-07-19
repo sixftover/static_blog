@@ -1,0 +1,9 @@
+@import "../_framework/variables.scss";
+
+// Home
+header{}
+
+@media only screen and (min-width: $maxbody) {}
+@media only screen and (max-width: $minbody) {}
+@media only screen and (max-width: $tablet) {}
+@media only screen and (max-width: $mobile) {}
