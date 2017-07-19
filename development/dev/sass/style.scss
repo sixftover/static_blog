@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* Hello there! Enjoying my code? Send me a tweet @TheOllieJT */
+@import "parts/_framework/variables.scss";
+@import "boilerplate/normalize.scss";
+@import "boilerplate/globals.scss";
+
+// Grid System
+@import "parts/_framework/grid.scss";
+
+// Typography
+@import "parts/_framework/typography.scss";
+
+// Elements
+@import "parts/elements.scss";
+
+// Pages
+@import "parts/pages.scss";
+
+
+
+<<<<<<< HEAD:development/dev/sass/style.scss
+
+
+// Grid
+section,header,footer{
+	margin: 8rem 0;
+	.col{
+		//text-align: center;
+		min-height: 2rem;
+		p{display: none}
+	}
+}
+.demo{.col{background-color: rgba(200,0,0,0.4)}}
+.example-grid{
+	@extend .grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+	margin: $unit * 2 0;
+}
+.c1 {grid-column-end: span 1}
+.c2 {grid-column-end: span 2}
+.c3 {grid-column-end: span 3}
+.c4 {grid-column-end: span 4}
+.c5 {grid-column-end: span 5}
+.c6 {grid-column-end: span 6}
+.c7 {grid-column-end: span 7}
+.c8 {grid-column-end: span 8}
+.c9 {grid-column-end: span 9}
+.c10 {grid-column-end: span 10}
+.c11 {grid-column-end: span 11}
+.c12 {grid-column-end: span 12}
+=======
+// Sections
+@import "parts/sections.scss";
+>>>>>>> b6905297fc89b88a568fec60519dba95e21c7190:dev/sass/style.scss

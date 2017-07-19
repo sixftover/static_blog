@@ -1,0 +1,34 @@
+@import "variables.scss";
+header,section,footer,div,span{
+	position: relative;
+	box-sizing: border-box;
+}
+.container{
+	display: block;
+	width: 100%;
+	max-width: $maxbody;
+	margin: 0 auto;
+}
+.background-image{
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.grid{
+	position: relative;
+	width: 100%;
+	height: auto;
+
+	// Grid
+	display: grid;
+	place-items: stretch;
+  grid-column-gap: $unit *2;
+  grid-row-gap: $unit * 2;
+
+	// Reset
+	&::before,&::after{display: none}
+}
+
+@media only screen and (max-width: $maxbody) {}
+@media only screen and (max-width: $tablet) {}
+@media only screen and (max-width: $mobile) {}

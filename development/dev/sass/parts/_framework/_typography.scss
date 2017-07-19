@@ -1,0 +1,170 @@
+@import "variables.scss";
+
+
+
+// Colour
+$txt: 							$text-colour;
+$txt-lighter: 			lighten($text-colour, 30);
+$txt-darker: 				darken($text-colour, 30);
+$txt-20:						transparentize($txt-lighter, .20); // 80% Opacity
+$txt-40: 						transparentize($txt-lighter, .40); // 60% Opacity
+$txt-60: 						transparentize($txt-lighter, .60); // 40% Opacity
+$txt-80: 						transparentize($txt-lighter, .80); // 20% Opacity
+
+.txt-highlight{			color: $brand}
+.txt-80{						color: $txt-20} // 80% Opacity
+.txt-60{						color: $txt-40} // 60% Opacity
+.txt-40{						color: $txt-60} // 40% Opacity
+.txt-20{						color: $txt-80} // 20% Opacity
+.txt-reset{					color: $txt !important}
+
+
+
+
+//Global
+body {
+	font-family: 			'Yantramanav', sans-serif;
+	font-size: 				$font-size;
+	line-height: 			$font-size * 1.75;
+	font-weight: 			$font-weight-regular;
+	color: 						$txt;
+}
+
+
+
+// Spacing
+h1, h2, h3, h4, h5, h6, p{
+	margin:						0;
+	margin-top: 			0;
+	margin-bottom: 		0;
+}
+article{
+	h1, h2, h3, h4, h5, h6, p{
+		margin-top: 			$unit * 1.25;
+		margin-bottom: 		$unit;
+	}
+}
+
+
+
+
+
+// Size
+h1 {
+	font-size: 				$font-size * 2.5;					// 250%
+	line-height: 			$font-size * 3.25;				// 325%
+	font-weight: 			$font-weight-bold;
+}
+h2 {
+	font-size: 				$font-size * 1.75;				// 175%
+	line-height: 			$font-size * 2.5;					// 250%
+	font-weight: 			$font-weight-regular;
+}
+h3 {
+	font-size: 				$font-size * 1.5;				// 150%
+	line-height: 			$font-size * 2.25;			// 225%
+	font-weight: 			$font-weight-medium;
+}
+h4 {
+	font-size: 				$font-size * 1.25;			// 125%
+	line-height: 			$font-size * 2;					// 200%
+	font-weight: 			$font-weight-medium;
+}
+h5 {
+	font-size: 				$font-size * 1;					// 100%
+	line-height: 			$font-size * 1.75;			// 175%
+	font-weight: 			$font-weight-bold;
+}
+h6 {
+	font-size: 				$font-size * .75;				// 75%
+	line-height: 			$font-size * 1.5;				// 150%
+	font-weight: 			$font-weight-medium;
+}
+p, ul, ol, figcaption {
+	font-size: 				$font-size;
+	line-height: 			$font-size * 1.75;
+	font-weight: 			$font-weight-regular;
+	a{color: 					$link-colour-before;}
+	a:hover{color: 		$link-colour-after;}
+}
+
+
+
+
+// Sub Styles
+a {
+	@extend .animate;
+	text-decoration: 	none;
+	display: 					inline-block;
+	color: 						inherit;
+}
+a:hover {color: 		inherit;}
+em{color: 					$txt-lighter}
+
+
+
+
+// Lists
+ul,ol{
+	li{
+		//padding: 				$unit 0;
+		margin: 				$unit * 2;
+		margin-right: 	-$unit * 2;
+		max-width: 			100%;
+		color: 					$txt-20;
+	}
+	li:hover{color: $brand !important;}
+}
+ul{
+	list-style-position: inside;
+	li{
+		list-style-type: disc;
+		list-style-position: inside;
+	}
+	li:before{
+		float: left;
+		font-weight: $font-weight-bold;
+		color: $txt-lighter;
+	}
+}
+ol{
+	counter-reset: my-badass-counter;
+	li{
+		counter-increment: my-badass-counter;
+	}
+	li:before{
+		content: counter(my-badass-counter)".";
+		float: left;
+		margin-right: $unit * 2;
+		font-weight: $font-weight-bold;
+	}
+}
+
+
+
+// Figures
+figure{
+	display: inline-block;
+	width: 100%;
+	margin: $unit * 3 auto;
+	text-align: center;
+	img{
+		display: inline-block;
+		padding: 0;
+		margin: 0 auto;
+		box-sizing: border-box;
+		max-width: 100%;
+		height: auto;
+	}
+}
+figcaption{
+	@extend .animate;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+	padding: $unit * 2;
+	opacity: 0.4
+}
+figure:hover{
+	figcaption{opacity: 0.6;}
+}
