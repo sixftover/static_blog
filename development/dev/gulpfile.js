@@ -51,11 +51,11 @@ var paths = {
 	// PUBLISH
 	root: 							'../',
 	setup: 							'../public_setup/**/*',
-	public: 						'../public/**/*',
-	public_dir: 				'../public',
-	public_css: 				'../public/*.css',
-	public_html: 				'../public/*.html',
-	public_src: 				'../public/src/',
+	public: 						'../../**/*',
+	public_dir: 				'../..',
+	public_css: 				'../../*.css',
+	public_html: 				'../../*.html',
+	public_src: 				'../../src/',
 
 };
 
@@ -259,7 +259,7 @@ gulps.registerTasks({
 			setTimeout(function() {
 
 				const del = require('del');
-				del(paths.public, {force: true}).then(paths => {
+				del([paths.public, '!../../*.md', '!../../.git', '!../../.gitignore', '!../../development', '!../../development/**/*'], {force: true}).then(paths => {
 					console.log(
 						util.colors.red('\nAll development files in '), util.colors.bold.red('[/public]'), util.colors.red('deleted!\n'), util.colors.magenta( paths.join('\n'))
 					);
