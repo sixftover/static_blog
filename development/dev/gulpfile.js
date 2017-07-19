@@ -85,7 +85,7 @@ gulps.registerTasks({
 
 				done();
 			},
-			2000);
+			1000);
 
 		}),
 
@@ -182,7 +182,7 @@ gulps.registerTasks({
 				done(
 					console.log(util.colors.yellow.bold('Watching...'))
 				);
-			}, 2000);
+			}, 1000);
 		}),
 
 		"connect" : (function(done) {
@@ -196,7 +196,7 @@ gulps.registerTasks({
 				done(
 					console.log(util.colors.yellow.bold('Connected...'))
 				);
-			}, 500);
+			}, 200);
 		}),
 
 		"updated" : (function() {
@@ -207,7 +207,7 @@ gulps.registerTasks({
 					console.log(util.colors.green.bold('UPDATED!'))
 				)) // Reload Browser
 
-			}, 2200);
+			}, 1000);
 		}),
 
 
@@ -224,7 +224,7 @@ gulps.registerTasks({
 				});
 
 				done();
-			}, 1500);
+			}, 500);
 		}),
 
 		"clean_markup" : (function(done) {
@@ -238,7 +238,7 @@ gulps.registerTasks({
 				});
 
 				done();
-			}, 1500);
+			}, 500);
 		}),
 
 		"clean_dev" : (function(done) {
@@ -252,7 +252,7 @@ gulps.registerTasks({
 				});
 
 				done();
-			}, 1500);
+			}, 500);
 		}),
 
 		"clean_public" : (function(done) {
@@ -266,7 +266,7 @@ gulps.registerTasks({
 				});
 
 				done();
-			}, 1500);
+			}, 500);
 		}),
 
 
@@ -282,7 +282,7 @@ gulps.registerTasks({
 				done(
 					console.log(util.colors.green.bold('[/build] copied to [/public]') + util.colors.green('...'))
 				);
-			}, 1500);
+			}, 200);
 		}),
 
 		"publish_setup" : (function(done) {
@@ -295,7 +295,7 @@ gulps.registerTasks({
 				done(
 					console.log(util.colors.green.bold('[/public_setup] copied to [/public]') + util.colors.green('...'))
 				);
-			}, 1500);
+			}, 200);
 		}),
 
 
