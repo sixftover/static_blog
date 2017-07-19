@@ -22,13 +22,14 @@ $mobile:	540px;
 
 
 // Colours
-$brand: #60D394;
+$brand: #f79d20;
+$brand-alt: #fec240;
 
 $link-colour-before: darken($brand, 8);
-$link-colour-after: lighten($brand, 8);
+$link-colour-after: $brand-alt;
 
-$text-colour: rgb(235,235,235);
-$background: rgb(35,35,35);
+$text-colour: rgb(220,220,220);
+$background: rgb(10,10,10);
 
 
 // Overlays

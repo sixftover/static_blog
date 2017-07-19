@@ -18,6 +18,7 @@
 
 
 
+<<<<<<< HEAD:development/dev/sass/style.scss
 
 
 // Grid
@@ -48,3 +49,7 @@ section,header,footer{
 .c10 {grid-column-end: span 10}
 .c11 {grid-column-end: span 11}
 .c12 {grid-column-end: span 12}
+=======
+// Sections
+@import "parts/sections.scss";
+>>>>>>> b6905297fc89b88a568fec60519dba95e21c7190:dev/sass/style.scss
