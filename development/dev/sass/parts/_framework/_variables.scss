@@ -37,32 +37,13 @@ $background: rgb(10,10,10);
 	background: $gradient-backup;
 	background: linear-gradient(to top, $gradient-start 0%, $gradient-end 100%);
 }
-.cover{
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-}
-.overlay{
-	@extend .cover;
-	background-color: blue;
-	z-index: 0;
-}
-.overlay::after {
-	@extend .cover;
-	@include gradient(black, red, rgb(120,0,0));
-	z-index: 1;
-}
 
 
 // Animation
 $transition-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
 $transition-easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 //$transition-easeInOutCirc: cubic-bezierr(0.785, 0.135, 0.15, 0.86);
-.animate{
-	transition: all .3s $transition-easeInOutQuad;
-}
+
 
 
 // Column Width Value [ MOVING TO CSS GRID ]

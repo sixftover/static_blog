@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6, p{
 }
 article{
 	h1, h2, h3, h4, h5, h6, p{
-		margin-top: 			$unit * 1.25;
+		margin-top: 			$unit * 1.5;
 		margin-bottom: 		$unit;
 	}
 }
@@ -84,6 +84,7 @@ p, ul, ol, figcaption {
 	font-size: 				$font-size;
 	line-height: 			$font-size * 1.75;
 	font-weight: 			$font-weight-regular;
+	color: 						$txt-20;
 	a{color: 					$link-colour-before;}
 	a:hover{color: 		$link-colour-after;}
 }
@@ -113,7 +114,9 @@ ul,ol{
 		max-width: 			100%;
 		color: 					$txt-20;
 	}
-	li:hover{color: $brand !important;}
+	li:hover{
+		strong,em{color: $brand !important;}
+	}
 }
 ul{
 	list-style-position: inside;
@@ -144,27 +147,52 @@ ol{
 
 // Figures
 figure{
-	display: inline-block;
-	width: 100%;
-	margin: $unit * 3 auto;
-	text-align: center;
+	display: 					inline-block;
+	width: 						100%;
+	margin: 					$unit * 5 auto;
+	text-align: 			center;
 	img{
-		display: inline-block;
-		padding: 0;
-		margin: 0 auto;
-		box-sizing: border-box;
-		max-width: 100%;
-		height: auto;
+		display: 				inline-block;
+		padding: 				0;
+		margin: 				0 auto;
+		box-sizing: 		border-box;
+		max-width: 			100%;
+		height: 				auto;
 	}
 }
 figcaption{
 	@extend .animate;
-	display: block;
-	margin: 0 auto;
-	text-align: center;
-	padding: $unit * 2;
-	opacity: 0.4
+	display: 				block;
+	margin: 				0 auto;
+	text-align:			center;
+	padding: 				$unit * 2;
+	color: 					$txt-60
 }
 figure:hover{
-	figcaption{opacity: 0.6;}
+	figcaption{color: $txt-40}
 }
+
+
+
+// Quotes
+blockquote{
+	position: relative;
+	margin: $unit * 5 0;
+	padding: $unit * 3;
+	border-style: solid;
+	border-width: 1px 1px 1px 4px;
+	border-color: rgba(200,200,200,0.2);
+	border-left-color: $brand;
+	strong{color: $brand}
+}
+.tip-offset{
+	position: absolute;
+	top: -25vh;
+}
+
+@media only screen and (max-width: $maxbody) {}
+@media only screen and (max-width: $minbody) {}
+@media only screen and (max-width: $tablet) {
+	figcaption{text-align: left;}
+}
+@media only screen and (max-width: $mobile) {}

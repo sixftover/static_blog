@@ -1,9 +1,60 @@
 @import "../_framework/variables.scss";
 
 // global
-div{}
+.animate{transition: all .3s $transition-easeInOutQuad;}
 
-@media only screen and (min-width: $maxbody) {}
+
+
+// Layour
+.wrapper{
+	width: 100vw;
+	height: auto;
+	min-height: 100vh;
+	position: relative;
+	display: block;
+}
+.content-center{
+	max-width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+
+// Screen ( over & under )
+.cover{
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+.overlay{
+	@extend .cover;
+	//@include gradient(black, red, rgb(120,0,0));
+	z-index: 5;
+}
+.bg-image{
+	@extend .cover;
+	background-position: center;
+	background-size: cover;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+}
+
+
+
+@media only screen and (max-width: $maxbody) {}
 @media only screen and (max-width: $minbody) {}
-@media only screen and (max-width: $tablet) {}
+@media only screen and (max-width: $tablet) {
+	.content-center{
+		max-width: 100%;
+		margin-left: $unit * 3;
+		margin-right: $unit * 3;
+	}
+}
 @media only screen and (max-width: $mobile) {}
