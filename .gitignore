@@ -1,5 +1,6 @@
 node_modules
-build
+build/**/*.index
+build/**/*.css
 *.zip
 *.psd
 *.psb
