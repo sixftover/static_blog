@@ -1,0 +1,29 @@
+<!-- seo-meta-global -->
+<meta name="author" content="{{ author }}">
+<link rel='me' type='text/html' href='http://twitter.com/{{ twitter_username }}'>
+<link rel="canonical" href="{{ url }}{{ baseurl }}">
+
+<!-- seo-meta-global - opengraph -->
+<meta property="og:type" content="{{ content_type }}">
+<meta property="og:site_name" content="{{ title }}">
+<meta property="og:locale" content="en"> <!-- en_US -->
+<meta property="article:author" content="{{ author }}">
+
+<!-- seo-meta-global - twitter -->
+<meta name="twitter:site" content="{{ twitter_username }}" />
+<meta name="twitter:card" content="summary" />
+
+<!-- seo-meta-this-page -->
+<meta property="og:title" content="{{ meta_title }}">
+<meta name="twitter:title" content="{{ meta_title }}" />
+
+<meta name="description" content="{{ intro }}">
+<meta property="og:description" content="{{ intro }}">
+
+<meta property="og:url" content="{{ url }}{{ baseurl }}">
+<meta name="twitter:url" content="{{ url }}{{ baseurl }}"/>
+
+<meta property="og:image" content="{{ url }}{{ baseurl }}{{ image }}">
+<meta name="twitter:image" content="{{ url }}{{ baseurl }}{{ image }}" />
+
+<meta name="keywords" content="{% for value in tags %}{{ value }}, {% endfor %}">
