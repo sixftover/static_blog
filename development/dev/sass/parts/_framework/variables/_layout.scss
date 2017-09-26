@@ -2,8 +2,6 @@
 // html is set to 62.5% so that all the REM measurements are based on 10px sizing. ( 0.8rem = 8px )
 $unit: 0.8rem;
 
-
-
 // Variables
 //$font-size: $unit * 2;
 $font-size: 1.8rem;
@@ -11,40 +9,11 @@ $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-bold: 700;
 
-
-
 // Breakpoints
 $maxbody:	1136px;
 $minbody:	960px;
 $tablet:	860px;
 $mobile:	540px;
-
-
-
-// Colours
-$brand: #f79d20;
-$brand-alt: #fec240;
-
-$link-colour-before: darken($brand, 8);
-$link-colour-after: $brand-alt;
-
-$text-colour: rgb(220,220,220);
-$background: rgb(10,10,10);
-
-
-// Overlays
-@mixin gradient ($gradient-start, $gradient-end, $gradient-backup) {
-	background: $gradient-backup;
-	background: linear-gradient(to top, $gradient-start 0%, $gradient-end 100%);
-}
-
-
-// Animation
-$transition-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
-$transition-easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
-//$transition-easeInOutCirc: cubic-bezierr(0.785, 0.135, 0.15, 0.86);
-
-
 
 // Column Width Value [ MOVING TO CSS GRID ]
 $one:       8.33%;

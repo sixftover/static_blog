@@ -71,10 +71,15 @@ gulps.registerTasks({
 			setTimeout(function() {
 				gulp.src(paths.sass)
 				.pipe(plumber())
+
+				// SASS to CSS
 				.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError)) //compressed
 
-				// Export
-				.pipe(autoprefixer('last 2 versions'))
+				// Prefix
+				.pipe(autoprefixer({
+					browsers: ['last 2 versions'],
+					cascade: true
+				}))
 
 				// Export
 				.pipe(gulp.dest(paths.build_dir))
@@ -87,41 +92,34 @@ gulps.registerTasks({
 			2000);
 
 		}),
-
-		"prefix" : (function(done) {
+		"sass_min" : (function(done) {
 			setTimeout(function() {
-				gulp.src(paths.build_css)
+				gulp.src(paths.sass)
+				.pipe(plumber())
+
+				// SASS to CSS
+				.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError)) //compressed
+
+				// Prefix
 				.pipe(autoprefixer({
 					browsers: ['last 2 versions'],
 					cascade: true
 				}))
 
+				// Minify
+				.pipe(cleanCSS({compatibility: 'ie8'})) // Running the plugin
+				.pipe(rename({extname: '.min.css'}))
+
 				// Export
 				.pipe(gulp.dest(paths.build_dir))
 
-				console.log(util.colors.yellow.bold('\nAdding vendor prefixes...\n'))
+				console.log(util.colors.yellow.bold('\nCompiling SASS...\n')
+			)
 
 				done();
-			}, 1000);
-		}),
+			},
+			2000);
 
-		"minify-css" : (function(done) {
-			setTimeout(function() {
-				return gulp.src(paths.build_css) // Selecting files
-				.pipe(plumber())
-				.pipe(cleanCSS({compatibility: 'ie8'})) // Running the plugin
-
-			     .pipe(cleanCSS({debug: true}, function(details) {
-						 console.log(util.colors.yellow.bold('\nMinifying CSS...\n'))
-						 console.log(util.colors.white(details.name) + util.colors.white.bold(' Original = ') + util.colors.yellow(details.stats.originalSize));
-						 console.log(util.colors.white(details.name) + util.colors.white.bold(' Minified = ') + util.colors.green.bold(details.stats.minifiedSize));
-							 console.log(util.colors.bold('\n'))
-			     }))
-
-				.pipe(gulp.dest(paths.build_dir)) // Exporting it to a folder
-
-				done();
-			}, 1000);
 		}),
 
 
@@ -166,7 +164,6 @@ gulps.registerTasks({
 				done();
 			}, 2000);
 		}),
-
 		"twig" : (function(done) {
 			setTimeout(function() {
 				var options = {
@@ -238,9 +235,6 @@ gulps.registerTasks({
 				done();
 		}, 2000);
 	}),
-
-
-
 
 
 	// Server
@@ -330,7 +324,17 @@ gulps.registerTasks({
 gulp.task('default', function() {
 	console.log(util.colors.green.bold('OllieJT Quickstart: ') + util.colors.red.bold('Learn more here ') + util.colors.blue('https://github.com/OllieJT/quickstart'))
 });
-gulps.registerSeries('dev',
+
+// Deletes all genetated files
+gulps.registerSeries("clean",
+	[
+		"clean_dev",
+		"clean_public"
+	], function() {
+});
+
+// Starts the development enviroment
+gulps.registerSeries('serve',
 	[
 		// CLEAN
 		"clean_dev",			// Delete HTML in /build
@@ -338,7 +342,6 @@ gulps.registerSeries('dev',
 		// HTML
 		"twig",							// Tidy HTML
 		"sass",							// Compile SASS
-		"prefix",						// Prefix CSS
 
 		// Localhost
 		"connect",					// Connect to Localhost
@@ -346,6 +349,8 @@ gulps.registerSeries('dev',
 	], function() {
 	console.log(util.colors.green.bold('DEV MODE: ') + util.colors.white.bold('ENABLED') + util.colors.red.bold(' Watching...'))
 });
+
+// Generates all development files
 gulps.registerSeries("build",
 	[
 		// CLEAN
@@ -356,17 +361,12 @@ gulps.registerSeries("build",
 
 		//CSS
 		"sass",							// Compile SASS
-		"prefix",						// Prefix CSS
 
 	], function() {
 	console.log(util.colors.green.bold('BUILD: ') + util.colors.white.bold('COMPLETED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
 });
-gulps.registerSeries("clean",
-	[
-		"clean_dev",
-		"clean_public"
-	], function() {
-});
+
+// Generates and bundles all files
 gulps.registerSeries('publish',
 	[
 		// CLEAN
@@ -378,8 +378,6 @@ gulps.registerSeries('publish',
 
 		//CSS
 		"sass",							// Compile SASS
-		"prefix",						// Prefix CSS
-		"minify-css",				// Minify CSS
 
 		"publish",					// Copies development filesto [/public]
 

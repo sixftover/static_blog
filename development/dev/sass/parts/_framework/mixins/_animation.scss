@@ -1,0 +1,16 @@
+// Variables
+@import "../variables/layout.scss";
+@import "../variables/colour.scss";
+
+
+// Overlays
+@mixin gradient ($gradient-start, $gradient-end, $gradient-backup) {
+	background: $gradient-backup;
+	background: linear-gradient(to top, $gradient-start 0%, $gradient-end 100%);
+}
+
+
+// Animation
+$transition-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+$transition-easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+//$transition-easeInOutCirc: cubic-bezierr(0.785, 0.135, 0.15, 0.86);

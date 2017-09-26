@@ -1,17 +1,7 @@
 @charset "utf-8";
+
 /* Hello there! Enjoying my code? Send me a tweet @TheOllieJT */
-@import "parts/_framework/variables.scss";
-@import "boilerplate/normalize.scss";
-@import "boilerplate/globals.scss";
 
-// Grid System
-@import "parts/_framework/grid.scss";
-
-// Typography
-@import "parts/_framework/typography.scss";
-
-// Elements
+@import "parts/framework.scss";
 @import "parts/elements.scss";
-
-// Pages
 @import "parts/pages.scss";

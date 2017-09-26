@@ -1,4 +1,9 @@
-@import "../_framework/variables.scss";
+// Variables
+@import "../_framework/variables/layout.scss";
+@import "../_framework/variables/colour.scss";
+
+// Mixins
+@import "../_framework/mixins/animation.scss";
 
 // Home
 // Grid

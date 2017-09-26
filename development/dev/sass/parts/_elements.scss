@@ -1,8 +1,2 @@
-@import "_framework/variables.scss";
 // Elements
 @import "elements/global.scss";
-
-@media only screen and (min-width: $maxbody) {}
-@media only screen and (max-width: $minbody) {}
-@media only screen and (max-width: $tablet) {}
-@media only screen and (max-width: $mobile) {}
