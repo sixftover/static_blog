@@ -1,13 +1,5 @@
 // Unit of Measurement
-// html is set to 62.5% so that all the REM measurements are based on 10px sizing. ( 0.8rem = 8px )
-$unit: 0.8rem;
-
-// Variables
-//$font-size: $unit * 2;
-$font-size: 1.8rem;
-$font-weight-regular: 400;
-$font-weight-medium: 500;
-$font-weight-bold: 700;
+$unit: 				0.6rem;  // 1rem = 10px
 
 // Breakpoints
 $maxbody:	1136px;

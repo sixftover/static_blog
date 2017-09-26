@@ -62,8 +62,13 @@ var paths = {
 
 };
 
-// Tasks (Gulp Series)
-// ----------------------------------------------------------------------------
+
+
+
+
+//
+// Tasks
+//
 gulps.registerTasks({
 
 	// Styles
@@ -197,19 +202,19 @@ gulps.registerTasks({
 				.pipe(twig({
 					data: {
 						// About Website
-						title: 'OllieJT',
-						description: 'I design effective user experiences and interfaces that help users understand just how awesome you and your service are. Let’s get in touch to talk about how I can find a solution to your needs.',
-						brand_colour: 'ff3817',
+						title: 							'Website Name',
+						description: 				'Description of website here',
+						brand_colour: 			'ff3817',
 
 						// Contact
-						author: 'Ollie Taylor',
-						description: 'contact@olliejt.com',
-						twitter_username: 'TheOllieJT',
+						author: 						'Client Name',
+						description: 				'contact@olliejt.com',
+						twitter_username: 	'TheOllieJT',
 
 						// URL
-						url: '..',
-						baseurl: '',
-						tags: '["blog", "news", "portfolio", "case study", "details", "OllieJT", "Ollie", "WebDesign", "Website", "Design", "Esports", "gaming", "e-sports", "game", "gamer", "team", "ui", "ux", "english", "shanghai", "china", "expat", "blog"]'
+						url: 								'..',
+						baseurl: 						'',
+						tags: 							'["olliejt", "olliejt website design", "olliejt design"]'
 					},
 					includes: [
 						'./twig/layouts/**/*.twig',
@@ -250,7 +255,6 @@ gulps.registerTasks({
 				);
 			}, 2000);
 		}),
-
 		"connect" : (function(done) {
 			setTimeout(function() {
 
@@ -264,7 +268,6 @@ gulps.registerTasks({
 				);
 			}, 200);
 		}),
-
 		"updated" : (function() {
 			setTimeout(function() {
 
@@ -319,8 +322,13 @@ gulps.registerTasks({
 
 }),
 
+
+
+
+
+//
 // Execute Tasks
-// ----------------------------------------------------------------------------
+//
 gulp.task('default', function() {
 	console.log(util.colors.green.bold('OllieJT Quickstart: ') + util.colors.red.bold('Learn more here ') + util.colors.blue('https://github.com/OllieJT/quickstart'))
 });
@@ -360,7 +368,8 @@ gulps.registerSeries("build",
 		"twig",							// Tidy HTML
 
 		//CSS
-		"sass",							// Compile SASS
+		"sass",									// Compile SASS
+		"sass_min",							// Compile SASS
 
 	], function() {
 	console.log(util.colors.green.bold('BUILD: ') + util.colors.white.bold('COMPLETED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
@@ -377,7 +386,8 @@ gulps.registerSeries('publish',
 		"twig",							// Tidy HTML
 
 		//CSS
-		"sass",							// Compile SASS
+		"sass",									// Compile SASS
+		"sass_min",							// Compile SASS
 
 		"publish",					// Copies development filesto [/public]
 
@@ -385,8 +395,11 @@ gulps.registerSeries('publish',
 	console.log(util.colors.green.bold('PUBLISH: ') + util.colors.white.bold('COMPLETED') + util.colors.red.bold('Watching...'))
 });
 
+
+
+
+
 // Pretty Error
-// ----------------------------------------------------------------------------
 pe.appendStyle({
    // this is a simple selector to the element that says 'Error'
    'pretty-error > header > title > kind': {
@@ -448,7 +461,6 @@ pe.appendStyle({
 });
 
 // Test Console Error
-// ----------------------------------------------------------------------------
 gulp.task('console', function(){
 	console.log(util.colors.blue('This') + ' is ' + util.colors.red('now') + util.colors.green(' working'))
 });

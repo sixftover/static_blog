@@ -1,37 +1,53 @@
 // Variables
 @import "variables/layout.scss";
 @import "variables/colour.scss";
+@import "variables/font.scss";
 
+
+// Form
+body, p, li, figcaption {
+	font-size: 				$font-size;
+	line-height: 			$line-height;
+	font-weight: 			$font-weight-regular;
+	color: 						$text-colour;
+}
+h1 {
+	font-size: 				$font-size + ($unit * 5);				// 42
+	line-height: 			$line-height + ($unit * 5);			// 54
+	font-weight: 			$font-weight-bold;
+}
+h2 {
+	font-size: 				$font-size + ($unit * 3);				// 36
+	line-height: 			$line-height + ($unit * 3);			// 48
+	font-weight: 			$font-weight-regular;
+}
+h3 {
+	font-size: 				$font-size + ($unit * 2);				// 30
+	line-height: 			$line-height + ($unit * 2);			// 42
+	font-weight: 			$font-weight-medium;
+}
+h4 {
+	font-size: 				$font-size + $unit;							// 24
+	line-height: 			$line-height + $unit;						// 36
+	font-weight: 			$font-weight-regular;
+}
+h5 {
+	font-size: 				$font-size;											// 18
+	line-height: 			$line-height;										// 30
+	font-weight: 			$font-weight-medium;
+}
+h6 {
+	font-size: 				$font-size + ($unit / 2);				// 15
+	line-height: 			$line-height + ($unit / 2);			// 27
+	font-weight: 			$font-weight-medium;
+}
 
 
 // Colour
-$txt: 							$text-colour;
-$txt-lighter: 			lighten($text-colour, 30);
-$txt-darker: 				darken($text-colour, 30);
-$txt-20:						transparentize($txt-lighter, .20); // 80% Opacity
-$txt-40: 						transparentize($txt-lighter, .40); // 60% Opacity
-$txt-60: 						transparentize($txt-lighter, .60); // 40% Opacity
-$txt-80: 						transparentize($txt-lighter, .80); // 20% Opacity
-
-.txt-highlight{			color: $brand}
-.txt-80{						color: $txt-20} // 80% Opacity
-.txt-60{						color: $txt-40} // 60% Opacity
-.txt-40{						color: $txt-60} // 40% Opacity
-.txt-20{						color: $txt-80} // 20% Opacity
-.txt-reset{					color: $txt !important}
-
-
-
-
-//Global
-body {
-	font-family: 			'Yantramanav', sans-serif;
-	font-size: 				$font-size;
-	line-height: 			$font-size * 1.75;
-	font-weight: 			$font-weight-regular;
-	color: 						$txt;
+p, figcaption, ul, ol, li {
+	a{color: 					$link-colour-before;}
+	a:hover{color: 		$link-colour-after;}
 }
-
 
 
 // Spacing
@@ -39,70 +55,37 @@ h1, h2, h3, h4, h5, h6, p{
 	margin:						0;
 	margin-top: 			0;
 	margin-bottom: 		0;
+	color: 						$text-colour;
 }
-article{
-	h1, h2, h3, h4, h5, h6, p{
-		margin-top: 			$unit * 1.5;
+article, .typography{
+	h1, h2, h3, h4, h5, h6{
+		margin-top: 			0;
 		margin-bottom: 		$unit;
+	}
+	p{
+		margin-top: 			$unit;
+		margin-bottom: 		$unit * 3;
+		&:last-of-type {margin-bottom: 0;}
 	}
 }
 
 
-
-
-
-// Size
-h1 {
-	font-size: 				$font-size * 2.5;					// 250%
-	line-height: 			$font-size * 3.25;				// 325%
-	font-weight: 			$font-weight-bold;
-}
-h2 {
-	font-size: 				$font-size * 1.75;				// 175%
-	line-height: 			$font-size * 2.5;					// 250%
-	font-weight: 			$font-weight-regular;
-}
-h3 {
-	font-size: 				$font-size * 1.5;				// 150%
-	line-height: 			$font-size * 2.25;			// 225%
-	font-weight: 			$font-weight-medium;
-}
-h4 {
-	font-size: 				$font-size * 1.25;			// 125%
-	line-height: 			$font-size * 2;					// 200%
-	font-weight: 			$font-weight-medium;
-}
-h5 {
-	font-size: 				$font-size * 1;					// 100%
-	line-height: 			$font-size * 1.75;			// 175%
-	font-weight: 			$font-weight-bold;
-}
-h6 {
-	font-size: 				$font-size * .75;				// 75%
-	line-height: 			$font-size * 1.5;				// 150%
-	font-weight: 			$font-weight-medium;
-}
-p, ul, ol, figcaption {
-	font-size: 				$font-size;
-	line-height: 			$font-size * 1.75;
-	font-weight: 			$font-weight-regular;
-	color: 						$txt-20;
-	a{color: 					$link-colour-before;}
-	a:hover{color: 		$link-colour-after;}
-}
-
-
-
-
 // Sub Styles
 a {
-	@extend .animate;
-	text-decoration: 	none;
+	text-dkecoration: 	none;
 	display: 					inline-block;
 	color: 						inherit;
 }
 a:hover {color: 		inherit;}
-em{color: 					$txt-lighter}
+em{
+	font-style: italic;
+	opacity: .82;
+}
+strong,b{
+	font-weight: $font-weight-medium;
+	&h1{color: $brand}
+	&h3,&h5,&h6{font-weight: $font-weight-bold}
+}
 
 
 
@@ -114,10 +97,6 @@ ul,ol{
 		margin: 				$unit * 2;
 		margin-right: 	-$unit * 2;
 		max-width: 			100%;
-		color: 					$txt-20;
-	}
-	li:hover{
-		strong,em{color: $brand !important;}
 	}
 }
 ul{
@@ -129,7 +108,7 @@ ul{
 	li:before{
 		float: left;
 		font-weight: $font-weight-bold;
-		color: $txt-lighter;
+		color: $text-colour;
 	}
 }
 ol{
@@ -144,8 +123,6 @@ ol{
 		font-weight: $font-weight-bold;
 	}
 }
-
-
 
 // Figures
 figure{
@@ -163,18 +140,12 @@ figure{
 	}
 }
 figcaption{
-	@extend .animate;
 	display: 				block;
 	margin: 				0 auto;
 	text-align:			center;
-	padding: 				$unit * 2;
-	color: 					$txt-60
+	padding: 				$unit * 3;
+	color: 					$text-colour;
 }
-figure:hover{
-	figcaption{color: $txt-40}
-}
-
-
 
 // Quotes
 blockquote{
@@ -183,18 +154,7 @@ blockquote{
 	padding: $unit * 3;
 	border-style: solid;
 	border-width: 1px 1px 1px 4px;
-	border-color: rgba(200,200,200,0.2);
+	border-color: $brand;
 	border-left-color: $brand;
 	strong{color: $brand}
 }
-.tip-offset{
-	position: absolute;
-	top: -25vh;
-}
-
-@media only screen and (max-width: $maxbody) {}
-@media only screen and (max-width: $minbody) {}
-@media only screen and (max-width: $tablet) {
-	figcaption{text-align: left;}
-}
-@media only screen and (max-width: $mobile) {}

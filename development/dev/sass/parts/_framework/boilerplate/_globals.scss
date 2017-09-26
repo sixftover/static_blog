@@ -1,5 +1,6 @@
 // Variables
 @import "../variables/layout.scss";
+@import "../variables/font.scss";
 @import "../variables/colour.scss";
 
 html{
@@ -13,6 +14,7 @@ html{
 
 
 body{
+	font-family: $font-family, serif;
 	min-height: 100vh;
 	background-position: top center;
 	background-repeat: no-repeat;
