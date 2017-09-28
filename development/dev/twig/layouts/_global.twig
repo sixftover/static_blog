@@ -1,0 +1,22 @@
+{# Template for ALL pages #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% include '../includes/template/_head.twig' %}
+	{% include '../includes/template/_meta.twig' %}
+	{% include '../includes/template/_imports-head.twig' %}
+	<style>{{ source('file.css') }}</style>
+</head>
+<body class="{{ page }}">
+
+	<!-- Content -->
+	{% block body %}{% endblock %}
+
+
+
+
+
+	<!-- Footer -->
+	{% include '../includes/template/_imports-footer.twig' %}
+</body>
+</html>
