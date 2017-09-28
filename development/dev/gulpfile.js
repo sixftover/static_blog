@@ -32,18 +32,21 @@ pe.start();
 var paths = {
 
 	// DEVELOP
-	sass: 			'./sass/**/*.scss',				// SASS files
-	sass_dir:		'./sass/',								// SASS Directory
-	html: 			'./html/**/*.html',				// SASS files
-	html_dir:		'./html/',								// SASS Directory
-	twig: 			'./twig/**/*.twig',				// SASS files
-	twig_ignore: 			'!./twig/**/_*.twig',				// SASS files
-	twig_dir:		'./twig/',								// SASS Directory
+	sass: 							'./sass/**/style.scss',
+	sass_inline:				'./sass/**/inline.scss',
+	sass_dir:						'./sass/',
+	html: 							'./html/**/*.html',
+	html_dir:						'./html/',
+	twig: 							'./twig/**/*.twig',
+	twig_ignore:				'!./twig/**/_*.twig',
+	twig_dir:						'./twig/',
 
 	// BUILD
 	build:							'../build/**/*',
 	build_dir:					'../build',
 	build_css: 					'../build/*.css',
+	build_cssinline: 		'./twig/includes/template/*.css',
+	build_cssinline_dir:'./twig/includes/template',
 	build_html: 				'../build/*.html',
 	build_image:				'../build/img/**/*.+(png|jpg|gif|svg)',
 
@@ -74,6 +77,9 @@ gulps.registerTasks({
 	// Styles
 		"sass" : (function(done) {
 			setTimeout(function() {
+
+				console.log(util.colors.yellow.bold('\nCompiling SASS...\n'))
+
 				gulp.src(paths.sass)
 				.pipe(plumber())
 
@@ -89,16 +95,50 @@ gulps.registerTasks({
 				// Export
 				.pipe(gulp.dest(paths.build_dir))
 
-				console.log(util.colors.yellow.bold('\nCompiling SASS...\n')
-			)
 
-				done();
+
+
+				done(
+					console.log(util.colors.green.bold('\n...SASS Compiled!\n'))
+				);
+			},
+			2000);
+
+		}),
+		"sass_inline" : (function(done) {
+			setTimeout(function() {
+
+				console.log(util.colors.yellow.bold('\nCompiling Inline SASS...\n'))
+
+				gulp.src(paths.sass_inline)
+				.pipe(plumber())
+
+				// SASS to CSS
+				.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError)) //compressed
+
+				// Prefix
+				.pipe(autoprefixer({
+					browsers: ['last 2 versions'],
+					cascade: true
+				}))
+
+				// Export
+				.pipe(gulp.dest(paths.build_cssinline_dir))
+
+				console.log(util.colors.yellow.bold('\nCompiling SASS...\n'))
+
+				done(
+					console.log(util.colors.green.bold('\n...Inline SASS Compiled!\n'))
+				);
 			},
 			2000);
 
 		}),
 		"sass_min" : (function(done) {
 			setTimeout(function() {
+
+				console.log(util.colors.yellow.bold('\nCompiling Minified SASS...\n'))
+
 				gulp.src(paths.sass)
 				.pipe(plumber())
 
@@ -118,10 +158,11 @@ gulps.registerTasks({
 				// Export
 				.pipe(gulp.dest(paths.build_dir))
 
-				console.log(util.colors.yellow.bold('\nCompiling SASS...\n')
-			)
+				console.log(util.colors.yellow.bold('\nCompiling SASS...\n'))
 
-				done();
+				done(
+					console.log(util.colors.green.bold('\n...Minified SASS Compiled!\n'))
+				);
 			},
 			2000);
 
@@ -171,6 +212,9 @@ gulps.registerTasks({
 		}),
 		"twig" : (function(done) {
 			setTimeout(function() {
+
+				console.log(util.colors.yellow.bold('\n Compiling TWIG...\n'))
+
 				var options = {
 					"indent_size": 1,
 					"indent_char": "	",
@@ -235,9 +279,9 @@ gulps.registerTasks({
 				// Export
 				.pipe(gulp.dest(paths.build_dir))
 
-				console.log(util.colors.yellow.bold('\n Compiled TWIG...\n'))
-
-				done();
+				done(
+					console.log(util.colors.green.bold('\n...TWIG Compiled!\n'))
+				);
 		}, 2000);
 	}),
 
@@ -245,13 +289,14 @@ gulps.registerTasks({
 	// Server
 		"watch" : (function(done) {
 			setTimeout(function() {
-				gulp.watch(paths.sass, ["sass", "updated"]) // on change run these command
-				gulp.watch(paths.twig, ["twig", "updated"]) // on change run these command
+				gulp.watch(paths.sass, 				["sass", "updated"]) // on change run these command
+				gulp.watch(paths.sass_inline, ["sass_inline", "twig", "updated"]) // on change run these command
+				gulp.watch(paths.twig, 				["twig", "updated"]) // on change run these command
 				//gulp.watch(paths.html, ["html", "updated"]) // on change run these command
 
 
 				done(
-					console.log(util.colors.yellow.bold('Watching...'))
+					console.log(util.colors.magenta.bold('Watching...'))
 				);
 			}, 2000);
 		}),
@@ -264,7 +309,7 @@ gulps.registerTasks({
 				});
 
 				done(
-					console.log(util.colors.yellow.bold('Connected...'))
+					console.log(util.colors.magenta.bold('Connected...'))
 				);
 			}, 200);
 		}),
@@ -276,7 +321,7 @@ gulps.registerTasks({
 					console.log(util.colors.green.bold('UPDATED!'))
 				)) // Reload Browser
 
-			}, 2100);
+		}, 2100);
 		}),
 
 
@@ -350,6 +395,7 @@ gulps.registerSeries('serve',
 		// HTML
 		"twig",							// Tidy HTML
 		"sass",							// Compile SASS
+		//"sass_inline",							// Compile SASS
 
 		// Localhost
 		"connect",					// Connect to Localhost
@@ -369,7 +415,7 @@ gulps.registerSeries("build",
 
 		//CSS
 		"sass",									// Compile SASS
-		"sass_min",							// Compile SASS
+		//"sass_min",							// Compile SASS
 
 	], function() {
 	console.log(util.colors.green.bold('BUILD: ') + util.colors.white.bold('COMPLETED') + util.colors.white('&') + util.colors.white.bold('COMPRESSED'))
