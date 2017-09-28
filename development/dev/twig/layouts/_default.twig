@@ -1,0 +1,12 @@
+{# Default page template, extends _global.twig #}
+{% extends "_global.twig" %}
+{% set page = "home" %}
+
+	<!-- Navigation -->
+	{% include '../includes/template/_navigation.twig' %}
+
+	<!-- Page Content-->
+	{% block content %}{% endblock %}
+
+	<!-- Footer -->
+	{% include '../includes/template/_footer.twig' %}
