@@ -1,32 +1,92 @@
 // Variables
-@import "variables/layout.scss";
-@import "variables/colour.scss";
-@import "variables/font.scss";
+@import 'variables/layout';
+@import 'variables/colour';
+@import 'variables/font';
 
-.container{
-	display: block;
-	width: 100%;
-	max-width: $maxbody;
-	margin: 0 auto;
-}
-.background-image{
-	background-position: center center;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-.grid{
+
+
+.row {
 	position: relative;
-	width: 100%;
-	height: auto;
-
-	// Grid
-	display: grid;
-	place-items: stretch;
-  grid-column-gap: $unit *2;
-  grid-row-gap: $unit * 2;
-
-	// Reset
-	&::before,&::after{display: none}
+	display: flex;
+	flex-wrap: wrap;
+	width: $minbody;
+	max-width: $minbody;
+	box-sizing: border-box;
+	margin: 0 auto;
+	&::before{display: none}
+	&::after{display: none}
+}
+.col {
+	padding-left: $unit * 1.5;
+	padding-right: $unit * 1.5;
+	box-sizing: border-box;
+	header,section,footer,div,span{display: block;}
+	&:first-child {
+		margin-left: -$unit * 1.5
+	}
+	&:last-child {
+		margin-right: -$unit * 1.5
+	}
+	&.c1 {
+		flex-grow: 1;
+		flex-shrink: 11;
+		flex-basis: $one;
+	}
+	&.c2 {
+		flex-grow: 2;
+		flex-shrink: 10;
+		flex-basis: $two;
+	}
+	&.c3 {
+		flex-grow: 3;
+		flex-shrink: 9;
+		flex-basis: $three;
+	}
+	&.c4 {
+		flex-grow: 4;
+		flex-shrink: 8;
+		flex-basis: $four;
+	}
+	&.c5 {
+		flex-grow: 5;
+		flex-shrink: 7;
+		flex-basis: $five;
+	}
+	&.c6 {
+		flex-grow: 6;
+		flex-shrink: 6;
+		flex-basis: $six;
+	}
+	&.c7 {
+		flex-grow: 7;
+		flex-shrink: 5;
+		flex-basis: $seven;
+	}
+	&.c8 {
+		flex-grow: 8;
+		flex-shrink: 4;
+		flex-basis: $eight;
+	}
+	&.c9 {
+		flex-grow: 9;
+		flex-shrink: 3;
+		flex-basis: $nine;
+	}
+	&.c10 {
+		flex-grow: 10;
+		flex-shrink: 2;
+		flex-basis: $ten;
+	}
+	&.c11 {
+		flex-grow: 11;
+		flex-shrink: 1;
+		flex-basis: $eleven;
+	}
+	&.c12 {
+		flex-grow: 12;
+		flex-shrink: 0;
+		flex-basis: $twelve;
+	}
 }
 
 @media only screen and (max-width: $maxbody) {}

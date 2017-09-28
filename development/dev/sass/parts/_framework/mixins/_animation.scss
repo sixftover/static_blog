@@ -1,13 +1,22 @@
 // Variables
-@import "../variables/layout.scss";
-@import "../variables/colour.scss";
-@import "../variables/font.scss";
+@import '../variables/layout';
+@import '../variables/colour';
+@import '../variables/font';
 
 
 // Overlays
 @mixin gradient ($gradient-start, $gradient-end, $gradient-backup) {
 	background: $gradient-backup;
 	background: linear-gradient(to top, $gradient-start 0%, $gradient-end 100%);
+}
+
+@mixin gradient-light {
+	background: $brand;
+	background: linear-gradient(to right, $brand 0%, $brand-light 100%);
+}
+@mixin gradient-dark {
+	background: $brand;
+	background: linear-gradient(to right, $brand-dark 0%, $brand 100%);
 }
 
 

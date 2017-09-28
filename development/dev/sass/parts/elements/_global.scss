@@ -1,10 +1,10 @@
 // Variables
-@import "../_framework/variables/layout.scss";
-@import "../_framework/variables/colour.scss";
-@import "../_framework/variables/font.scss";
+@import '../_framework/variables/layout';
+@import '../_framework/variables/colour';
+@import '../_framework/variables/font';
 
 // Mixins
-@import "../_framework/mixins/animation.scss";
+@import '../_framework/mixins/animation';
 
 // global
 .animate{transition: all .3s $transition-easeInOutQuad;}

@@ -1,7 +1,7 @@
 // Variables
-@import "variables/layout.scss";
-@import "variables/colour.scss";
-@import "variables/font.scss";
+@import 'variables/layout.scss';
+@import 'variables/colour.scss';
+@import 'variables/font.scss';
 
 
 // Form
@@ -48,6 +48,11 @@ p, figcaption, ul, ol, li {
 	a{color: 					$link-colour-before;}
 	a:hover{color: 		$link-colour-after;}
 }
+// Dark Mode
+.invert-txt{
+	h1,h2,h3,h4,h5,h6{color: $text-colour-invert}
+	p, figcaption, li{color: transparentize($text-colour-invert, .6) }
+}
 
 
 // Spacing
@@ -86,8 +91,6 @@ strong,b{
 	&h1{color: $brand}
 	&h3,&h5,&h6{font-weight: $font-weight-bold}
 }
-
-
 
 
 // Lists

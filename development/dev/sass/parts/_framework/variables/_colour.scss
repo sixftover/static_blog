@@ -1,8 +1,10 @@
-$brand: #f79d20;
-$brand-alt: #fec240;
+$brand: 							#f79d20;
+$brand-light: 				desaturate(lighten($brand, 12),18);
+$brand-dark: 					saturate(darken($brand, 12),18);
 
-$link-colour-before: darken($brand, 8);
-$link-colour-after: $brand-alt;
+$link-colour-before: 	darken($brand, 8);
+$link-colour-after: 	$brand-dark;
 
-$text-colour: rgb(220,220,220);
-$background: rgb(10,10,10);
+$text-colour: 				white;
+$text-colour-invert:  black;
+$background: 					rgb(10,10,10);
