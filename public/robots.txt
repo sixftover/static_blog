@@ -1,6 +1,0 @@
-User-Agent: *
-Disallow: http://localhost:4000/admin
-Disallow: http://localhost:4000/css
-Disallow: http://localhost:4000/404.html
-
-Sitemap: /sitemap.xml
