@@ -37,13 +37,14 @@ h5 {
 	font-weight: 			$font-weight-medium;
 }
 h6 {
-	font-size: 				$font-size + ($unit / 2);				// 15
-	line-height: 			$line-height + ($unit / 2);			// 27
+	font-size: 				$font-size - ($unit / 2);				// 15
+	line-height: 			$line-height - ($unit / 2);			// 27
 	font-weight: 			$font-weight-medium;
 }
 
 
 // Colour
+h1,h2,h3,h4,h5,h6{color: $text-colour-strong}
 p, figcaption, ul, ol, li {
 	a{color: 					$link-colour-before;}
 	a:hover{color: 		$link-colour-after;}
@@ -60,7 +61,10 @@ h1, h2, h3, h4, h5, h6, p{
 	margin:						0;
 	margin-top: 			0;
 	margin-bottom: 		0;
-	color: 						$text-colour;
+}
+li{
+	list-style: none;
+	display: inline-block;
 }
 article, .typography{
 	h1, h2, h3, h4, h5, h6{
@@ -72,12 +76,45 @@ article, .typography{
 		margin-bottom: 		$unit * 3;
 		&:last-of-type {margin-bottom: 0;}
 	}
+	ul,ol{
+		li{
+			//padding: 				$unit 0;
+			margin: 				$unit * 2;
+			margin-right: 	-$unit * 2;
+			max-width: 			100%;
+			display: block;
+		}
+	}
+	ul{
+		list-style-position: inside;
+		li{
+			list-style-type: disc;
+			list-style-position: inside;
+		}
+		li:before{
+			float: left;
+			font-weight: $font-weight-bold;
+			color: $text-colour;
+		}
+	}
+	ol{
+		counter-reset: my-badass-counter;
+		li{
+			counter-increment: my-badass-counter;
+		}
+		li:before{
+			content: counter(my-badass-counter)".";
+			float: left;
+			margin-right: $unit * 2;
+			font-weight: $font-weight-bold;
+		}
+	}
 }
 
 
 // Sub Styles
 a {
-	text-dkecoration: 	none;
+	text-decoration: 	none;
 	display: 					inline-block;
 	color: 						inherit;
 }
@@ -90,41 +127,6 @@ strong,b{
 	font-weight: $font-weight-medium;
 	&h1{color: $brand}
 	&h3,&h5,&h6{font-weight: $font-weight-bold}
-}
-
-
-// Lists
-ul,ol{
-	li{
-		//padding: 				$unit 0;
-		margin: 				$unit * 2;
-		margin-right: 	-$unit * 2;
-		max-width: 			100%;
-	}
-}
-ul{
-	list-style-position: inside;
-	li{
-		list-style-type: disc;
-		list-style-position: inside;
-	}
-	li:before{
-		float: left;
-		font-weight: $font-weight-bold;
-		color: $text-colour;
-	}
-}
-ol{
-	counter-reset: my-badass-counter;
-	li{
-		counter-increment: my-badass-counter;
-	}
-	li:before{
-		content: counter(my-badass-counter)".";
-		float: left;
-		margin-right: $unit * 2;
-		font-weight: $font-weight-bold;
-	}
 }
 
 // Figures

@@ -1,10 +1,16 @@
-$brand: 							#f79d20;
+$brand: 							purple;
 $brand-light: 				desaturate(lighten($brand, 12),18);
-$brand-dark: 					saturate(darken($brand, 12),18);
+$brand-dark: 					desaturate(darken($brand, 12),18);
+
+$Shade4: #e9ebf0;
+$Shade3: #909399;
+$Shade2: #43474d;
+$Shade1: #15191f;
 
 $link-colour-before: 	darken($brand, 8);
 $link-colour-after: 	$brand-dark;
 
-$text-colour: 				white;
-$text-colour-invert:  black;
+$text-colour-strong: 	$Shade4;
+$text-colour: 				$Shade3;
+$text-colour-invert:  $Shade2;
 $background: 					rgb(10,10,10);

@@ -39,7 +39,7 @@ var paths = {
 	sass_dir:						'./sass/',
 	html: 							'./html/**/*.html',
 	html_dir:						'./html/',
-	twig: 							'./twig/**/*.*',
+	twig: 							'./twig/**/*.twig',
 	twig_ignore:				'!./twig/**/_*.twig',
 	twig_dir:						'./twig/',
 
@@ -132,7 +132,7 @@ gulps.registerTasks({
 					console.log(util.colors.bgMagenta.white.bold('\n...Inline SASS Compiled!\n'))
 				);
 			},
-			1000);
+			2000);
 
 		}),
 		"sass_min" : (function(done) {
@@ -297,18 +297,18 @@ gulps.registerTasks({
 	// Server
 		"watch" : (function(done) {
 			setTimeout(function() {
-				gulp.watch(paths.sass, !paths.sass_inline_dir, 	["sass", "updated"]) // on change run these command
-				gulp.watch(paths.sass_inline_dir, 							["sass_inline"]) // on change run these command
-				//gulp.watch(paths.build_cssinline, 							["twig", "updated"]) // on change run these command
-				gulp.watch(paths.twig, 													["twig", "updated"]) // on change run these command
-				//gulp.watch(paths.html, ["html", "updated"]) // on change run these command
+				gulp.watch(paths.sass, !paths.sass_inline_dir, 	["sass", "updated"])
+				gulp.watch(paths.sass_inline_dir, 							["sass_inline"])
+				gulp.watch(paths.build_cssinline, 							["twig", "updated"])
+				gulp.watch(paths.twig, 													["twig", "updated"])
+				//gulp.watch(paths.html, 													["html", "updated"])
 
 
 				done(
 					console.log(util.colors.bgRed.white.bold('\nWatching!\n'))
 				);
 			},
-			500);
+			3000);
 		}),
 		"connect" : (function(done) {
 			setTimeout(function() {
