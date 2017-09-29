@@ -188,7 +188,7 @@ html {
 }
 
 body {
-  font-family: "-apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif", serif;
+  font-family: "San Francisco", -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
   min-height: 100vh;
   background-position: top center;
   background-repeat: no-repeat;
@@ -441,7 +441,7 @@ body, p, li, figcaption {
   font-size: 1.8rem;
   line-height: 3rem;
   font-weight: 400;
-  color: white;
+  color: #909399;
 }
 
 h1 {
@@ -475,32 +475,40 @@ h5 {
 }
 
 h6 {
-  font-size: 2.1rem;
-  line-height: 3.3rem;
+  font-size: 1.5rem;
+  line-height: 2.7rem;
   font-weight: 500;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #e9ebf0;
+}
+
 p a, figcaption a, ul a, ol a, li a {
-  color: #e68908;
+  color: #570057;
 }
 
 p a:hover, figcaption a:hover, ul a:hover, ol a:hover, li a:hover {
-  color: #da7f00;
+  color: #3d063d;
 }
 
 .invert-txt h1, .invert-txt h2, .invert-txt h3, .invert-txt h4, .invert-txt h5, .invert-txt h6 {
-  color: black;
+  color: #43474d;
 }
 
 .invert-txt p, .invert-txt figcaption, .invert-txt li {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(67, 71, 77, 0.4);
 }
 
 h1, h2, h3, h4, h5, h6, p {
   margin: 0;
   margin-top: 0;
   margin-bottom: 0;
-  color: white;
+}
+
+li {
+  list-style: none;
+  display: inline-block;
 }
 
 article h1, article h2, article h3, article h4, article h5, article h6, .typography h1, .typography h2, .typography h3, .typography h4, .typography h5, .typography h6 {
@@ -517,8 +525,45 @@ article p:last-of-type, .typography p:last-of-type {
   margin-bottom: 0;
 }
 
+article ul li, article ol li, .typography ul li, .typography ol li {
+  margin: 1.2rem;
+  margin-right: -1.2rem;
+  max-width: 100%;
+  display: block;
+}
+
+article ul, .typography ul {
+  list-style-position: inside;
+}
+
+article ul li, .typography ul li {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+article ul li:before, .typography ul li:before {
+  float: left;
+  font-weight: 700;
+  color: #909399;
+}
+
+article ol, .typography ol {
+  counter-reset: my-badass-counter;
+}
+
+article ol li, .typography ol li {
+  counter-increment: my-badass-counter;
+}
+
+article ol li:before, .typography ol li:before {
+  content: counter(my-badass-counter) ".";
+  float: left;
+  margin-right: 1.2rem;
+  font-weight: 700;
+}
+
 a {
-  text-dkecoration: none;
+  text-decoration: none;
   display: inline-block;
   color: inherit;
 }
@@ -537,46 +582,10 @@ strong, b {
 }
 
 strongh1, bh1 {
-  color: #f79d20;
+  color: purple;
 }
 
 strongh3, strongh5, strongh6, bh3, bh5, bh6 {
-  font-weight: 700;
-}
-
-ul li, ol li {
-  margin: 1.2rem;
-  margin-right: -1.2rem;
-  max-width: 100%;
-}
-
-ul {
-  list-style-position: inside;
-}
-
-ul li {
-  list-style-type: disc;
-  list-style-position: inside;
-}
-
-ul li:before {
-  float: left;
-  font-weight: 700;
-  color: white;
-}
-
-ol {
-  counter-reset: my-badass-counter;
-}
-
-ol li {
-  counter-increment: my-badass-counter;
-}
-
-ol li:before {
-  content: counter(my-badass-counter) ".";
-  float: left;
-  margin-right: 1.2rem;
   font-weight: 700;
 }
 
@@ -602,7 +611,7 @@ figcaption {
   margin: 0 auto;
   text-align: center;
   padding: 1.8rem;
-  color: white;
+  color: #909399;
 }
 
 blockquote {
@@ -611,10 +620,10 @@ blockquote {
   padding: 1.8rem;
   border-style: solid;
   border-width: 1px 1px 1px 4px;
-  border-color: #f79d20;
-  border-left-color: #f79d20;
+  border-color: purple;
+  border-left-color: purple;
 }
 
 blockquote strong {
-  color: #f79d20;
+  color: purple;
 }

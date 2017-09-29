@@ -21,12 +21,8 @@
 	padding-right: $unit * 1.5;
 	box-sizing: border-box;
 	header,section,footer,div,span{display: block;}
-	&:first-child {
-		margin-left: -$unit * 1.5
-	}
-	&:last-child {
-		margin-right: -$unit * 1.5
-	}
+	&:first-child {margin-left: -$unit * 1.5}
+	&:last-child {margin-right: -$unit * 1.5}
 	&.c1 {
 		flex-grow: 1;
 		flex-shrink: 11;

@@ -4,23 +4,13 @@
 @import '../variables/font';
 
 
-// Overlays
-@mixin gradient ($gradient-start, $gradient-end, $gradient-backup) {
-	background: $gradient-backup;
-	background: linear-gradient(to top, $gradient-start 0%, $gradient-end 100%);
-}
-
-@mixin gradient-light {
-	background: $brand;
-	background: linear-gradient(to right, $brand 0%, $brand-light 100%);
-}
-@mixin gradient-dark {
-	background: $brand;
-	background: linear-gradient(to right, $brand-dark 0%, $brand 100%);
-}
-
 
 // Animation
 $transition-easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
 $transition-easeInOutQuad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 //$transition-easeInOutCirc: cubic-bezierr(0.785, 0.135, 0.15, 0.86);
+
+
+@mixin easeOutCirc($duration) {
+	transition: all $duration $transition-easeOutCirc, filter .1s ease-in-out;
+}
