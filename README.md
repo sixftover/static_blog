@@ -12,7 +12,7 @@ This repository is an environment built and used by @OllieJT. To manage the cont
 ###### Install all packages
 Open ./development/dev/ in the terminal and install all modules.
 ```
-sudo npm install
+npm install
 ```
 
 Please DO NOT touch the following files:
